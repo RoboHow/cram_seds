@@ -1,0 +1,20 @@
+<package>
+  <description brief="knowrob_seds">
+
+     knowrob_seds
+     
+     Tools and representations for integrating the SEDS imitation learning
+     models with the KnowRob knowledge base.
+
+  </description>
+  <author>Moritz Tenorth</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/knowrob_seds</url>
+  
+  <depend package="rosjava_jni"/>
+  <depend package="knowrob_common"/>
+
+</package>
+
+
