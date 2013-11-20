@@ -28,7 +28,7 @@ public class GMMToOWL {
 	public final static String RDFS = "http://www.w3.org/2000/01/rdf-schema#";
 
 	// Base IRI for motion constraints ontology	
-	public final static String CONSTR = "http://ias.cs.tum.edu/kb/knowrob_seds.owl#";
+	public final static String CONSTR = "http://ias.cs.tum.edu/kb/knowrob-seds.owl#";
 
 	// Base IRI for new ontology
 	public final static String MOTION = "http://ias.cs.tum.edu/kb/motion-def.owl#";
@@ -108,6 +108,7 @@ public class GMMToOWL {
 		
 		String header = "\n\n" +
 		"<!DOCTYPE rdf:RDF [\n" +
+	    "    <!ENTITY local_path 'file://@LOCAL_PACKAGE_PATH@/owl/'>\n" +
 		"    <!ENTITY owl \"http://www.w3.org/2002/07/owl#\" >\n" +
 		"    <!ENTITY xsd \"http://www.w3.org/2001/XMLSchema#\" >\n" +
 		"    <!ENTITY knowrob \"http://ias.cs.tum.edu/kb/knowrob.owl#\" >\n" +
@@ -121,11 +122,16 @@ public class GMMToOWL {
 		owl_data = owl_data.replace("rdf:about=\"http://ias.cs.tum.edu/kb/knowrob.owl#", 
 				"rdf:resource=\"&knowrob;");
 
-		owl_data = owl_data.replace("rdf:resource=\"http://ias.cs.tum.edu/kb/knowrob_seds.owl#", 
+		owl_data = owl_data.replace("rdf:resource=\"http://ias.cs.tum.edu/kb/knowrob-seds.owl#", 
 				"rdf:resource=\"&seds;");
-		
+
 		owl_data = owl_data.replace("rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\"", 
 									"rdf:datatype=\"&xsd;double\"");
+		
+		owl_data = owl_data.replace("<owl:imports rdf:resource=\"&seds;\"/>", 
+				"<owl:imports rdf:resource=\"&local_path;knowrob-seds.owl\"/>");
+		
+		
 		
 		owl_data = owl_data.replace("<rdf:RDF", header);
 		return owl_data;
