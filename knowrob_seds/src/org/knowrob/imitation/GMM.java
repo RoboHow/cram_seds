@@ -9,10 +9,8 @@ import java.util.List;
 import javax.vecmath.GMatrix;
 import javax.vecmath.GVector;
 
-import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -126,15 +124,13 @@ public class GMM {
 
 	
 
-	public OWLClass writeToOWL(OWLOntologyManager manager, OWLDataFactory factory, DefaultPrefixManager pm, OWLOntology ontology) {
+	public OWLNamedIndividual writeToOWL(OWLOntologyManager manager, OWLDataFactory factory, DefaultPrefixManager pm, OWLOntology ontology) {
 
-		// create constraint class
-		String constrClsIRI = OWLThing.getUniqueID("knowrob:"+name);
-		OWLClass gmmCls = factory.getOWLClass(IRI.create(constrClsIRI));
+		// create GMM class
+		OWLClass gmmType = factory.getOWLClass(IRI.create(GMMToOWL.CONSTR + "GaussianMixtureModel"));
+		OWLNamedIndividual gmmInd = factory.getOWLNamedIndividual(OWLThing.getUniqueID("knowrob:"+name), pm);
+		manager.addAxiom(ontology, factory.getOWLClassAssertionAxiom(gmmType, gmmInd));
  
-		OWLClass constrType = factory.getOWLClass(IRI.create(GMMToOWL.CONSTR + "GaussianMixtureModel"));
-		manager.applyChange(new AddAxiom(ontology, factory.getOWLSubClassOfAxiom(gmmCls, constrType)));	
-		
 		ArrayList<OWLNamedIndividual> gaussians = new ArrayList<OWLNamedIndividual>();
 		OWLClass gauss_class = factory.getOWLClass("knowrob:GaussianDistribution", pm);
 		
@@ -145,8 +141,7 @@ public class GMM {
 
 			// link to GMM class
 			OWLObjectProperty pGauss = factory.getOWLObjectProperty(IRI.create(GMMToOWL.CONSTR + "gaussianDist"));
-			OWLClassExpression covRestr = factory.getOWLObjectHasValue(pGauss, g);
-			manager.applyChange(new AddAxiom(ontology, factory.getOWLSubClassOfAxiom(gmmCls, covRestr))); 
+			manager.addAxiom(ontology, factory.getOWLObjectPropertyAssertionAxiom(pGauss,  gmmInd, g));
 			
 			gaussians.add(g);
 		}
@@ -196,64 +191,7 @@ public class GMM {
 			manager.addAxiom(ontology, factory.getOWLObjectPropertyAssertionAxiom(pMean, gaussians.get(g), mat_inst));
 		}
 		
-		
-		
-		// set constraint types 
-//		for(String t : types) {
-//			OWLClass constrType = factory.getOWLClass(IRI.create(MotionTask.CONSTR + t));
-//			manager.applyChange(new AddAxiom(ontology, factory.getOWLSubClassOfAxiom(constrCls, constrType)));	
-//		}
-
-//		// set label
-//		if(!this.label.isEmpty())
-//			manager.applyChange(new AddAxiom(ontology, 
-//					factory.getOWLAnnotationAssertionAxiom(
-//							factory.getRDFSLabel(), 
-//							IRI.create(constrClsIRI), 
-//							factory.getOWLLiteral(this.label)))); 
-
-//		// set properties
-//		OWLDataProperty constrWeight = factory.getOWLDataProperty(IRI.create(MotionTask.CONSTR + "constrWeight"));
-//		OWLClassExpression weightRestr = factory.getOWLDataHasValue(constrWeight, factory.getOWLLiteral(1.0));
-//		manager.applyChange(new AddAxiom(ontology, factory.getOWLSubClassOfAxiom(constrCls, weightRestr))); 
-//
-//		OWLDataProperty constrLowerLimit  = factory.getOWLDataProperty(IRI.create(MotionTask.CONSTR + "constrLowerLimit"));
-//		OWLClassExpression lowerLimitRestr = factory.getOWLDataHasValue(constrLowerLimit, factory.getOWLLiteral(this.constrLowerLimit));
-//		manager.applyChange(new AddAxiom(ontology, factory.getOWLSubClassOfAxiom(constrCls, lowerLimitRestr))); 
-//		
-//		OWLDataProperty constrUpperLimit  = factory.getOWLDataProperty(IRI.create(MotionTask.CONSTR + "constrUpperLimit"));
-//		OWLClassExpression upperLimitRestr = factory.getOWLDataHasValue(constrUpperLimit, factory.getOWLLiteral(this.constrUpperLimit));
-//		manager.applyChange(new AddAxiom(ontology, factory.getOWLSubClassOfAxiom(constrCls, upperLimitRestr))); 
-//
-		return gmmCls;
-
+		return gmmInd;
 	}
-	
-
-//	public void readFromOWL(OWLClass constrCls, OWLOntology ont, OWLDataFactory factory, ControlP5 controlP5) {
-//
-////		OWLObjectProperty constrainedBy   = factory.getOWLObjectProperty(IRI.create(KNOWROB + "constrainedBy"));
-////
-////		OWLObjectProperty toolFeature     = factory.getOWLObjectProperty(IRI.create(CONSTR + "toolFeature"));
-////		OWLObjectProperty worldFeature    = factory.getOWLObjectProperty(IRI.create(CONSTR + "worldFeature"));
-////
-////		OWLDataProperty constrLowerLimit  = factory.getOWLDataProperty(IRI.create(CONSTR + "constrLowerLimit"));
-////		OWLDataProperty constrUpperLimit  = factory.getOWLDataProperty(IRI.create(CONSTR + "constrUpperLimit"));
-////		OWLDataProperty constrWeight      = factory.getOWLDataProperty(IRI.create(CONSTR + "constrWeight"));
-////
-////		Set<OWLClassExpression> sup1 = constrCls.getSuperClasses(ont);
-////		Set<OWLClassExpression> sup2 = constrCls.getSubClasses(ont);
-////		
-////		Set<OWLSubClassOfAxiom> sup = ont.getSubClassAxiomsForSubClass(constrCls);
-////		Set<OWLSubClassOfAxiom> sub = ont.getSubClassAxiomsForSuperClass(constrCls);
-////		Set<OWLClassAxiom> all = ont.getAxioms(constrCls);
-//
-//		for (OWLSubClassOfAxiom ax : ont.getSubClassAxiomsForSubClass((OWLClass)constrCls)) {
-//			OWLClassExpression superCls = ax.getSuperClass();
-//			
-//			System.out.println(superCls.toString());
-//		}
-//		
-//	}
 
 }
