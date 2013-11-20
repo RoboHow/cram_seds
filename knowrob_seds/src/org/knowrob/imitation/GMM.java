@@ -9,11 +9,14 @@ import java.util.List;
 import javax.vecmath.GMatrix;
 import javax.vecmath.GVector;
 
+import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.util.DefaultPrefixManager;
@@ -126,26 +129,74 @@ public class GMM {
 	public OWLClass writeToOWL(OWLOntologyManager manager, OWLDataFactory factory, DefaultPrefixManager pm, OWLOntology ontology) {
 
 		// create constraint class
-		String constrClsIRI = OWLThing.getUniqueID("bla");
-		OWLClass constrCls = factory.getOWLClass(IRI.create(constrClsIRI));
+		String constrClsIRI = OWLThing.getUniqueID("knowrob:"+name);
+		OWLClass gmmCls = factory.getOWLClass(IRI.create(constrClsIRI));
+ 
+		OWLClass constrType = factory.getOWLClass(IRI.create(GMMToOWL.CONSTR + "GaussianMixtureModel"));
+		manager.applyChange(new AddAxiom(ontology, factory.getOWLSubClassOfAxiom(gmmCls, constrType)));	
+		
+		ArrayList<OWLNamedIndividual> gaussians = new ArrayList<OWLNamedIndividual>();
+		OWLClass gauss_class = factory.getOWLClass("knowrob:GaussianDistribution", pm);
+		
+		// create instances of GaussianDistributions that hold the respective mean/cov/prior values
+		for(int i = 0; i < means.size(); i++) {
+			OWLNamedIndividual g = factory.getOWLNamedIndividual(OWLThing.getUniqueID("knowrob:GaussianDistribution"), pm);
+			manager.addAxiom(ontology, factory.getOWLClassAssertionAxiom(gauss_class, g));
 
+			// link to GMM class
+			OWLObjectProperty pGauss = factory.getOWLObjectProperty(IRI.create(GMMToOWL.CONSTR + "gaussianDist"));
+			OWLClassExpression covRestr = factory.getOWLObjectHasValue(pGauss, g);
+			manager.applyChange(new AddAxiom(ontology, factory.getOWLSubClassOfAxiom(gmmCls, covRestr))); 
+			
+			gaussians.add(g);
+		}
+		
+		// create instances for mean vectors
+		for(int g = 0; g < means.size();g++) {
+			
+			GVector vec = means.get(g);
 
-		for(GMatrix mat : covs) {
+			// create vector instance
+			OWLClass vec_class = factory.getOWLClass("knowrob:Vector", pm);
+			OWLNamedIndividual vec_inst = factory.getOWLNamedIndividual(OWLThing.getUniqueID("knowrob:Vector"), pm);
+			manager.addAxiom(ontology, factory.getOWLClassAssertionAxiom(vec_class, vec_inst));
+
+			// set vector elements
+			for(int i=0;i<vec.getSize();i++) {
+				OWLDataProperty prop = factory.getOWLDataProperty("knowrob:vec"+i, pm);
+				manager.addAxiom(ontology, factory.getOWLDataPropertyAssertionAxiom(prop,  vec_inst, vec.getElement(i)));
+			}
+			
+			// link to Gaussian instance
+			OWLObjectProperty pMean = factory.getOWLObjectProperty(IRI.create(GMMToOWL.CONSTR + "mean"));
+			manager.addAxiom(ontology, factory.getOWLObjectPropertyAssertionAxiom(pMean, gaussians.get(g), vec_inst));
+		}
+		
+		// create instances for covariance matrices
+		for(int g = 0; g < covs.size();g++) {
+			
+			GMatrix mat=covs.get(g);
 		
 			// create matrix instance
-			OWLClass pose_class = factory.getOWLClass("knowrob:Matrix", pm);
-			OWLNamedIndividual pose_inst = factory.getOWLNamedIndividual(OWLThing.getUniqueID("knowrob:Matrix"), pm);
-			manager.addAxiom(ontology, factory.getOWLClassAssertionAxiom(pose_class, pose_inst));
+			OWLClass mat_class = factory.getOWLClass("knowrob:Matrix", pm);
+			OWLNamedIndividual mat_inst = factory.getOWLNamedIndividual(OWLThing.getUniqueID("knowrob:Matrix"), pm);
+			manager.addAxiom(ontology, factory.getOWLClassAssertionAxiom(mat_class, mat_inst));
 
 			// set pose properties
 			for(int i=0;i<mat.getNumRow();i++) {
 				for(int j=0;j<mat.getNumCol();j++) {
 
 					OWLDataProperty prop = factory.getOWLDataProperty("knowrob:m"+i+j, pm);
-					manager.addAxiom(ontology, factory.getOWLDataPropertyAssertionAxiom(prop,  pose_inst, mat.getElement(i, j)));
+					manager.addAxiom(ontology, factory.getOWLDataPropertyAssertionAxiom(prop,  mat_inst, mat.getElement(i, j)));
 				}
 			}
+
+			// link to Gaussian instance
+			OWLObjectProperty pMean = factory.getOWLObjectProperty(IRI.create(GMMToOWL.CONSTR + "cov"));
+			manager.addAxiom(ontology, factory.getOWLObjectPropertyAssertionAxiom(pMean, gaussians.get(g), mat_inst));
 		}
+		
+		
 		
 		// set constraint types 
 //		for(String t : types) {
@@ -174,7 +225,7 @@ public class GMM {
 //		OWLClassExpression upperLimitRestr = factory.getOWLDataHasValue(constrUpperLimit, factory.getOWLLiteral(this.constrUpperLimit));
 //		manager.applyChange(new AddAxiom(ontology, factory.getOWLSubClassOfAxiom(constrCls, upperLimitRestr))); 
 //
-		return constrCls;
+		return gmmCls;
 
 	}
 	

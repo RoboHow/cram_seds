@@ -84,10 +84,10 @@ public class GMMToOWL {
 			// import GMMs and write to OWL
 			File dir = new File(gmmFolder);
 			
-			GMM master   = new GMM("master");
-			GMM slave    = new GMM("slave");
-			GMM coupling = new GMM("coupling");
-			GMM force    = new GMM("forceDyn");
+			GMM master   = new GMM("MasterDynGMM");
+			GMM slave    = new GMM("SlaveDynGMM");
+			GMM coupling = new GMM("CouplingDynGMM");
+			GMM force    = new GMM("ForceDynGMM");
 			
 			for(String f : dir.list()) {
 				
