@@ -1,0 +1,1842 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY knowrob "http://ias.cs.tum.edu/kb/knowrob.owl#" >
+    <!ENTITY seds "http://ias.cs.tum.edu/kb/knowrob_seds.owl#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+<rdf:RDF xmlns="http://ias.cs.tum.edu/kb/motion-def.owl#"
+     xml:base="http://ias.cs.tum.edu/kb/motion-def.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:knowrob2="knowrob:"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:knowrob_seds="http://ias.cs.tum.edu/kb/knowrob_seds.owl#"
+     xmlns:knowrob="http://ias.cs.tum.edu/kb/knowrob.owl#">
+    <owl:Ontology rdf:about="http://ias.cs.tum.edu/kb/motion-def.owl#">
+        <owl:imports rdf:resource="&seds;"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#couplingGMM -->
+
+    <owl:ObjectProperty rdf:resource="&knowrob;couplingGMM"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#forceGMM -->
+
+    <owl:ObjectProperty rdf:resource="&knowrob;forceGMM"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#masterGMM -->
+
+    <owl:ObjectProperty rdf:resource="&knowrob;masterGMM"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#slaveGMM -->
+
+    <owl:ObjectProperty rdf:resource="&knowrob;slaveGMM"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob_seds.owl#cov -->
+
+    <owl:ObjectProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob_seds.owl#cov"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob_seds.owl#gaussianDist -->
+
+    <owl:ObjectProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob_seds.owl#gaussianDist"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob_seds.owl#mean -->
+
+    <owl:ObjectProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob_seds.owl#mean"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m00 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m00"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m01 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m01"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m02 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m02"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m03 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m03"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m04 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m04"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m05 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m05"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m10 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m10"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m11 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m11"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m12 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m12"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m13 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m13"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m14 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m14"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m15 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m15"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m20 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m20"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m21 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m21"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m22 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m22"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m23 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m23"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m24 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m24"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m25 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m25"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m30 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m30"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m31 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m31"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m32 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m32"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m33 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m33"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m34 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m34"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m35 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m35"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m40 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m40"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m41 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m41"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m42 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m42"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m43 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m43"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m44 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m44"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m45 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m45"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m50 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m50"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m51 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m51"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m52 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m52"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m53 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m53"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m54 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m54"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#m55 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;m55"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#vec0 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;vec0"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#vec1 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;vec1"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#vec2 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;vec2"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#vec3 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;vec3"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#vec4 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;vec4"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#vec5 -->
+
+    <owl:DatatypeProperty rdf:resource="&knowrob;vec5"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution -->
+
+    <owl:Class rdf:resource="&knowrob;GaussianDistribution"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix -->
+
+    <owl:Class rdf:resource="&knowrob;Matrix"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector -->
+
+    <owl:Class rdf:resource="&knowrob;Vector"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob_seds.owl#GaussianMixtureModel -->
+
+    <owl:Class rdf:about="http://ias.cs.tum.edu/kb/knowrob_seds.owl#GaussianMixtureModel"/>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob_seds.owl#MotionPhase -->
+
+    <owl:Class rdf:about="http://ias.cs.tum.edu/kb/knowrob_seds.owl#MotionPhase"/>
+    
+
+
+    <!-- knowrob:phase1_iIzk03LV -->
+
+    <owl:Class rdf:about="knowrob:phase1_iIzk03LV">
+        <rdfs:subClassOf rdf:resource="&seds;MotionPhase"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;couplingGMM"/>
+                <owl:hasValue rdf:resource="&knowrob;CouplingDynGMM_aScb41vV"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;masterGMM"/>
+                <owl:hasValue rdf:resource="&knowrob;MasterDynGMM_tIwyG2O7"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;forceGMM"/>
+                <owl:hasValue rdf:resource="&knowrob;MasterDynGMM_s2ejdI3O"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;slaveGMM"/>
+                <owl:hasValue rdf:resource="&knowrob;SlaveDynGMM_HuPX3Ujz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- knowrob:phase2_28zdeVLU -->
+
+    <owl:Class rdf:about="knowrob:phase2_28zdeVLU">
+        <rdfs:subClassOf rdf:resource="&seds;MotionPhase"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;slaveGMM"/>
+                <owl:hasValue rdf:resource="&knowrob;SlaveDynGMM_mWBVdapM"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;masterGMM"/>
+                <owl:hasValue rdf:resource="&knowrob;MasterDynGMM_RfBlVZSA"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;couplingGMM"/>
+                <owl:hasValue rdf:resource="&knowrob;CouplingDynGMM_0OJms6dH"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;forceGMM"/>
+                <owl:hasValue rdf:resource="&knowrob;MasterDynGMM_6fS4wMDc"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- knowrob:phase3_BhANxPrG -->
+
+    <owl:Class rdf:about="knowrob:phase3_BhANxPrG">
+        <rdfs:subClassOf rdf:resource="&seds;MotionPhase"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;couplingGMM"/>
+                <owl:hasValue rdf:resource="&knowrob;CouplingDynGMM_thRsXiry"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;slaveGMM"/>
+                <owl:hasValue rdf:resource="&knowrob;SlaveDynGMM_vWlgPEqU"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;forceGMM"/>
+                <owl:hasValue rdf:resource="&knowrob;MasterDynGMM_5ZgTObgs"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;masterGMM"/>
+                <owl:hasValue rdf:resource="&knowrob;MasterDynGMM_hd2PuLVr"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#CouplingDynGMM_0OJms6dH -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;CouplingDynGMM_0OJms6dH">
+        <rdf:type rdf:resource="&seds;GaussianMixtureModel"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_7nQoMRN6"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_NrgLUTpI"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_ap0e1Rx6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#CouplingDynGMM_aScb41vV -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;CouplingDynGMM_aScb41vV">
+        <rdf:type rdf:resource="&seds;GaussianMixtureModel"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_8bjalM5i"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_QyDfZXZG"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_dwwH4X65"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#CouplingDynGMM_thRsXiry -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;CouplingDynGMM_thRsXiry">
+        <rdf:type rdf:resource="&seds;GaussianMixtureModel"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_0biwRhUi"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_8rWj6pt3"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_ipSxSovd"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_0biwRhUi -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_0biwRhUi">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_BbHoFhXL"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_enzGmmMb"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_7nQoMRN6 -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_7nQoMRN6">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_Ajlc0PcS"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_4tvQJUbV"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_8bjalM5i -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_8bjalM5i">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_nRX8JSaT"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_5iYElQu8"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_8rWj6pt3 -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_8rWj6pt3">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_9q9SunG6"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_mjqE4llp"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_Hb9cxg6S -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_Hb9cxg6S">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_RS9MS8Ql"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_K5tIxdF2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_NrgLUTpI -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_NrgLUTpI">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_nasDmK2y"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_Oze7aWzz"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_Q26LjGac -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_Q26LjGac">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_QSwDSusz"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_wVzPgEEX"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_QyDfZXZG -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_QyDfZXZG">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_rgQ9pQAw"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_N8LfhJy4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_Spw7NUzx -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_Spw7NUzx">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_Ww55RW6N"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_ISNii1ts"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_aSOkLBUF -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_aSOkLBUF">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_pK65lzxZ"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_yQHMRB14"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_ap0e1Rx6 -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_ap0e1Rx6">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_45UIiHvj"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_bz6zeXEY"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_d0IYdLcp -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_d0IYdLcp">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_g46ugIMy"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_o0FcMKfS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_dwwH4X65 -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_dwwH4X65">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_TVqjmDJl"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_a6EInJGr"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_gZc8lbjD -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_gZc8lbjD">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_x0oxofeJ"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_abx6ih9l"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_iUl5Z8GK -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_iUl5Z8GK">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_LGTA9ZXq"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_n5AgtdzF"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_ilZaIR4i -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_ilZaIR4i">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_PoHVJTQN"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_zwbALX1o"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_ipSxSovd -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_ipSxSovd">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_SmFJTn8E"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_Khj70kqN"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_jUcvQOZn -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_jUcvQOZn">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_zXrADPMB"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_mOw2SKBx"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_pGdHq265 -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_pGdHq265">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_GQq8t72a"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_jSxDn9TM"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_qU5pzSHS -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_qU5pzSHS">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_IIGFaxVm"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_rvsf0qZh"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#GaussianDistribution_zS5XGtsk -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;GaussianDistribution_zS5XGtsk">
+        <rdf:type rdf:resource="&knowrob;GaussianDistribution"/>
+        <knowrob_seds:cov rdf:resource="&knowrob;Matrix_2Egi1vhK"/>
+        <knowrob_seds:mean rdf:resource="&knowrob;Vector_OvlJfr7G"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#MasterDynGMM_5ZgTObgs -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;MasterDynGMM_5ZgTObgs">
+        <rdf:type rdf:resource="&seds;GaussianMixtureModel"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_gZc8lbjD"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#MasterDynGMM_6fS4wMDc -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;MasterDynGMM_6fS4wMDc">
+        <rdf:type rdf:resource="&seds;GaussianMixtureModel"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_d0IYdLcp"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#MasterDynGMM_RfBlVZSA -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;MasterDynGMM_RfBlVZSA">
+        <rdf:type rdf:resource="&seds;GaussianMixtureModel"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_jUcvQOZn"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#MasterDynGMM_hd2PuLVr -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;MasterDynGMM_hd2PuLVr">
+        <rdf:type rdf:resource="&seds;GaussianMixtureModel"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_aSOkLBUF"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#MasterDynGMM_s2ejdI3O -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;MasterDynGMM_s2ejdI3O">
+        <rdf:type rdf:resource="&seds;GaussianMixtureModel"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_Q26LjGac"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#MasterDynGMM_tIwyG2O7 -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;MasterDynGMM_tIwyG2O7">
+        <rdf:type rdf:resource="&seds;GaussianMixtureModel"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_pGdHq265"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_2Egi1vhK -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_2Egi1vhK">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m25 rdf:datatype="&xsd;double">-0.42981288</knowrob:m25>
+        <knowrob:m52 rdf:datatype="&xsd;double">-0.42981288</knowrob:m52>
+        <knowrob:m15 rdf:datatype="&xsd;double">-0.44980236</knowrob:m15>
+        <knowrob:m51 rdf:datatype="&xsd;double">-0.44980236</knowrob:m51>
+        <knowrob:m13 rdf:datatype="&xsd;double">-0.74407047</knowrob:m13>
+        <knowrob:m31 rdf:datatype="&xsd;double">-0.74407047</knowrob:m31>
+        <knowrob:m14 rdf:datatype="&xsd;double">-1.1757629</knowrob:m14>
+        <knowrob:m41 rdf:datatype="&xsd;double">-1.1757629</knowrob:m41>
+        <knowrob:m24 rdf:datatype="&xsd;double">-1.4389243</knowrob:m24>
+        <knowrob:m42 rdf:datatype="&xsd;double">-1.4389243</knowrob:m42>
+        <knowrob:m32 rdf:datatype="&xsd;double">-2.577436</knowrob:m32>
+        <knowrob:m23 rdf:datatype="&xsd;double">-2.577436</knowrob:m23>
+        <knowrob:m40 rdf:datatype="&xsd;double">-3.3215824</knowrob:m40>
+        <knowrob:m04 rdf:datatype="&xsd;double">-3.3215824</knowrob:m04>
+        <knowrob:m30 rdf:datatype="&xsd;double">-6.3971355</knowrob:m30>
+        <knowrob:m03 rdf:datatype="&xsd;double">-6.3971355</knowrob:m03>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.028931905</knowrob:m10>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.028931905</knowrob:m01>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.095384431</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.095384431</knowrob:m21>
+        <knowrob:m53 rdf:datatype="&xsd;double">0.11835586</knowrob:m53>
+        <knowrob:m35 rdf:datatype="&xsd;double">0.11835586</knowrob:m35>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.15728112</knowrob:m22>
+        <knowrob:m54 rdf:datatype="&xsd;double">0.17839414</knowrob:m54>
+        <knowrob:m45 rdf:datatype="&xsd;double">0.17839414</knowrob:m45>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.23305627</knowrob:m02>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.23305627</knowrob:m20>
+        <knowrob:m05 rdf:datatype="&xsd;double">0.29519227</knowrob:m05>
+        <knowrob:m50 rdf:datatype="&xsd;double">0.29519227</knowrob:m50>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.3440019</knowrob:m11>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.69258486</knowrob:m00>
+        <knowrob:m55 rdf:datatype="&xsd;double">3.7365424</knowrob:m55>
+        <knowrob:m43 rdf:datatype="&xsd;double">32.464767</knowrob:m43>
+        <knowrob:m34 rdf:datatype="&xsd;double">32.464767</knowrob:m34>
+        <knowrob:m44 rdf:datatype="&xsd;double">61.340634</knowrob:m44>
+        <knowrob:m33 rdf:datatype="&xsd;double">61.377364</knowrob:m33>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_45UIiHvj -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_45UIiHvj">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m20 rdf:datatype="&xsd;double">-1.0526788E-7</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">-1.0526788E-7</knowrob:m02>
+        <knowrob:m10 rdf:datatype="&xsd;double">-7.1312571E-6</knowrob:m10>
+        <knowrob:m01 rdf:datatype="&xsd;double">-7.1312571E-6</knowrob:m01>
+        <knowrob:m03 rdf:datatype="&xsd;double">-7.7964342E-8</knowrob:m03>
+        <knowrob:m30 rdf:datatype="&xsd;double">-7.7964342E-8</knowrob:m30>
+        <knowrob:m21 rdf:datatype="&xsd;double">1.0102258E-7</knowrob:m21>
+        <knowrob:m12 rdf:datatype="&xsd;double">1.0102258E-7</knowrob:m12>
+        <knowrob:m22 rdf:datatype="&xsd;double">2.2854818E-8</knowrob:m22>
+        <knowrob:m11 rdf:datatype="&xsd;double">2.774291E-4</knowrob:m11>
+        <knowrob:m33 rdf:datatype="&xsd;double">3.7857238E-4</knowrob:m33>
+        <knowrob:m32 rdf:datatype="&xsd;double">5.9840336E-7</knowrob:m32>
+        <knowrob:m23 rdf:datatype="&xsd;double">5.9840336E-7</knowrob:m23>
+        <knowrob:m00 rdf:datatype="&xsd;double">6.4318088E-6</knowrob:m00>
+        <knowrob:m13 rdf:datatype="&xsd;double">6.6195846E-7</knowrob:m13>
+        <knowrob:m31 rdf:datatype="&xsd;double">6.6195846E-7</knowrob:m31>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_9q9SunG6 -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_9q9SunG6">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m20 rdf:datatype="&xsd;double">-1.0526788E-7</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">-1.0526788E-7</knowrob:m02>
+        <knowrob:m10 rdf:datatype="&xsd;double">-7.1312571E-6</knowrob:m10>
+        <knowrob:m01 rdf:datatype="&xsd;double">-7.1312571E-6</knowrob:m01>
+        <knowrob:m03 rdf:datatype="&xsd;double">-7.7964342E-8</knowrob:m03>
+        <knowrob:m30 rdf:datatype="&xsd;double">-7.7964342E-8</knowrob:m30>
+        <knowrob:m21 rdf:datatype="&xsd;double">1.0102258E-7</knowrob:m21>
+        <knowrob:m12 rdf:datatype="&xsd;double">1.0102258E-7</knowrob:m12>
+        <knowrob:m22 rdf:datatype="&xsd;double">2.2854818E-8</knowrob:m22>
+        <knowrob:m11 rdf:datatype="&xsd;double">2.774291E-4</knowrob:m11>
+        <knowrob:m33 rdf:datatype="&xsd;double">3.7857238E-4</knowrob:m33>
+        <knowrob:m23 rdf:datatype="&xsd;double">5.9840336E-7</knowrob:m23>
+        <knowrob:m32 rdf:datatype="&xsd;double">5.9840336E-7</knowrob:m32>
+        <knowrob:m00 rdf:datatype="&xsd;double">6.4318088E-6</knowrob:m00>
+        <knowrob:m13 rdf:datatype="&xsd;double">6.6195846E-7</knowrob:m13>
+        <knowrob:m31 rdf:datatype="&xsd;double">6.6195846E-7</knowrob:m31>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_Ajlc0PcS -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_Ajlc0PcS">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m02 rdf:datatype="&xsd;double">-0.073464741</knowrob:m02>
+        <knowrob:m20 rdf:datatype="&xsd;double">-0.073464741</knowrob:m20>
+        <knowrob:m01 rdf:datatype="&xsd;double">-0.086040875</knowrob:m01>
+        <knowrob:m10 rdf:datatype="&xsd;double">-0.086040875</knowrob:m10>
+        <knowrob:m30 rdf:datatype="&xsd;double">-0.20233518</knowrob:m30>
+        <knowrob:m03 rdf:datatype="&xsd;double">-0.20233518</knowrob:m03>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.13291964</knowrob:m00>
+        <knowrob:m23 rdf:datatype="&xsd;double">0.17144932</knowrob:m23>
+        <knowrob:m32 rdf:datatype="&xsd;double">0.17144932</knowrob:m32>
+        <knowrob:m31 rdf:datatype="&xsd;double">0.18951249</knowrob:m31>
+        <knowrob:m13 rdf:datatype="&xsd;double">0.18951249</knowrob:m13>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.19018615</knowrob:m22>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.21574878</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.21574878</knowrob:m21>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.25281294</knowrob:m11>
+        <knowrob:m33 rdf:datatype="&xsd;double">0.60740188</knowrob:m33>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_BbHoFhXL -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_BbHoFhXL">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.00153021</knowrob:m01>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.00153021</knowrob:m10>
+        <knowrob:m33 rdf:datatype="&xsd;double">0.0021042612</knowrob:m33>
+        <knowrob:m30 rdf:datatype="&xsd;double">0.0037855191</knowrob:m30>
+        <knowrob:m03 rdf:datatype="&xsd;double">0.0037855191</knowrob:m03>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.0049910257</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.0049910257</knowrob:m02>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.086260343</knowrob:m00>
+        <knowrob:m21 rdf:datatype="&xsd;double">1.587344E-4</knowrob:m21>
+        <knowrob:m12 rdf:datatype="&xsd;double">1.587344E-4</knowrob:m12>
+        <knowrob:m13 rdf:datatype="&xsd;double">2.2730285E-4</knowrob:m13>
+        <knowrob:m31 rdf:datatype="&xsd;double">2.2730285E-4</knowrob:m31>
+        <knowrob:m11 rdf:datatype="&xsd;double">2.3828376E-4</knowrob:m11>
+        <knowrob:m22 rdf:datatype="&xsd;double">6.6792138E-4</knowrob:m22>
+        <knowrob:m23 rdf:datatype="&xsd;double">9.0134381E-4</knowrob:m23>
+        <knowrob:m32 rdf:datatype="&xsd;double">9.0134381E-4</knowrob:m32>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_GQq8t72a -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_GQq8t72a">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m32 rdf:datatype="&xsd;double">-0.021723016</knowrob:m32>
+        <knowrob:m23 rdf:datatype="&xsd;double">-0.021723016</knowrob:m23>
+        <knowrob:m05 rdf:datatype="&xsd;double">-0.02423065</knowrob:m05>
+        <knowrob:m50 rdf:datatype="&xsd;double">-0.02423065</knowrob:m50>
+        <knowrob:m03 rdf:datatype="&xsd;double">-0.031634592</knowrob:m03>
+        <knowrob:m30 rdf:datatype="&xsd;double">-0.031634592</knowrob:m30>
+        <knowrob:m04 rdf:datatype="&xsd;double">-0.035860962</knowrob:m04>
+        <knowrob:m40 rdf:datatype="&xsd;double">-0.035860962</knowrob:m40>
+        <knowrob:m52 rdf:datatype="&xsd;double">-0.038915983</knowrob:m52>
+        <knowrob:m25 rdf:datatype="&xsd;double">-0.038915983</knowrob:m25>
+        <knowrob:m42 rdf:datatype="&xsd;double">-0.043868711</knowrob:m42>
+        <knowrob:m24 rdf:datatype="&xsd;double">-0.043868711</knowrob:m24>
+        <knowrob:m41 rdf:datatype="&xsd;double">-0.24828833</knowrob:m41>
+        <knowrob:m14 rdf:datatype="&xsd;double">-0.24828833</knowrob:m14>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.0065879554</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.0065879554</knowrob:m21>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.011078478</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.011078478</knowrob:m02>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.011344491</knowrob:m10>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.011344491</knowrob:m01>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.01240308</knowrob:m00>
+        <knowrob:m15 rdf:datatype="&xsd;double">0.016207576</knowrob:m15>
+        <knowrob:m51 rdf:datatype="&xsd;double">0.016207576</knowrob:m51>
+        <knowrob:m31 rdf:datatype="&xsd;double">0.017076909</knowrob:m31>
+        <knowrob:m13 rdf:datatype="&xsd;double">0.017076909</knowrob:m13>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.02031026</knowrob:m22>
+        <knowrob:m43 rdf:datatype="&xsd;double">0.13506246</knowrob:m43>
+        <knowrob:m34 rdf:datatype="&xsd;double">0.13506246</knowrob:m34>
+        <knowrob:m45 rdf:datatype="&xsd;double">0.22203429</knowrob:m45>
+        <knowrob:m54 rdf:datatype="&xsd;double">0.22203429</knowrob:m54>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.24226374</knowrob:m11>
+        <knowrob:m35 rdf:datatype="&xsd;double">0.26186536</knowrob:m35>
+        <knowrob:m53 rdf:datatype="&xsd;double">0.26186536</knowrob:m53>
+        <knowrob:m33 rdf:datatype="&xsd;double">0.37533133</knowrob:m33>
+        <knowrob:m55 rdf:datatype="&xsd;double">0.38865116</knowrob:m55>
+        <knowrob:m44 rdf:datatype="&xsd;double">0.82082198</knowrob:m44>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_IIGFaxVm -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_IIGFaxVm">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m05 rdf:datatype="&xsd;double">-0.0032148066</knowrob:m05>
+        <knowrob:m50 rdf:datatype="&xsd;double">-0.0032148066</knowrob:m50>
+        <knowrob:m04 rdf:datatype="&xsd;double">-0.015847272</knowrob:m04>
+        <knowrob:m40 rdf:datatype="&xsd;double">-0.015847272</knowrob:m40>
+        <knowrob:m42 rdf:datatype="&xsd;double">-0.063070203</knowrob:m42>
+        <knowrob:m24 rdf:datatype="&xsd;double">-0.063070203</knowrob:m24>
+        <knowrob:m14 rdf:datatype="&xsd;double">-0.38262094</knowrob:m14>
+        <knowrob:m41 rdf:datatype="&xsd;double">-0.38262094</knowrob:m41>
+        <knowrob:m52 rdf:datatype="&xsd;double">0.020164458</knowrob:m52>
+        <knowrob:m25 rdf:datatype="&xsd;double">0.020164458</knowrob:m25>
+        <knowrob:m03 rdf:datatype="&xsd;double">0.055197056</knowrob:m03>
+        <knowrob:m30 rdf:datatype="&xsd;double">0.055197056</knowrob:m30>
+        <knowrob:m32 rdf:datatype="&xsd;double">0.096867201</knowrob:m32>
+        <knowrob:m23 rdf:datatype="&xsd;double">0.096867201</knowrob:m23>
+        <knowrob:m51 rdf:datatype="&xsd;double">0.16187112</knowrob:m51>
+        <knowrob:m15 rdf:datatype="&xsd;double">0.16187112</knowrob:m15>
+        <knowrob:m31 rdf:datatype="&xsd;double">0.1799161</knowrob:m31>
+        <knowrob:m13 rdf:datatype="&xsd;double">0.1799161</knowrob:m13>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.33293665</knowrob:m01>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.33293665</knowrob:m10>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.3433764</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.3433764</knowrob:m21>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.34349214</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.34349214</knowrob:m02>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.34812183</knowrob:m00>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.36669077</knowrob:m22>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.38102999</knowrob:m11>
+        <knowrob:m54 rdf:datatype="&xsd;double">0.47392558</knowrob:m54>
+        <knowrob:m45 rdf:datatype="&xsd;double">0.47392558</knowrob:m45>
+        <knowrob:m43 rdf:datatype="&xsd;double">0.9356004</knowrob:m43>
+        <knowrob:m34 rdf:datatype="&xsd;double">0.9356004</knowrob:m34>
+        <knowrob:m53 rdf:datatype="&xsd;double">1.3368266</knowrob:m53>
+        <knowrob:m35 rdf:datatype="&xsd;double">1.3368266</knowrob:m35>
+        <knowrob:m55 rdf:datatype="&xsd;double">1.9431492</knowrob:m55>
+        <knowrob:m33 rdf:datatype="&xsd;double">2.0375961</knowrob:m33>
+        <knowrob:m44 rdf:datatype="&xsd;double">4.6157706</knowrob:m44>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_LGTA9ZXq -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_LGTA9ZXq">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m50 rdf:datatype="&xsd;double">-0.0032148066</knowrob:m50>
+        <knowrob:m05 rdf:datatype="&xsd;double">-0.0032148066</knowrob:m05>
+        <knowrob:m40 rdf:datatype="&xsd;double">-0.015847272</knowrob:m40>
+        <knowrob:m04 rdf:datatype="&xsd;double">-0.015847272</knowrob:m04>
+        <knowrob:m24 rdf:datatype="&xsd;double">-0.063070203</knowrob:m24>
+        <knowrob:m42 rdf:datatype="&xsd;double">-0.063070203</knowrob:m42>
+        <knowrob:m41 rdf:datatype="&xsd;double">-0.38262094</knowrob:m41>
+        <knowrob:m14 rdf:datatype="&xsd;double">-0.38262094</knowrob:m14>
+        <knowrob:m52 rdf:datatype="&xsd;double">0.020164458</knowrob:m52>
+        <knowrob:m25 rdf:datatype="&xsd;double">0.020164458</knowrob:m25>
+        <knowrob:m03 rdf:datatype="&xsd;double">0.055197056</knowrob:m03>
+        <knowrob:m30 rdf:datatype="&xsd;double">0.055197056</knowrob:m30>
+        <knowrob:m23 rdf:datatype="&xsd;double">0.096867201</knowrob:m23>
+        <knowrob:m32 rdf:datatype="&xsd;double">0.096867201</knowrob:m32>
+        <knowrob:m51 rdf:datatype="&xsd;double">0.16187112</knowrob:m51>
+        <knowrob:m15 rdf:datatype="&xsd;double">0.16187112</knowrob:m15>
+        <knowrob:m31 rdf:datatype="&xsd;double">0.1799161</knowrob:m31>
+        <knowrob:m13 rdf:datatype="&xsd;double">0.1799161</knowrob:m13>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.33293665</knowrob:m10>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.33293665</knowrob:m01>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.3433764</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.3433764</knowrob:m21>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.34349214</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.34349214</knowrob:m02>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.34812183</knowrob:m00>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.36669077</knowrob:m22>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.38102999</knowrob:m11>
+        <knowrob:m45 rdf:datatype="&xsd;double">0.47392558</knowrob:m45>
+        <knowrob:m54 rdf:datatype="&xsd;double">0.47392558</knowrob:m54>
+        <knowrob:m43 rdf:datatype="&xsd;double">0.9356004</knowrob:m43>
+        <knowrob:m34 rdf:datatype="&xsd;double">0.9356004</knowrob:m34>
+        <knowrob:m35 rdf:datatype="&xsd;double">1.3368266</knowrob:m35>
+        <knowrob:m53 rdf:datatype="&xsd;double">1.3368266</knowrob:m53>
+        <knowrob:m55 rdf:datatype="&xsd;double">1.9431492</knowrob:m55>
+        <knowrob:m33 rdf:datatype="&xsd;double">2.0375961</knowrob:m33>
+        <knowrob:m44 rdf:datatype="&xsd;double">4.6157706</knowrob:m44>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_PoHVJTQN -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_PoHVJTQN">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m52 rdf:datatype="&xsd;double">-0.42981288</knowrob:m52>
+        <knowrob:m25 rdf:datatype="&xsd;double">-0.42981288</knowrob:m25>
+        <knowrob:m51 rdf:datatype="&xsd;double">-0.44980236</knowrob:m51>
+        <knowrob:m15 rdf:datatype="&xsd;double">-0.44980236</knowrob:m15>
+        <knowrob:m31 rdf:datatype="&xsd;double">-0.74407047</knowrob:m31>
+        <knowrob:m13 rdf:datatype="&xsd;double">-0.74407047</knowrob:m13>
+        <knowrob:m14 rdf:datatype="&xsd;double">-1.1757629</knowrob:m14>
+        <knowrob:m41 rdf:datatype="&xsd;double">-1.1757629</knowrob:m41>
+        <knowrob:m42 rdf:datatype="&xsd;double">-1.4389243</knowrob:m42>
+        <knowrob:m24 rdf:datatype="&xsd;double">-1.4389243</knowrob:m24>
+        <knowrob:m32 rdf:datatype="&xsd;double">-2.577436</knowrob:m32>
+        <knowrob:m23 rdf:datatype="&xsd;double">-2.577436</knowrob:m23>
+        <knowrob:m04 rdf:datatype="&xsd;double">-3.3215824</knowrob:m04>
+        <knowrob:m40 rdf:datatype="&xsd;double">-3.3215824</knowrob:m40>
+        <knowrob:m03 rdf:datatype="&xsd;double">-6.3971355</knowrob:m03>
+        <knowrob:m30 rdf:datatype="&xsd;double">-6.3971355</knowrob:m30>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.028931905</knowrob:m10>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.028931905</knowrob:m01>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.095384431</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.095384431</knowrob:m21>
+        <knowrob:m35 rdf:datatype="&xsd;double">0.11835586</knowrob:m35>
+        <knowrob:m53 rdf:datatype="&xsd;double">0.11835586</knowrob:m53>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.15728112</knowrob:m22>
+        <knowrob:m54 rdf:datatype="&xsd;double">0.17839414</knowrob:m54>
+        <knowrob:m45 rdf:datatype="&xsd;double">0.17839414</knowrob:m45>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.23305627</knowrob:m02>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.23305627</knowrob:m20>
+        <knowrob:m50 rdf:datatype="&xsd;double">0.29519227</knowrob:m50>
+        <knowrob:m05 rdf:datatype="&xsd;double">0.29519227</knowrob:m05>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.3440019</knowrob:m11>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.69258486</knowrob:m00>
+        <knowrob:m55 rdf:datatype="&xsd;double">3.7365424</knowrob:m55>
+        <knowrob:m43 rdf:datatype="&xsd;double">32.464767</knowrob:m43>
+        <knowrob:m34 rdf:datatype="&xsd;double">32.464767</knowrob:m34>
+        <knowrob:m44 rdf:datatype="&xsd;double">61.340634</knowrob:m44>
+        <knowrob:m33 rdf:datatype="&xsd;double">61.377364</knowrob:m33>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_QSwDSusz -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_QSwDSusz">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m32 rdf:datatype="&xsd;double">-0.021723016</knowrob:m32>
+        <knowrob:m23 rdf:datatype="&xsd;double">-0.021723016</knowrob:m23>
+        <knowrob:m50 rdf:datatype="&xsd;double">-0.02423065</knowrob:m50>
+        <knowrob:m05 rdf:datatype="&xsd;double">-0.02423065</knowrob:m05>
+        <knowrob:m30 rdf:datatype="&xsd;double">-0.031634592</knowrob:m30>
+        <knowrob:m03 rdf:datatype="&xsd;double">-0.031634592</knowrob:m03>
+        <knowrob:m04 rdf:datatype="&xsd;double">-0.035860962</knowrob:m04>
+        <knowrob:m40 rdf:datatype="&xsd;double">-0.035860962</knowrob:m40>
+        <knowrob:m52 rdf:datatype="&xsd;double">-0.038915983</knowrob:m52>
+        <knowrob:m25 rdf:datatype="&xsd;double">-0.038915983</knowrob:m25>
+        <knowrob:m24 rdf:datatype="&xsd;double">-0.043868711</knowrob:m24>
+        <knowrob:m42 rdf:datatype="&xsd;double">-0.043868711</knowrob:m42>
+        <knowrob:m41 rdf:datatype="&xsd;double">-0.24828833</knowrob:m41>
+        <knowrob:m14 rdf:datatype="&xsd;double">-0.24828833</knowrob:m14>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.0065879554</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.0065879554</knowrob:m21>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.011078478</knowrob:m02>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.011078478</knowrob:m20>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.011344491</knowrob:m10>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.011344491</knowrob:m01>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.01240308</knowrob:m00>
+        <knowrob:m15 rdf:datatype="&xsd;double">0.016207576</knowrob:m15>
+        <knowrob:m51 rdf:datatype="&xsd;double">0.016207576</knowrob:m51>
+        <knowrob:m13 rdf:datatype="&xsd;double">0.017076909</knowrob:m13>
+        <knowrob:m31 rdf:datatype="&xsd;double">0.017076909</knowrob:m31>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.02031026</knowrob:m22>
+        <knowrob:m34 rdf:datatype="&xsd;double">0.13506246</knowrob:m34>
+        <knowrob:m43 rdf:datatype="&xsd;double">0.13506246</knowrob:m43>
+        <knowrob:m54 rdf:datatype="&xsd;double">0.22203429</knowrob:m54>
+        <knowrob:m45 rdf:datatype="&xsd;double">0.22203429</knowrob:m45>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.24226374</knowrob:m11>
+        <knowrob:m53 rdf:datatype="&xsd;double">0.26186536</knowrob:m53>
+        <knowrob:m35 rdf:datatype="&xsd;double">0.26186536</knowrob:m35>
+        <knowrob:m33 rdf:datatype="&xsd;double">0.37533133</knowrob:m33>
+        <knowrob:m55 rdf:datatype="&xsd;double">0.38865116</knowrob:m55>
+        <knowrob:m44 rdf:datatype="&xsd;double">0.82082198</knowrob:m44>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_RS9MS8Ql -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_RS9MS8Ql">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m52 rdf:datatype="&xsd;double">-0.42981288</knowrob:m52>
+        <knowrob:m25 rdf:datatype="&xsd;double">-0.42981288</knowrob:m25>
+        <knowrob:m51 rdf:datatype="&xsd;double">-0.44980236</knowrob:m51>
+        <knowrob:m15 rdf:datatype="&xsd;double">-0.44980236</knowrob:m15>
+        <knowrob:m31 rdf:datatype="&xsd;double">-0.74407047</knowrob:m31>
+        <knowrob:m13 rdf:datatype="&xsd;double">-0.74407047</knowrob:m13>
+        <knowrob:m41 rdf:datatype="&xsd;double">-1.1757629</knowrob:m41>
+        <knowrob:m14 rdf:datatype="&xsd;double">-1.1757629</knowrob:m14>
+        <knowrob:m24 rdf:datatype="&xsd;double">-1.4389243</knowrob:m24>
+        <knowrob:m42 rdf:datatype="&xsd;double">-1.4389243</knowrob:m42>
+        <knowrob:m23 rdf:datatype="&xsd;double">-2.577436</knowrob:m23>
+        <knowrob:m32 rdf:datatype="&xsd;double">-2.577436</knowrob:m32>
+        <knowrob:m40 rdf:datatype="&xsd;double">-3.3215824</knowrob:m40>
+        <knowrob:m04 rdf:datatype="&xsd;double">-3.3215824</knowrob:m04>
+        <knowrob:m03 rdf:datatype="&xsd;double">-6.3971355</knowrob:m03>
+        <knowrob:m30 rdf:datatype="&xsd;double">-6.3971355</knowrob:m30>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.028931905</knowrob:m10>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.028931905</knowrob:m01>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.095384431</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.095384431</knowrob:m21>
+        <knowrob:m53 rdf:datatype="&xsd;double">0.11835586</knowrob:m53>
+        <knowrob:m35 rdf:datatype="&xsd;double">0.11835586</knowrob:m35>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.15728112</knowrob:m22>
+        <knowrob:m54 rdf:datatype="&xsd;double">0.17839414</knowrob:m54>
+        <knowrob:m45 rdf:datatype="&xsd;double">0.17839414</knowrob:m45>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.23305627</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.23305627</knowrob:m02>
+        <knowrob:m05 rdf:datatype="&xsd;double">0.29519227</knowrob:m05>
+        <knowrob:m50 rdf:datatype="&xsd;double">0.29519227</knowrob:m50>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.3440019</knowrob:m11>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.69258486</knowrob:m00>
+        <knowrob:m55 rdf:datatype="&xsd;double">3.7365424</knowrob:m55>
+        <knowrob:m34 rdf:datatype="&xsd;double">32.464767</knowrob:m34>
+        <knowrob:m43 rdf:datatype="&xsd;double">32.464767</knowrob:m43>
+        <knowrob:m44 rdf:datatype="&xsd;double">61.340634</knowrob:m44>
+        <knowrob:m33 rdf:datatype="&xsd;double">61.377364</knowrob:m33>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_SmFJTn8E -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_SmFJTn8E">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m20 rdf:datatype="&xsd;double">-0.073464741</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">-0.073464741</knowrob:m02>
+        <knowrob:m01 rdf:datatype="&xsd;double">-0.086040875</knowrob:m01>
+        <knowrob:m10 rdf:datatype="&xsd;double">-0.086040875</knowrob:m10>
+        <knowrob:m30 rdf:datatype="&xsd;double">-0.20233518</knowrob:m30>
+        <knowrob:m03 rdf:datatype="&xsd;double">-0.20233518</knowrob:m03>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.13291964</knowrob:m00>
+        <knowrob:m23 rdf:datatype="&xsd;double">0.17144932</knowrob:m23>
+        <knowrob:m32 rdf:datatype="&xsd;double">0.17144932</knowrob:m32>
+        <knowrob:m13 rdf:datatype="&xsd;double">0.18951249</knowrob:m13>
+        <knowrob:m31 rdf:datatype="&xsd;double">0.18951249</knowrob:m31>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.19018615</knowrob:m22>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.21574878</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.21574878</knowrob:m21>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.25281294</knowrob:m11>
+        <knowrob:m33 rdf:datatype="&xsd;double">0.60740188</knowrob:m33>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_TVqjmDJl -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_TVqjmDJl">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m20 rdf:datatype="&xsd;double">-1.0526788E-7</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">-1.0526788E-7</knowrob:m02>
+        <knowrob:m10 rdf:datatype="&xsd;double">-7.1312571E-6</knowrob:m10>
+        <knowrob:m01 rdf:datatype="&xsd;double">-7.1312571E-6</knowrob:m01>
+        <knowrob:m03 rdf:datatype="&xsd;double">-7.7964342E-8</knowrob:m03>
+        <knowrob:m30 rdf:datatype="&xsd;double">-7.7964342E-8</knowrob:m30>
+        <knowrob:m12 rdf:datatype="&xsd;double">1.0102258E-7</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">1.0102258E-7</knowrob:m21>
+        <knowrob:m22 rdf:datatype="&xsd;double">2.2854818E-8</knowrob:m22>
+        <knowrob:m11 rdf:datatype="&xsd;double">2.774291E-4</knowrob:m11>
+        <knowrob:m33 rdf:datatype="&xsd;double">3.7857238E-4</knowrob:m33>
+        <knowrob:m23 rdf:datatype="&xsd;double">5.9840336E-7</knowrob:m23>
+        <knowrob:m32 rdf:datatype="&xsd;double">5.9840336E-7</knowrob:m32>
+        <knowrob:m00 rdf:datatype="&xsd;double">6.4318088E-6</knowrob:m00>
+        <knowrob:m13 rdf:datatype="&xsd;double">6.6195846E-7</knowrob:m13>
+        <knowrob:m31 rdf:datatype="&xsd;double">6.6195846E-7</knowrob:m31>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_Ww55RW6N -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_Ww55RW6N">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m50 rdf:datatype="&xsd;double">-0.0032148066</knowrob:m50>
+        <knowrob:m05 rdf:datatype="&xsd;double">-0.0032148066</knowrob:m05>
+        <knowrob:m40 rdf:datatype="&xsd;double">-0.015847272</knowrob:m40>
+        <knowrob:m04 rdf:datatype="&xsd;double">-0.015847272</knowrob:m04>
+        <knowrob:m24 rdf:datatype="&xsd;double">-0.063070203</knowrob:m24>
+        <knowrob:m42 rdf:datatype="&xsd;double">-0.063070203</knowrob:m42>
+        <knowrob:m14 rdf:datatype="&xsd;double">-0.38262094</knowrob:m14>
+        <knowrob:m41 rdf:datatype="&xsd;double">-0.38262094</knowrob:m41>
+        <knowrob:m25 rdf:datatype="&xsd;double">0.020164458</knowrob:m25>
+        <knowrob:m52 rdf:datatype="&xsd;double">0.020164458</knowrob:m52>
+        <knowrob:m30 rdf:datatype="&xsd;double">0.055197056</knowrob:m30>
+        <knowrob:m03 rdf:datatype="&xsd;double">0.055197056</knowrob:m03>
+        <knowrob:m23 rdf:datatype="&xsd;double">0.096867201</knowrob:m23>
+        <knowrob:m32 rdf:datatype="&xsd;double">0.096867201</knowrob:m32>
+        <knowrob:m51 rdf:datatype="&xsd;double">0.16187112</knowrob:m51>
+        <knowrob:m15 rdf:datatype="&xsd;double">0.16187112</knowrob:m15>
+        <knowrob:m13 rdf:datatype="&xsd;double">0.1799161</knowrob:m13>
+        <knowrob:m31 rdf:datatype="&xsd;double">0.1799161</knowrob:m31>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.33293665</knowrob:m01>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.33293665</knowrob:m10>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.3433764</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.3433764</knowrob:m21>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.34349214</knowrob:m02>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.34349214</knowrob:m20>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.34812183</knowrob:m00>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.36669077</knowrob:m22>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.38102999</knowrob:m11>
+        <knowrob:m54 rdf:datatype="&xsd;double">0.47392558</knowrob:m54>
+        <knowrob:m45 rdf:datatype="&xsd;double">0.47392558</knowrob:m45>
+        <knowrob:m34 rdf:datatype="&xsd;double">0.9356004</knowrob:m34>
+        <knowrob:m43 rdf:datatype="&xsd;double">0.9356004</knowrob:m43>
+        <knowrob:m53 rdf:datatype="&xsd;double">1.3368266</knowrob:m53>
+        <knowrob:m35 rdf:datatype="&xsd;double">1.3368266</knowrob:m35>
+        <knowrob:m55 rdf:datatype="&xsd;double">1.9431492</knowrob:m55>
+        <knowrob:m33 rdf:datatype="&xsd;double">2.0375961</knowrob:m33>
+        <knowrob:m44 rdf:datatype="&xsd;double">4.6157706</knowrob:m44>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_g46ugIMy -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_g46ugIMy">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m32 rdf:datatype="&xsd;double">-0.021723016</knowrob:m32>
+        <knowrob:m23 rdf:datatype="&xsd;double">-0.021723016</knowrob:m23>
+        <knowrob:m50 rdf:datatype="&xsd;double">-0.02423065</knowrob:m50>
+        <knowrob:m05 rdf:datatype="&xsd;double">-0.02423065</knowrob:m05>
+        <knowrob:m03 rdf:datatype="&xsd;double">-0.031634592</knowrob:m03>
+        <knowrob:m30 rdf:datatype="&xsd;double">-0.031634592</knowrob:m30>
+        <knowrob:m40 rdf:datatype="&xsd;double">-0.035860962</knowrob:m40>
+        <knowrob:m04 rdf:datatype="&xsd;double">-0.035860962</knowrob:m04>
+        <knowrob:m52 rdf:datatype="&xsd;double">-0.038915983</knowrob:m52>
+        <knowrob:m25 rdf:datatype="&xsd;double">-0.038915983</knowrob:m25>
+        <knowrob:m42 rdf:datatype="&xsd;double">-0.043868711</knowrob:m42>
+        <knowrob:m24 rdf:datatype="&xsd;double">-0.043868711</knowrob:m24>
+        <knowrob:m14 rdf:datatype="&xsd;double">-0.24828833</knowrob:m14>
+        <knowrob:m41 rdf:datatype="&xsd;double">-0.24828833</knowrob:m41>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.0065879554</knowrob:m21>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.0065879554</knowrob:m12>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.011078478</knowrob:m02>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.011078478</knowrob:m20>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.011344491</knowrob:m01>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.011344491</knowrob:m10>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.01240308</knowrob:m00>
+        <knowrob:m15 rdf:datatype="&xsd;double">0.016207576</knowrob:m15>
+        <knowrob:m51 rdf:datatype="&xsd;double">0.016207576</knowrob:m51>
+        <knowrob:m13 rdf:datatype="&xsd;double">0.017076909</knowrob:m13>
+        <knowrob:m31 rdf:datatype="&xsd;double">0.017076909</knowrob:m31>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.02031026</knowrob:m22>
+        <knowrob:m43 rdf:datatype="&xsd;double">0.13506246</knowrob:m43>
+        <knowrob:m34 rdf:datatype="&xsd;double">0.13506246</knowrob:m34>
+        <knowrob:m54 rdf:datatype="&xsd;double">0.22203429</knowrob:m54>
+        <knowrob:m45 rdf:datatype="&xsd;double">0.22203429</knowrob:m45>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.24226374</knowrob:m11>
+        <knowrob:m53 rdf:datatype="&xsd;double">0.26186536</knowrob:m53>
+        <knowrob:m35 rdf:datatype="&xsd;double">0.26186536</knowrob:m35>
+        <knowrob:m33 rdf:datatype="&xsd;double">0.37533133</knowrob:m33>
+        <knowrob:m55 rdf:datatype="&xsd;double">0.38865116</knowrob:m55>
+        <knowrob:m44 rdf:datatype="&xsd;double">0.82082198</knowrob:m44>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_nRX8JSaT -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_nRX8JSaT">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m20 rdf:datatype="&xsd;double">-0.073464741</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">-0.073464741</knowrob:m02>
+        <knowrob:m10 rdf:datatype="&xsd;double">-0.086040875</knowrob:m10>
+        <knowrob:m01 rdf:datatype="&xsd;double">-0.086040875</knowrob:m01>
+        <knowrob:m30 rdf:datatype="&xsd;double">-0.20233518</knowrob:m30>
+        <knowrob:m03 rdf:datatype="&xsd;double">-0.20233518</knowrob:m03>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.13291964</knowrob:m00>
+        <knowrob:m32 rdf:datatype="&xsd;double">0.17144932</knowrob:m32>
+        <knowrob:m23 rdf:datatype="&xsd;double">0.17144932</knowrob:m23>
+        <knowrob:m31 rdf:datatype="&xsd;double">0.18951249</knowrob:m31>
+        <knowrob:m13 rdf:datatype="&xsd;double">0.18951249</knowrob:m13>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.19018615</knowrob:m22>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.21574878</knowrob:m21>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.21574878</knowrob:m12>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.25281294</knowrob:m11>
+        <knowrob:m33 rdf:datatype="&xsd;double">0.60740188</knowrob:m33>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_nasDmK2y -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_nasDmK2y">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.00153021</knowrob:m01>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.00153021</knowrob:m10>
+        <knowrob:m33 rdf:datatype="&xsd;double">0.0021042612</knowrob:m33>
+        <knowrob:m03 rdf:datatype="&xsd;double">0.0037855191</knowrob:m03>
+        <knowrob:m30 rdf:datatype="&xsd;double">0.0037855191</knowrob:m30>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.0049910257</knowrob:m02>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.0049910257</knowrob:m20>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.086260343</knowrob:m00>
+        <knowrob:m12 rdf:datatype="&xsd;double">1.587344E-4</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">1.587344E-4</knowrob:m21>
+        <knowrob:m13 rdf:datatype="&xsd;double">2.2730285E-4</knowrob:m13>
+        <knowrob:m31 rdf:datatype="&xsd;double">2.2730285E-4</knowrob:m31>
+        <knowrob:m11 rdf:datatype="&xsd;double">2.3828376E-4</knowrob:m11>
+        <knowrob:m22 rdf:datatype="&xsd;double">6.6792138E-4</knowrob:m22>
+        <knowrob:m32 rdf:datatype="&xsd;double">9.0134381E-4</knowrob:m32>
+        <knowrob:m23 rdf:datatype="&xsd;double">9.0134381E-4</knowrob:m23>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_pK65lzxZ -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_pK65lzxZ">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m32 rdf:datatype="&xsd;double">-0.021723016</knowrob:m32>
+        <knowrob:m23 rdf:datatype="&xsd;double">-0.021723016</knowrob:m23>
+        <knowrob:m05 rdf:datatype="&xsd;double">-0.02423065</knowrob:m05>
+        <knowrob:m50 rdf:datatype="&xsd;double">-0.02423065</knowrob:m50>
+        <knowrob:m03 rdf:datatype="&xsd;double">-0.031634592</knowrob:m03>
+        <knowrob:m30 rdf:datatype="&xsd;double">-0.031634592</knowrob:m30>
+        <knowrob:m40 rdf:datatype="&xsd;double">-0.035860962</knowrob:m40>
+        <knowrob:m04 rdf:datatype="&xsd;double">-0.035860962</knowrob:m04>
+        <knowrob:m25 rdf:datatype="&xsd;double">-0.038915983</knowrob:m25>
+        <knowrob:m52 rdf:datatype="&xsd;double">-0.038915983</knowrob:m52>
+        <knowrob:m42 rdf:datatype="&xsd;double">-0.043868711</knowrob:m42>
+        <knowrob:m24 rdf:datatype="&xsd;double">-0.043868711</knowrob:m24>
+        <knowrob:m14 rdf:datatype="&xsd;double">-0.24828833</knowrob:m14>
+        <knowrob:m41 rdf:datatype="&xsd;double">-0.24828833</knowrob:m41>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.0065879554</knowrob:m21>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.0065879554</knowrob:m12>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.011078478</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.011078478</knowrob:m02>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.011344491</knowrob:m10>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.011344491</knowrob:m01>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.01240308</knowrob:m00>
+        <knowrob:m51 rdf:datatype="&xsd;double">0.016207576</knowrob:m51>
+        <knowrob:m15 rdf:datatype="&xsd;double">0.016207576</knowrob:m15>
+        <knowrob:m13 rdf:datatype="&xsd;double">0.017076909</knowrob:m13>
+        <knowrob:m31 rdf:datatype="&xsd;double">0.017076909</knowrob:m31>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.02031026</knowrob:m22>
+        <knowrob:m43 rdf:datatype="&xsd;double">0.13506246</knowrob:m43>
+        <knowrob:m34 rdf:datatype="&xsd;double">0.13506246</knowrob:m34>
+        <knowrob:m45 rdf:datatype="&xsd;double">0.22203429</knowrob:m45>
+        <knowrob:m54 rdf:datatype="&xsd;double">0.22203429</knowrob:m54>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.24226374</knowrob:m11>
+        <knowrob:m53 rdf:datatype="&xsd;double">0.26186536</knowrob:m53>
+        <knowrob:m35 rdf:datatype="&xsd;double">0.26186536</knowrob:m35>
+        <knowrob:m33 rdf:datatype="&xsd;double">0.37533133</knowrob:m33>
+        <knowrob:m55 rdf:datatype="&xsd;double">0.38865116</knowrob:m55>
+        <knowrob:m44 rdf:datatype="&xsd;double">0.82082198</knowrob:m44>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_rgQ9pQAw -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_rgQ9pQAw">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.00153021</knowrob:m01>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.00153021</knowrob:m10>
+        <knowrob:m33 rdf:datatype="&xsd;double">0.0021042612</knowrob:m33>
+        <knowrob:m30 rdf:datatype="&xsd;double">0.0037855191</knowrob:m30>
+        <knowrob:m03 rdf:datatype="&xsd;double">0.0037855191</knowrob:m03>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.0049910257</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.0049910257</knowrob:m02>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.086260343</knowrob:m00>
+        <knowrob:m12 rdf:datatype="&xsd;double">1.587344E-4</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">1.587344E-4</knowrob:m21>
+        <knowrob:m31 rdf:datatype="&xsd;double">2.2730285E-4</knowrob:m31>
+        <knowrob:m13 rdf:datatype="&xsd;double">2.2730285E-4</knowrob:m13>
+        <knowrob:m11 rdf:datatype="&xsd;double">2.3828376E-4</knowrob:m11>
+        <knowrob:m22 rdf:datatype="&xsd;double">6.6792138E-4</knowrob:m22>
+        <knowrob:m32 rdf:datatype="&xsd;double">9.0134381E-4</knowrob:m32>
+        <knowrob:m23 rdf:datatype="&xsd;double">9.0134381E-4</knowrob:m23>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_x0oxofeJ -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_x0oxofeJ">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m23 rdf:datatype="&xsd;double">-0.021723016</knowrob:m23>
+        <knowrob:m32 rdf:datatype="&xsd;double">-0.021723016</knowrob:m32>
+        <knowrob:m50 rdf:datatype="&xsd;double">-0.02423065</knowrob:m50>
+        <knowrob:m05 rdf:datatype="&xsd;double">-0.02423065</knowrob:m05>
+        <knowrob:m30 rdf:datatype="&xsd;double">-0.031634592</knowrob:m30>
+        <knowrob:m03 rdf:datatype="&xsd;double">-0.031634592</knowrob:m03>
+        <knowrob:m40 rdf:datatype="&xsd;double">-0.035860962</knowrob:m40>
+        <knowrob:m04 rdf:datatype="&xsd;double">-0.035860962</knowrob:m04>
+        <knowrob:m52 rdf:datatype="&xsd;double">-0.038915983</knowrob:m52>
+        <knowrob:m25 rdf:datatype="&xsd;double">-0.038915983</knowrob:m25>
+        <knowrob:m42 rdf:datatype="&xsd;double">-0.043868711</knowrob:m42>
+        <knowrob:m24 rdf:datatype="&xsd;double">-0.043868711</knowrob:m24>
+        <knowrob:m14 rdf:datatype="&xsd;double">-0.24828833</knowrob:m14>
+        <knowrob:m41 rdf:datatype="&xsd;double">-0.24828833</knowrob:m41>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.0065879554</knowrob:m12>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.0065879554</knowrob:m21>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.011078478</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.011078478</knowrob:m02>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.011344491</knowrob:m10>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.011344491</knowrob:m01>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.01240308</knowrob:m00>
+        <knowrob:m15 rdf:datatype="&xsd;double">0.016207576</knowrob:m15>
+        <knowrob:m51 rdf:datatype="&xsd;double">0.016207576</knowrob:m51>
+        <knowrob:m13 rdf:datatype="&xsd;double">0.017076909</knowrob:m13>
+        <knowrob:m31 rdf:datatype="&xsd;double">0.017076909</knowrob:m31>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.02031026</knowrob:m22>
+        <knowrob:m43 rdf:datatype="&xsd;double">0.13506246</knowrob:m43>
+        <knowrob:m34 rdf:datatype="&xsd;double">0.13506246</knowrob:m34>
+        <knowrob:m45 rdf:datatype="&xsd;double">0.22203429</knowrob:m45>
+        <knowrob:m54 rdf:datatype="&xsd;double">0.22203429</knowrob:m54>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.24226374</knowrob:m11>
+        <knowrob:m53 rdf:datatype="&xsd;double">0.26186536</knowrob:m53>
+        <knowrob:m35 rdf:datatype="&xsd;double">0.26186536</knowrob:m35>
+        <knowrob:m33 rdf:datatype="&xsd;double">0.37533133</knowrob:m33>
+        <knowrob:m55 rdf:datatype="&xsd;double">0.38865116</knowrob:m55>
+        <knowrob:m44 rdf:datatype="&xsd;double">0.82082198</knowrob:m44>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Matrix_zXrADPMB -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Matrix_zXrADPMB">
+        <rdf:type rdf:resource="&knowrob;Matrix"/>
+        <knowrob:m23 rdf:datatype="&xsd;double">-0.021723016</knowrob:m23>
+        <knowrob:m32 rdf:datatype="&xsd;double">-0.021723016</knowrob:m32>
+        <knowrob:m05 rdf:datatype="&xsd;double">-0.02423065</knowrob:m05>
+        <knowrob:m50 rdf:datatype="&xsd;double">-0.02423065</knowrob:m50>
+        <knowrob:m03 rdf:datatype="&xsd;double">-0.031634592</knowrob:m03>
+        <knowrob:m30 rdf:datatype="&xsd;double">-0.031634592</knowrob:m30>
+        <knowrob:m04 rdf:datatype="&xsd;double">-0.035860962</knowrob:m04>
+        <knowrob:m40 rdf:datatype="&xsd;double">-0.035860962</knowrob:m40>
+        <knowrob:m52 rdf:datatype="&xsd;double">-0.038915983</knowrob:m52>
+        <knowrob:m25 rdf:datatype="&xsd;double">-0.038915983</knowrob:m25>
+        <knowrob:m24 rdf:datatype="&xsd;double">-0.043868711</knowrob:m24>
+        <knowrob:m42 rdf:datatype="&xsd;double">-0.043868711</knowrob:m42>
+        <knowrob:m14 rdf:datatype="&xsd;double">-0.24828833</knowrob:m14>
+        <knowrob:m41 rdf:datatype="&xsd;double">-0.24828833</knowrob:m41>
+        <knowrob:m21 rdf:datatype="&xsd;double">0.0065879554</knowrob:m21>
+        <knowrob:m12 rdf:datatype="&xsd;double">0.0065879554</knowrob:m12>
+        <knowrob:m20 rdf:datatype="&xsd;double">0.011078478</knowrob:m20>
+        <knowrob:m02 rdf:datatype="&xsd;double">0.011078478</knowrob:m02>
+        <knowrob:m01 rdf:datatype="&xsd;double">0.011344491</knowrob:m01>
+        <knowrob:m10 rdf:datatype="&xsd;double">0.011344491</knowrob:m10>
+        <knowrob:m00 rdf:datatype="&xsd;double">0.01240308</knowrob:m00>
+        <knowrob:m51 rdf:datatype="&xsd;double">0.016207576</knowrob:m51>
+        <knowrob:m15 rdf:datatype="&xsd;double">0.016207576</knowrob:m15>
+        <knowrob:m31 rdf:datatype="&xsd;double">0.017076909</knowrob:m31>
+        <knowrob:m13 rdf:datatype="&xsd;double">0.017076909</knowrob:m13>
+        <knowrob:m22 rdf:datatype="&xsd;double">0.02031026</knowrob:m22>
+        <knowrob:m34 rdf:datatype="&xsd;double">0.13506246</knowrob:m34>
+        <knowrob:m43 rdf:datatype="&xsd;double">0.13506246</knowrob:m43>
+        <knowrob:m45 rdf:datatype="&xsd;double">0.22203429</knowrob:m45>
+        <knowrob:m54 rdf:datatype="&xsd;double">0.22203429</knowrob:m54>
+        <knowrob:m11 rdf:datatype="&xsd;double">0.24226374</knowrob:m11>
+        <knowrob:m35 rdf:datatype="&xsd;double">0.26186536</knowrob:m35>
+        <knowrob:m53 rdf:datatype="&xsd;double">0.26186536</knowrob:m53>
+        <knowrob:m33 rdf:datatype="&xsd;double">0.37533133</knowrob:m33>
+        <knowrob:m55 rdf:datatype="&xsd;double">0.38865116</knowrob:m55>
+        <knowrob:m44 rdf:datatype="&xsd;double">0.82082198</knowrob:m44>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#SlaveDynGMM_HuPX3Ujz -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;SlaveDynGMM_HuPX3Ujz">
+        <rdf:type rdf:resource="&seds;GaussianMixtureModel"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_Spw7NUzx"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_ilZaIR4i"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#SlaveDynGMM_mWBVdapM -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;SlaveDynGMM_mWBVdapM">
+        <rdf:type rdf:resource="&seds;GaussianMixtureModel"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_Hb9cxg6S"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_iUl5Z8GK"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#SlaveDynGMM_vWlgPEqU -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;SlaveDynGMM_vWlgPEqU">
+        <rdf:type rdf:resource="&seds;GaussianMixtureModel"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_qU5pzSHS"/>
+        <knowrob_seds:gaussianDist rdf:resource="&knowrob;GaussianDistribution_zS5XGtsk"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_4tvQJUbV -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_4tvQJUbV">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec3 rdf:datatype="&xsd;double">-0.5493</knowrob:vec3>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.6168</knowrob:vec2>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-0.7227</knowrob:vec1>
+        <knowrob:vec0 rdf:datatype="&xsd;double">0.2517</knowrob:vec0>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_5iYElQu8 -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_5iYElQu8">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec3 rdf:datatype="&xsd;double">-0.5493</knowrob:vec3>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.6168</knowrob:vec2>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-0.7227</knowrob:vec1>
+        <knowrob:vec0 rdf:datatype="&xsd;double">0.2517</knowrob:vec0>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_ISNii1ts -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_ISNii1ts">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec3 rdf:datatype="&xsd;double">-0.0344</knowrob:vec3>
+        <knowrob:vec4 rdf:datatype="&xsd;double">-0.1104</knowrob:vec4>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-1.0349</knowrob:vec2>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-1.046</knowrob:vec1>
+        <knowrob:vec0 rdf:datatype="&xsd;double">-1.1476</knowrob:vec0>
+        <knowrob:vec5 rdf:datatype="&xsd;double">0.0908</knowrob:vec5>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_K5tIxdF2 -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_K5tIxdF2">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.004</knowrob:vec2>
+        <knowrob:vec4 rdf:datatype="&xsd;double">-0.0498</knowrob:vec4>
+        <knowrob:vec3 rdf:datatype="&xsd;double">-0.0727</knowrob:vec3>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-1.0E-4</knowrob:vec1>
+        <knowrob:vec0 rdf:datatype="&xsd;double">0.0126</knowrob:vec0>
+        <knowrob:vec5 rdf:datatype="&xsd;double">0.0643</knowrob:vec5>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_Khj70kqN -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_Khj70kqN">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec3 rdf:datatype="&xsd;double">-0.5493</knowrob:vec3>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.6168</knowrob:vec2>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-0.7227</knowrob:vec1>
+        <knowrob:vec0 rdf:datatype="&xsd;double">0.2517</knowrob:vec0>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_N8LfhJy4 -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_N8LfhJy4">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.5043</knowrob:vec2>
+        <knowrob:vec3 rdf:datatype="&xsd;double">-1.2106</knowrob:vec3>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-1.6233</knowrob:vec1>
+        <knowrob:vec0 rdf:datatype="&xsd;double">0.6823</knowrob:vec0>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_OvlJfr7G -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_OvlJfr7G">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.004</knowrob:vec2>
+        <knowrob:vec4 rdf:datatype="&xsd;double">-0.0498</knowrob:vec4>
+        <knowrob:vec3 rdf:datatype="&xsd;double">-0.0727</knowrob:vec3>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-1.0E-4</knowrob:vec1>
+        <knowrob:vec0 rdf:datatype="&xsd;double">0.0126</knowrob:vec0>
+        <knowrob:vec5 rdf:datatype="&xsd;double">0.0643</knowrob:vec5>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_Oze7aWzz -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_Oze7aWzz">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.5043</knowrob:vec2>
+        <knowrob:vec3 rdf:datatype="&xsd;double">-1.2106</knowrob:vec3>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-1.6233</knowrob:vec1>
+        <knowrob:vec0 rdf:datatype="&xsd;double">0.6823</knowrob:vec0>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_a6EInJGr -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_a6EInJGr">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.0</knowrob:vec2>
+        <knowrob:vec3 rdf:datatype="&xsd;double">0.0</knowrob:vec3>
+        <knowrob:vec0 rdf:datatype="&xsd;double">0.0026</knowrob:vec0>
+        <knowrob:vec1 rdf:datatype="&xsd;double">0.0119</knowrob:vec1>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_abx6ih9l -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_abx6ih9l">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.036802968</knowrob:vec2>
+        <knowrob:vec0 rdf:datatype="&xsd;double">-0.038787154</knowrob:vec0>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-0.43472111</knowrob:vec1>
+        <knowrob:vec3 rdf:datatype="&xsd;double">0.013939168</knowrob:vec3>
+        <knowrob:vec5 rdf:datatype="&xsd;double">0.023017762</knowrob:vec5>
+        <knowrob:vec4 rdf:datatype="&xsd;double">0.4952204</knowrob:vec4>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_bz6zeXEY -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_bz6zeXEY">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.0</knowrob:vec2>
+        <knowrob:vec3 rdf:datatype="&xsd;double">0.0</knowrob:vec3>
+        <knowrob:vec0 rdf:datatype="&xsd;double">0.0026</knowrob:vec0>
+        <knowrob:vec1 rdf:datatype="&xsd;double">0.0119</knowrob:vec1>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_enzGmmMb -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_enzGmmMb">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.5043</knowrob:vec2>
+        <knowrob:vec3 rdf:datatype="&xsd;double">-1.2106</knowrob:vec3>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-1.6233</knowrob:vec1>
+        <knowrob:vec0 rdf:datatype="&xsd;double">0.6823</knowrob:vec0>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_jSxDn9TM -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_jSxDn9TM">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.036802968</knowrob:vec2>
+        <knowrob:vec0 rdf:datatype="&xsd;double">-0.038787154</knowrob:vec0>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-0.43472111</knowrob:vec1>
+        <knowrob:vec3 rdf:datatype="&xsd;double">0.013939168</knowrob:vec3>
+        <knowrob:vec5 rdf:datatype="&xsd;double">0.023017762</knowrob:vec5>
+        <knowrob:vec4 rdf:datatype="&xsd;double">0.4952204</knowrob:vec4>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_mOw2SKBx -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_mOw2SKBx">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.036802968</knowrob:vec2>
+        <knowrob:vec0 rdf:datatype="&xsd;double">-0.038787154</knowrob:vec0>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-0.43472111</knowrob:vec1>
+        <knowrob:vec3 rdf:datatype="&xsd;double">0.013939168</knowrob:vec3>
+        <knowrob:vec5 rdf:datatype="&xsd;double">0.023017762</knowrob:vec5>
+        <knowrob:vec4 rdf:datatype="&xsd;double">0.4952204</knowrob:vec4>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_mjqE4llp -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_mjqE4llp">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.0</knowrob:vec2>
+        <knowrob:vec3 rdf:datatype="&xsd;double">0.0</knowrob:vec3>
+        <knowrob:vec0 rdf:datatype="&xsd;double">0.0026</knowrob:vec0>
+        <knowrob:vec1 rdf:datatype="&xsd;double">0.0119</knowrob:vec1>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_n5AgtdzF -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_n5AgtdzF">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec3 rdf:datatype="&xsd;double">-0.0344</knowrob:vec3>
+        <knowrob:vec4 rdf:datatype="&xsd;double">-0.1104</knowrob:vec4>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-1.0349</knowrob:vec2>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-1.046</knowrob:vec1>
+        <knowrob:vec0 rdf:datatype="&xsd;double">-1.1476</knowrob:vec0>
+        <knowrob:vec5 rdf:datatype="&xsd;double">0.0908</knowrob:vec5>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_o0FcMKfS -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_o0FcMKfS">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.036802968</knowrob:vec2>
+        <knowrob:vec0 rdf:datatype="&xsd;double">-0.038787154</knowrob:vec0>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-0.43472111</knowrob:vec1>
+        <knowrob:vec3 rdf:datatype="&xsd;double">0.013939168</knowrob:vec3>
+        <knowrob:vec5 rdf:datatype="&xsd;double">0.023017762</knowrob:vec5>
+        <knowrob:vec4 rdf:datatype="&xsd;double">0.4952204</knowrob:vec4>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_rvsf0qZh -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_rvsf0qZh">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec3 rdf:datatype="&xsd;double">-0.0344</knowrob:vec3>
+        <knowrob:vec4 rdf:datatype="&xsd;double">-0.1104</knowrob:vec4>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-1.0349</knowrob:vec2>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-1.046</knowrob:vec1>
+        <knowrob:vec0 rdf:datatype="&xsd;double">-1.1476</knowrob:vec0>
+        <knowrob:vec5 rdf:datatype="&xsd;double">0.0908</knowrob:vec5>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_wVzPgEEX -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_wVzPgEEX">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.036802968</knowrob:vec2>
+        <knowrob:vec0 rdf:datatype="&xsd;double">-0.038787154</knowrob:vec0>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-0.43472111</knowrob:vec1>
+        <knowrob:vec3 rdf:datatype="&xsd;double">0.013939168</knowrob:vec3>
+        <knowrob:vec5 rdf:datatype="&xsd;double">0.023017762</knowrob:vec5>
+        <knowrob:vec4 rdf:datatype="&xsd;double">0.4952204</knowrob:vec4>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_yQHMRB14 -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_yQHMRB14">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.036802968</knowrob:vec2>
+        <knowrob:vec0 rdf:datatype="&xsd;double">-0.038787154</knowrob:vec0>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-0.43472111</knowrob:vec1>
+        <knowrob:vec3 rdf:datatype="&xsd;double">0.013939168</knowrob:vec3>
+        <knowrob:vec5 rdf:datatype="&xsd;double">0.023017762</knowrob:vec5>
+        <knowrob:vec4 rdf:datatype="&xsd;double">0.4952204</knowrob:vec4>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob.owl#Vector_zwbALX1o -->
+
+    <owl:NamedIndividual rdf:resource="&knowrob;Vector_zwbALX1o">
+        <rdf:type rdf:resource="&knowrob;Vector"/>
+        <knowrob:vec2 rdf:datatype="&xsd;double">-0.004</knowrob:vec2>
+        <knowrob:vec4 rdf:datatype="&xsd;double">-0.0498</knowrob:vec4>
+        <knowrob:vec3 rdf:datatype="&xsd;double">-0.0727</knowrob:vec3>
+        <knowrob:vec1 rdf:datatype="&xsd;double">-1.0E-4</knowrob:vec1>
+        <knowrob:vec0 rdf:datatype="&xsd;double">0.0126</knowrob:vec0>
+        <knowrob:vec5 rdf:datatype="&xsd;double">0.0643</knowrob:vec5>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.1.0.1592) http://owlapi.sourceforge.net -->
+
+
