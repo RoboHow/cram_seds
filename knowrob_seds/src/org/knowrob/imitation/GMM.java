@@ -66,9 +66,22 @@ public class GMM {
 			
 			
 			// read 'm' priors
-			for(String p : cur.trim().split("\\s+")) {
-				priors.add(Double.valueOf(p));
-			}
+			String[] prs = cur.trim().split("\\s+");
+			
+			if(prs.length == m) {
+				// row vector
+				for(String p : prs) {
+					priors.add(Double.valueOf(p));
+				}
+			} else { // column vector
+				
+				priors.add(Double.valueOf(prs[0]));
+				for(int i=0; i<m-1; i++) {
+					priors.add(Double.valueOf(br.readLine().trim()));
+				}
+			} 
+				
+				
 			while((cur = br.readLine()).equals("")) {}
 			
 			

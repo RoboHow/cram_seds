@@ -53,7 +53,7 @@ public class MotionPhase {
 			} else if(f.equals("couplingDyn.gmm")) {
 				coupling.readFromFile(gmmFolder + "/" + f);	
 			} else if(f.equals("forceDyn.gmm")) {
-//				force.readFromFile(gmmFolder + "/" + f);	
+				force.readFromFile(gmmFolder + "/" + f);	
 			} 
 		}
 	}
