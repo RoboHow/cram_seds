@@ -24,6 +24,10 @@
       vector_elements/2,
       matrix_elements/2,
       motion_gmms/2,
+      motion_master_gmm/2,
+      motion_slave_gmm(/2,
+      motion_force_gmm/2,
+      motion_coupling_gmm/2,
       gmm_gaussians/2,
       gaussian_components/4
     ]).
@@ -38,6 +42,10 @@
       vector_elements(r, ?),
       matrix_elements(r, ?),
       motion_gmms(r,r),
+      motion_master_gmm(r,r),
+      motion_slave_gmm(r,r),
+      motion_force_gmm(r,r),
+      motion_coupling_gmm(r,r),
       gmm_gaussians(r,r),
       gaussian_components(r,r,r,r).
 
@@ -53,6 +61,19 @@
 motion_gmms(Motion, GMM) :-
   class_properties(Motion, P, GMM),
   rdfs_subproperty_of(P, seds:describedByGMM).
+
+motion_master_gmm(Motion, GMM) :-
+  class_properties(Motion, P, GMM),
+  rdfs_subproperty_of(P, seds:masterGMM).
+motion_slave_gmm(Motion, GMM) :-
+  class_properties(Motion, P, GMM),
+  rdfs_subproperty_of(P, seds:slaveGMM).
+motion_force_gmm(Motion, GMM) :-
+  class_properties(Motion, P, GMM),
+  rdfs_subproperty_of(P, seds:forceGMM).
+motion_coupling_gmm(Motion, GMM) :-
+  class_properties(Motion, P, GMM),
+  rdfs_subproperty_of(P, seds:couplingGMM).
 
 gmm_gaussians(GMM, Gaussian) :-
   rdf_has(GMM, seds:gaussianDist, Gaussian).
