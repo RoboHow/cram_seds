@@ -25,7 +25,7 @@
       matrix_elements/2,
       motion_gmms/2,
       motion_master_gmm/2,
-      motion_slave_gmm(/2,
+      motion_slave_gmm/2,
       motion_force_gmm/2,
       motion_coupling_gmm/2,
       gmm_gaussians/2,
