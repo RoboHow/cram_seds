@@ -62,10 +62,10 @@ public class MotionPhase {
 	public OWLClass writeToOWL(OWLOntologyManager manager, OWLDataFactory factory, DefaultPrefixManager pm, OWLOntology ontology) {
 
 		// create class for phase
-		String phaseClsIRI = OWLThing.getUniqueID("knowrob:"+name);
-		OWLClass phaseCls = factory.getOWLClass(IRI.create(phaseClsIRI));
- 
-		OWLClass phaseType = factory.getOWLClass(IRI.create(GMMToOWL.CONSTR + "MotionPhase"));
+		OWLClass phaseCls = factory.getOWLClass(IRI.create(GMMToOWL.KNOWROB + name));
+		
+		
+		OWLClass phaseType = factory.getOWLClass(IRI.create(GMMToOWL.SEDS + "SEDSMotion"));
 		manager.applyChange(new AddAxiom(ontology, factory.getOWLSubClassOfAxiom(phaseCls, phaseType)));	
 
 

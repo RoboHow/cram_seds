@@ -28,17 +28,17 @@ public class GMMToOWL {
 	public final static String RDFS = "http://www.w3.org/2000/01/rdf-schema#";
 
 	// Base IRI for motion constraints ontology	
-	public final static String CONSTR = "http://ias.cs.tum.edu/kb/knowrob-seds.owl#";
+	public final static String SEDS = "http://ias.cs.tum.edu/kb/knowrob-seds.owl#";
 
 	// Base IRI for new ontology
 	public final static String MOTION = "http://ias.cs.tum.edu/kb/motion-def.owl#";
 
 
 	// Prefix manager
-	public final static DefaultPrefixManager PREFIX_MANAGER = new DefaultPrefixManager(CONSTR);
+	public final static DefaultPrefixManager PREFIX_MANAGER = new DefaultPrefixManager(SEDS);
 	static {
 		PREFIX_MANAGER.setPrefix("knowrob:", KNOWROB);
-		PREFIX_MANAGER.setPrefix("constr:", CONSTR);
+		PREFIX_MANAGER.setPrefix("seds:", SEDS);
 		PREFIX_MANAGER.setPrefix("owl:", OWL);
 		PREFIX_MANAGER.setPrefix("rdfs:", RDFS);
 		PREFIX_MANAGER.setPrefix("motion:", MOTION);
@@ -75,7 +75,7 @@ public class GMMToOWL {
 			}
 
 			// Import motion constraints ontology
-			OWLImportsDeclaration oid = factory.getOWLImportsDeclaration(IRI.create(CONSTR));
+			OWLImportsDeclaration oid = factory.getOWLImportsDeclaration(IRI.create(SEDS));
 			AddImport addImp = new AddImport(ontology,oid);
 			manager.applyChange(addImp);
 
