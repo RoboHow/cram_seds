@@ -23,5 +23,11 @@ foreach( _in ${inputs} )
   configure_file( ${_in} ${_out} )
 endforeach( _in )
 
+file(GLOB inputs prolog/*.in)
+foreach( _in ${inputs} )
+  string(REPLACE ".in" "" _out ${_in})
+  configure_file( ${_in} ${_out} )
+endforeach( _in )
+
 add_java_source_dir( ${PROJECT_SOURCE_DIR}/src )
 rospack_add_java_executable( gmm_to_owl org.knowrob.imitation.GMMToOWL )
