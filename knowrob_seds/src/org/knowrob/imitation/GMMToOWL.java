@@ -139,7 +139,7 @@ public class GMMToOWL {
 
 
 	public static void main(String[] args) {
-		System.err.println(new GMMToOWL().gmmToOWL("/home/tenorth/work/ros/groovy/rosbuild_ws/sandbox/cram_seds/knowrob_seds/data"));
+		System.out.println(new GMMToOWL().gmmToOWL(args[0]));
 	}
 }
 
