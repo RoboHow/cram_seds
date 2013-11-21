@@ -100,6 +100,13 @@
     </owl:ObjectProperty>
 
 
+    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#prior -->
+
+    <owl:DatatypeProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#prior">
+        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianDistribution"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+
 
     <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#slaveGMM -->
 

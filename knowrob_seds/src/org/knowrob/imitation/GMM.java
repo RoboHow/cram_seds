@@ -204,6 +204,13 @@ public class GMM {
 			manager.addAxiom(ontology, factory.getOWLObjectPropertyAssertionAxiom(pMean, gaussians.get(g), mat_inst));
 		}
 		
+
+		// set values for priors
+		for(int g = 0; g < priors.size();g++) {
+			OWLDataProperty pPrior = factory.getOWLDataProperty(IRI.create(GMMToOWL.SEDS + "prior"));
+			manager.addAxiom(ontology, factory.getOWLDataPropertyAssertionAxiom(pPrior, gaussians.get(g), priors.get(g)));
+		}
+		
 		return gmmInd;
 	}
 

@@ -23,4 +23,5 @@ if __name__ == '__main__':
         print solution['Gaussian'].split('#')[1]
         print 'Mean = %s' % (solution['MeanVec'])
         print 'Cov  = %s' % (solution['CovMat'])
+        print 'Prior  = %s' % (solution['Prior'])
     query.finish()

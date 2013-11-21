@@ -81,8 +81,8 @@ gmm_gaussians(GMM, Gaussian) :-
 gaussian_components(Gaussian, Mean, Cov, Prior) :-
   rdf_has(Gaussian, seds:mean, Mean),
   rdf_has(Gaussian, seds:cov,  Cov),
-  Prior = 0. % TODO: represent and query for prior
-  %rdf_has(Gaussian, seds:prior, Mean).
+  rdf_has(Gaussian, seds:prior, literal(type(xsd:double,P))),
+  term_to_atom(Prior, P).
 
 matrix_elements(Mat, ElemList) :-
 

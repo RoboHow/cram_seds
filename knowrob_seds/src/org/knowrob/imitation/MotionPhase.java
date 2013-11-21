@@ -88,7 +88,7 @@ public class MotionPhase {
 				factory.getOWLObjectHasValue(couplingGMM, couplingInst)))); 
 		
 		OWLObjectProperty forceGMM = factory.getOWLObjectProperty(IRI.create(GMMToOWL.SEDS + "forceGMM"));
-		OWLNamedIndividual forceInst = master.writeToOWL(manager, factory, pm, ontology);
+		OWLNamedIndividual forceInst = force.writeToOWL(manager, factory, pm, ontology);
 		manager.applyChange(new AddAxiom(ontology, 
 				factory.getOWLSubClassOfAxiom(phaseCls, 
 				factory.getOWLObjectHasValue(forceGMM, forceInst)))); 
