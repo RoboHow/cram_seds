@@ -21,7 +21,10 @@
 :- register_ros_package(mod_srdl).
 :- register_ros_package(knowrob_seds).
 
-% :- use_module(library(knowrob_seds)).
+:- use_module(library(knowrob_seds)).
 
 :- owl_parser:owl_parse('@LOCAL_PACKAGE_PATH@/owl/knowrob-seds.owl', false, false, true).
 :- rdf_db:rdf_register_ns(seds, 'http://ias.cs.tum.edu/kb/knowrob-seds.owl#', [keep(true)]).
+
+% Test data for development:
+:- owl_parser:owl_parse('@LOCAL_PACKAGE_PATH@/owl/dummy-task.owl', false, false, true).
