@@ -62,32 +62,32 @@ public class MotionPhase {
 	public OWLClass writeToOWL(OWLOntologyManager manager, OWLDataFactory factory, DefaultPrefixManager pm, OWLOntology ontology) {
 
 		// create class for phase
-		OWLClass phaseCls = factory.getOWLClass(IRI.create(GMMToOWL.KNOWROB + name));
+		OWLClass phaseCls = factory.getOWLClass(IRI.create(OWLThing.getUniqueID(GMMToOWL.KNOWROB + name)));
 		
 		
 		OWLClass phaseType = factory.getOWLClass(IRI.create(GMMToOWL.SEDS + "SEDSMotion"));
 		manager.applyChange(new AddAxiom(ontology, factory.getOWLSubClassOfAxiom(phaseCls, phaseType)));	
 
 
-		OWLObjectProperty masterGMM = factory.getOWLObjectProperty(IRI.create(GMMToOWL.KNOWROB + "masterGMM"));
+		OWLObjectProperty masterGMM = factory.getOWLObjectProperty(IRI.create(GMMToOWL.SEDS + "masterGMM"));
 		OWLNamedIndividual masterInst = master.writeToOWL(manager, factory, pm, ontology);
 		manager.applyChange(new AddAxiom(ontology, 
 				factory.getOWLSubClassOfAxiom(phaseCls, 
 				factory.getOWLObjectHasValue(masterGMM, masterInst)))); 
 		
-		OWLObjectProperty slaveGMM = factory.getOWLObjectProperty(IRI.create(GMMToOWL.KNOWROB + "slaveGMM"));
+		OWLObjectProperty slaveGMM = factory.getOWLObjectProperty(IRI.create(GMMToOWL.SEDS + "slaveGMM"));
 		OWLNamedIndividual slaveInst = slave.writeToOWL(manager, factory, pm, ontology);
 		manager.applyChange(new AddAxiom(ontology, 
 				factory.getOWLSubClassOfAxiom(phaseCls, 
 				factory.getOWLObjectHasValue(slaveGMM, slaveInst)))); 
 		
-		OWLObjectProperty couplingGMM = factory.getOWLObjectProperty(IRI.create(GMMToOWL.KNOWROB + "couplingGMM"));
+		OWLObjectProperty couplingGMM = factory.getOWLObjectProperty(IRI.create(GMMToOWL.SEDS + "couplingGMM"));
 		OWLNamedIndividual couplingInst = coupling.writeToOWL(manager, factory, pm, ontology);
 		manager.applyChange(new AddAxiom(ontology, 
 				factory.getOWLSubClassOfAxiom(phaseCls, 
 				factory.getOWLObjectHasValue(couplingGMM, couplingInst)))); 
 		
-		OWLObjectProperty forceGMM = factory.getOWLObjectProperty(IRI.create(GMMToOWL.KNOWROB + "forceGMM"));
+		OWLObjectProperty forceGMM = factory.getOWLObjectProperty(IRI.create(GMMToOWL.SEDS + "forceGMM"));
 		OWLNamedIndividual forceInst = master.writeToOWL(manager, factory, pm, ontology);
 		manager.applyChange(new AddAxiom(ontology, 
 				factory.getOWLSubClassOfAxiom(phaseCls, 

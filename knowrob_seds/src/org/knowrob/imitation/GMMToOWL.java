@@ -112,7 +112,7 @@ public class GMMToOWL {
 		"    <!ENTITY owl \"http://www.w3.org/2002/07/owl#\" >\n" +
 		"    <!ENTITY xsd \"http://www.w3.org/2001/XMLSchema#\" >\n" +
 		"    <!ENTITY knowrob \"http://ias.cs.tum.edu/kb/knowrob.owl#\" >\n" +
-		"    <!ENTITY seds \"http://ias.cs.tum.edu/kb/knowrob_seds.owl#\" >\n" +
+		"    <!ENTITY seds \"http://ias.cs.tum.edu/kb/knowrob-seds.owl#\" >\n" +
 		"    <!ENTITY rdfs \"http://www.w3.org/2000/01/rdf-schema#\" >\n" +
 		"    <!ENTITY rdf \"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" >\n" +
 		"]>\n\n<rdf:RDF";
@@ -120,7 +120,7 @@ public class GMMToOWL {
 		owl_data = owl_data.replace("rdf:resource=\"http://ias.cs.tum.edu/kb/knowrob.owl#", 
 				"rdf:resource=\"&knowrob;");
 		owl_data = owl_data.replace("rdf:about=\"http://ias.cs.tum.edu/kb/knowrob.owl#", 
-				"rdf:resource=\"&knowrob;");
+				"rdf:about=\"&knowrob;");
 
 		owl_data = owl_data.replace("rdf:resource=\"http://ias.cs.tum.edu/kb/knowrob-seds.owl#", 
 				"rdf:resource=\"&seds;");
