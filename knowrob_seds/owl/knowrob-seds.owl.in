@@ -35,16 +35,6 @@
 
 
 
-    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#couplingGMM -->
-
-    <owl:ObjectProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#couplingGMM">
-        <rdfs:range rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianMixtureModel"/>
-        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#SEDSMotion"/>
-        <rdfs:subPropertyOf rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#describedByGMM"/>
-    </owl:ObjectProperty>
-
-
-
     <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#cov -->
 
     <owl:ObjectProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#cov">
@@ -58,17 +48,16 @@
 
     <owl:ObjectProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#describedByGMM">
         <rdfs:range rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianMixtureModel"/>
-        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#SEDSMotion"/>
+        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#MotionModel"/>
     </owl:ObjectProperty>
 
 
 
-    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#forceGMM -->
+    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#describedByMotionModel -->
 
-    <owl:ObjectProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#forceGMM">
-        <rdfs:range rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianMixtureModel"/>
+    <owl:ObjectProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#describedByMotionModel">
+        <rdfs:range rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#MotionModel"/>
         <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#SEDSMotion"/>
-        <rdfs:subPropertyOf rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#describedByGMM"/>
     </owl:ObjectProperty>
 
 
@@ -82,16 +71,6 @@
 
 
 
-    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#masterGMM -->
-
-    <owl:ObjectProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#masterGMM">
-        <rdfs:range rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianMixtureModel"/>
-        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#SEDSMotion"/>
-        <rdfs:subPropertyOf rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#describedByGMM"/>
-    </owl:ObjectProperty>
-
-
-
     <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#mean -->
 
     <owl:ObjectProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#mean">
@@ -100,21 +79,60 @@
     </owl:ObjectProperty>
 
 
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#inputDim -->
+
+    <owl:DatatypeProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#inputDim">
+        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianMixtureModel"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#inputType -->
+
+    <owl:DatatypeProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#inputType">
+        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianMixtureModel"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#outputDim -->
+
+    <owl:DatatypeProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#outputDim">
+        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianMixtureModel"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#outputType -->
+
+    <owl:DatatypeProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#outputType">
+        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianMixtureModel"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+
+
     <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#prior -->
 
     <owl:DatatypeProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#prior">
         <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianDistribution"/>
         <rdfs:range rdf:resource="&xsd;double"/>
     </owl:DatatypeProperty>
-
-
-    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#slaveGMM -->
-
-    <owl:ObjectProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#slaveGMM">
-        <rdfs:range rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianMixtureModel"/>
-        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#SEDSMotion"/>
-        <rdfs:subPropertyOf rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#describedByGMM"/>
-    </owl:ObjectProperty>
 
 
 
@@ -129,6 +147,30 @@
 
 
 
+    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#CDSModel -->
+
+    <owl:Class rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#CDSModel">
+        <rdfs:subClassOf rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#MotionModel"/>
+    </owl:Class>
+
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#GMRDynamicsModel -->
+
+    <owl:Class rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GMRDynamicsModel">
+        <rdfs:subClassOf rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#MotionModel"/>
+    </owl:Class>
+
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#GMRModel -->
+
+    <owl:Class rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GMRModel">
+        <rdfs:subClassOf rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#MotionModel"/>
+    </owl:Class>
+
+
+
     <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianDistribution -->
 
     <owl:Class rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianDistribution">
@@ -140,6 +182,14 @@
     <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianMixtureModel -->
 
     <owl:Class rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#GaussianMixtureModel">
+        <rdfs:subClassOf rdf:resource="&knowrob;MathematicalObject"/>
+    </owl:Class>
+
+
+
+    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#MotionModel -->
+
+    <owl:Class rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#MotionModel">
         <rdfs:subClassOf rdf:resource="&knowrob;MathematicalObject"/>
     </owl:Class>
 
