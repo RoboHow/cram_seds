@@ -123,6 +123,8 @@ public class GMMToOWL {
 
 		owl_data = owl_data.replace("rdf:resource=\"http://ias.cs.tum.edu/kb/knowrob-seds.owl#", 
 				"rdf:resource=\"&seds;");
+		owl_data = owl_data.replace("rdf:about=\"http://ias.cs.tum.edu/kb/knowrob-seds.owl#", 
+				"rdf:about=\"&seds;");
 
 		owl_data = owl_data.replace("rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\"", 
 									"rdf:datatype=\"&xsd;double\"");
