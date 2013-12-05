@@ -54,7 +54,6 @@ public class GMMToOWL {
 	}
 
 	
-	
 	public String gmmToOWL(String gmmFolder) {
 			
 			// Create ontology manager and data factory
@@ -79,7 +78,7 @@ public class GMMToOWL {
 			AddImport addImp = new AddImport(ontology,oid);
 			manager.applyChange(addImp);
 
-
+			
 			// import GMMs
 			File dir = new File(gmmFolder);
 			for(File subdir : dir.listFiles()) {
@@ -142,10 +141,3 @@ public class GMMToOWL {
 		System.out.println(new GMMToOWL().gmmToOWL(args[0]));
 	}
 }
-
-
-
-
-
-
-

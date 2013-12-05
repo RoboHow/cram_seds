@@ -29,6 +29,12 @@ public class GMM {
 	protected List<GVector> means;
 	protected List<GMatrix> covs;
 	
+	String inputType = "";
+	String inputDim = "";
+	
+	String outputType = "";
+	String outputDim = "";
+	
 	public GMM(String name) {
 
 		this.name = name;
@@ -139,17 +145,33 @@ public class GMM {
 
 	public OWLNamedIndividual writeToOWL(OWLOntologyManager manager, OWLDataFactory factory, DefaultPrefixManager pm, OWLOntology ontology) {
 
-		// create GMM class
+		// create GMM individual
 		OWLClass gmmType = factory.getOWLClass(IRI.create(GMMToOWL.SEDS + "GaussianMixtureModel"));
-		OWLNamedIndividual gmmInd = factory.getOWLNamedIndividual(OWLThing.getUniqueID("knowrob:"+name), pm);
+		OWLNamedIndividual gmmInd = factory.getOWLNamedIndividual(OWLThing.getUniqueID("seds:"+name), pm);
 		manager.addAxiom(ontology, factory.getOWLClassAssertionAxiom(gmmType, gmmInd));
  
+		
+		// TODO: export input/output types
+
+		OWLDataProperty pInType = factory.getOWLDataProperty(IRI.create(GMMToOWL.SEDS + "inputType"));
+		manager.addAxiom(ontology, factory.getOWLDataPropertyAssertionAxiom(pInType, gmmInd, inputType));
+		
+		OWLDataProperty pInDim  = factory.getOWLDataProperty(IRI.create(GMMToOWL.SEDS + "inputDim"));
+		manager.addAxiom(ontology, factory.getOWLDataPropertyAssertionAxiom(pInDim, gmmInd, inputDim));
+		
+		OWLDataProperty pOutType = factory.getOWLDataProperty(IRI.create(GMMToOWL.SEDS + "outputType"));
+		manager.addAxiom(ontology, factory.getOWLDataPropertyAssertionAxiom(pOutType, gmmInd, outputType));
+		
+		OWLDataProperty pOutDim  = factory.getOWLDataProperty(IRI.create(GMMToOWL.SEDS + "outputDim"));
+		manager.addAxiom(ontology, factory.getOWLDataPropertyAssertionAxiom(pOutDim, gmmInd, outputDim));
+			
+		
+		// create instances of GaussianDistributions that hold the respective mean/cov/prior values
 		ArrayList<OWLNamedIndividual> gaussians = new ArrayList<OWLNamedIndividual>();
 		OWLClass gauss_class = factory.getOWLClass("seds:GaussianDistribution", pm);
 		
-		// create instances of GaussianDistributions that hold the respective mean/cov/prior values
 		for(int i = 0; i < means.size(); i++) {
-			OWLNamedIndividual g = factory.getOWLNamedIndividual(OWLThing.getUniqueID("knowrob:GaussianDistribution"), pm);
+			OWLNamedIndividual g = factory.getOWLNamedIndividual(OWLThing.getUniqueID("seds:GaussianDistribution"), pm);
 			manager.addAxiom(ontology, factory.getOWLClassAssertionAxiom(gauss_class, g));
 
 			// link to GMM class
@@ -214,4 +236,39 @@ public class GMM {
 		return gmmInd;
 	}
 
+
+	
+	public String getInputType() {
+		return inputType;
+	}
+
+	public void setInputType(String inputType) {
+		this.inputType = inputType;
+	}
+
+	public String getInputDim() {
+		return inputDim;
+	}
+
+	public void setInputDim(String inputDim) {
+		this.inputDim = inputDim;
+	}
+
+
+	
+	public String getOutputDim() {
+		return outputDim;
+	}
+
+	public void setOutputDim(String outputDim) {
+		this.outputDim = outputDim;
+	}
+
+	public String getOutputType() {
+		return outputType;
+	}
+
+	public void setOutputType(String outputType) {
+		this.outputType = outputType;
+	}
 }
