@@ -52,7 +52,7 @@
 :- rdf_db:rdf_register_ns(seds, 'http://ias.cs.tum.edu/kb/knowrob-seds.owl#', [keep(true)]).
 
 
-%% phase_properties(MotionPhase, MotionModels)
+%% phase_properties(MotionPhase, MotionModels) is nondet.
 %
 % Read properties of a MotionPhase, in particular the list
 % of models describing it
@@ -90,16 +90,18 @@ motion_properties(MotionModel, Type, GMMs) :-
 %
 % @param GMM          Instance of a seds:'GaussianMixtureModel'
 % @param InputType    String describing the quantity of the input values (e.g. Position, Velocity, Other)
-% @param InputDim     String describing which dimensions are described by the input values (e.g. xz, **)
+% @param InputDim     List of atoms describing which dimensions are described by the input values (e.g. [x,z] or [*,*])
 % @param OutputType   String describing the quantity of the output values (e.g. Position, Velocity, Other)
-% @param OutputDim    String describing which dimensions are described by the output values (e.g. xz, **)
+% @param OutputDim    List of atoms describing which dimensions are described by the output values (e.g. [x,z] or [*,*])
 % @param Gaussians    List of instances of seds:'GaussianDistribution'
 %
 gmm_properties(GMM, InputType, InputDim, OutputType, OutputDim, Gaussians) :-
   rdf_has(GMM, seds:inputType,  literal(type('http://www.w3.org/2001/XMLSchema#string', InputType))),
-  rdf_has(GMM, seds:inputDim,   literal(type('http://www.w3.org/2001/XMLSchema#string', InputDim))),
+  rdf_has(GMM, seds:inputDim,   literal(type('http://www.w3.org/2001/XMLSchema#string', InputDimStr))),
+  atomic_list_concat(InputDim, '-', InputDimStr),
   rdf_has(GMM, seds:outputType, literal(type('http://www.w3.org/2001/XMLSchema#string', OutputType))),
-  rdf_has(GMM, seds:outputDim,  literal(type('http://www.w3.org/2001/XMLSchema#string', OutputDim))),
+  rdf_has(GMM, seds:outputDim,  literal(type('http://www.w3.org/2001/XMLSchema#string', OutputDimStr))),
+  atomic_list_concat(OutputDim, '-', OutputDimStr),
   findall(G, rdf_has(GMM, seds:gaussianDist, G), Gaussians).
 
 

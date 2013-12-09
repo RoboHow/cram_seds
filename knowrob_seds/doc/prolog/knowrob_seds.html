@@ -1,0 +1,103 @@
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>knowrob_seds.pl</title>
+
+<link rel="stylesheet" type="text/css" href="/res/pldoc.css">
+<script type="text/javascript" src="/res/pldoc.js">
+</script>
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>knowrob_seds.pl</h1>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="phase_properties/2"><b class="pred">phase_properties</b><var class="arglist">(MotionPhase, MotionModels)</var></a> is <b class="det">nondet</b><dd class="defbody">Read properties of a <var>MotionPhase</var>, in particular the list
+of models describing it
+
+<dl class="tags">
+<dt class="tag">Parameters:<dd>
+
+<table class="paramlist">
+<tr><td><var>MotionPhase</var></td><td class="argdescr">- Instance of a seds:'SEDSMotion'</td></tr>
+<tr><td><var>MotionModels</var></td><td class="argdescr">- List of instances of seds:'MotionModel'</td></tr>
+</table>
+
+</dl>
+
+<dt class="pubdef"><span style="float:right"></span><a name="motion_properties/3"><b class="pred">motion_properties</b><var class="arglist">(MotionModel, Type, GMMs)</var></a> is <b class="det">nondet</b><dd class="defbody">Read properties of a <var>MotionModel</var>, in particular its type and the
+GaussianMixtureModels describing it
+
+<dl class="tags">
+<dt class="tag">Parameters:<dd>
+
+<table class="paramlist">
+<tr><td><var>MotionModel</var></td><td class="argdescr">- Instance of a motion model</td></tr>
+<tr><td><var>Type</var></td><td class="argdescr">- Class of the motion model, subclass of seds:'<var>MotionModel</var>'</td></tr>
+<tr><td><var>GMMs</var></td><td class="argdescr">- List of instances of seds:'GaussianMixtureModel'</td></tr>
+</table>
+
+</dl>
+
+<dt class="pubdef"><span style="float:right"></span><a name="gmm_properties/6"><b class="pred">gmm_properties</b><var class="arglist">(GMM, InputType, InputDim, OutputType, OutputDim, Gaussians)</var></a> is <b class="det">nondet</b><dd class="defbody">Read properties of the GaussianMixtureModel <var>GMM</var>
+
+<dl class="tags">
+<dt class="tag">Parameters:<dd>
+
+<table class="paramlist">
+<tr><td><var>GMM</var></td><td class="argdescr">- Instance of a seds:'GaussianMixtureModel'</td></tr>
+<tr><td><var>InputType</var></td><td class="argdescr">- String describing the quantity of the input values (e.g. Position, Velocity, Other)</td></tr>
+<tr><td><var>InputDim</var></td><td class="argdescr">- List of atoms describing which dimensions are described by the input values (e.g. [x,z] or [*,*])</td></tr>
+<tr><td><var>OutputType</var></td><td class="argdescr">- String describing the quantity of the output values (e.g. Position, Velocity, Other)</td></tr>
+<tr><td><var>OutputDim</var></td><td class="argdescr">- List of atoms describing which dimensions are described by the output values (e.g. [x,z] or [*,*])</td></tr>
+<tr><td><var>Gaussians</var></td><td class="argdescr">- List of instances of seds:'GaussianDistribution'</td></tr>
+</table>
+
+</dl>
+
+<dt class="pubdef"><span style="float:right"></span><a name="gaussian_components/4"><b class="pred">gaussian_components</b><var class="arglist">(+Gaussian, -Mean, -Cov, -Prior)</var></a> is <b class="det">nondet</b><dd class="defbody">Read components of a <var>Gaussian</var> distribution
+
+<dl class="tags">
+<dt class="tag">Parameters:<dd>
+
+<table class="paramlist">
+<tr><td><var>Gaussian</var></td><td class="argdescr">- Instance of seds:GaussianDistribution</td></tr>
+<tr><td><var>Mean</var></td><td class="argdescr">- <var>Mean</var> vector (Instance of knowrob:Vector)</td></tr>
+<tr><td><var>Cov</var></td><td class="argdescr">- Covariance matrix (Instance of knowrob:Matrix)</td></tr>
+<tr><td><var>Prior</var></td><td class="argdescr">- <var>Prior</var> (double value denoting the prior for this <var>Gaussian</var> distribution in a GMM)</td></tr>
+</table>
+
+</dl>
+
+<dt class="pubdef"><span style="float:right"></span><a name="matrix_elements/2"><b class="pred">matrix_elements</b><var class="arglist">(+Mat, -ElemList)</var></a> is <b class="det">nondet</b><dd class="defbody">Return all elements of the matrix <var>Mat</var> in list <var>ElemList</var> (row-based)
+
+<dl class="tags">
+<dt class="tag">Parameters:<dd>
+
+<table class="paramlist">
+<tr><td><var>Mat</var></td><td class="argdescr">- Instance of knowrob:Matrix</td></tr>
+<tr><td><var>ElemList</var></td><td class="argdescr">- Row-based list of elements of <var>Mat</var></td></tr>
+</table>
+
+</dl>
+
+<dt class="pubdef"><span style="float:right"></span><a name="vector_elements/2"><b class="pred">vector_elements</b><var class="arglist">(+Vec, -ElemList)</var></a> is <b class="det">nondet</b><dd class="defbody">Return all elements of the vector <var>Vec</var> in list <var>ElemList</var>
+
+<dl class="tags">
+<dt class="tag">Parameters:<dd>
+
+<table class="paramlist">
+<tr><td><var>Vec</var></td><td class="argdescr">- Instance of knowrob:Vector</td></tr>
+<tr><td><var>ElemList</var></td><td class="argdescr">- Row-based list of elements of <var>Vec</var></td></tr>
+</table>
+
+</dl>
+
+</dl>
+
+</body>
+</html>
