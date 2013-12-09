@@ -23,7 +23,7 @@
     [
       phase_properties/2,
       motion_properties/3,
-      gmm_properties/6,
+      gmm_properties/7,
       gaussian_components/4,
       vector_elements/2,
       matrix_elements/2
@@ -38,7 +38,7 @@
 :-  rdf_meta
       phase_properties(r,r),
       motion_properties(r,r,?),
-      gmm_properties(r,?,?,?,?,?),
+      gmm_properties(r,r,?,?,?,?,?),
       gaussian_components(r,r,r,r),
       vector_elements(r, ?),
       matrix_elements(r, ?).
@@ -89,13 +89,16 @@ motion_properties(MotionModel, Type, GMMs) :-
 % Read properties of the GaussianMixtureModel GMM
 %
 % @param GMM          Instance of a seds:'GaussianMixtureModel'
+% @param GMMType      Type of the GMM as subclass of seds:'GaussianMixtureModel' (e.g. MasterGMM, SlaveGMM)
 % @param InputType    String describing the quantity of the input values (e.g. Position, Velocity, Other)
 % @param InputDim     List of atoms describing which dimensions are described by the input values (e.g. [x,z] or [*,*])
 % @param OutputType   String describing the quantity of the output values (e.g. Position, Velocity, Other)
 % @param OutputDim    List of atoms describing which dimensions are described by the output values (e.g. [x,z] or [*,*])
 % @param Gaussians    List of instances of seds:'GaussianDistribution'
 %
-gmm_properties(GMM, InputType, InputDim, OutputType, OutputDim, Gaussians) :-
+gmm_properties(GMM, GMMType, InputType, InputDim, OutputType, OutputDim, Gaussians) :-
+  rdf_has(GMM, rdf:type, GMMType),
+  once(owl_subclass_of(GMMType, seds:'GaussianMixtureModel')),
   rdf_has(GMM, seds:inputType,  literal(type('http://www.w3.org/2001/XMLSchema#string', InputType))),
   rdf_has(GMM, seds:inputDim,   literal(type('http://www.w3.org/2001/XMLSchema#string', InputDimStr))),
   atomic_list_concat(InputDim, '-', InputDimStr),
