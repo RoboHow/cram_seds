@@ -9,22 +9,51 @@ threshold: 0.0020
 model:
 - modeltype: CDS
   modelfile:
-  - name: masterDyn.gmm
-    input: {type: Position, dim: xyz}
-    output: {type: Velocity, dim: xyz}
-  - name: slaveDyn.gmm
-    input: {type: Orientation, dim: xyz}
-    output: {type: Velocity, dim: xyz}
-  - name: couplingDyn.gmm
-    input: {type: Other, dim: '**'}
-    output: {type: Other, dim: '*'}
+  - name: PositionDyn.gmm
+    gmmtype: Master
+    input:
+      type: Position
+      dim: [x, y, z]
+    output:
+      type: Velocity
+      dim: [x, y, z]
+  - name: SlaveDyn.gmm
+    gmmtype: Slave
+    input:
+      type: Orientation
+      dim: [x, y, z]
+    output:
+      type: Velocity
+      dim: [x, y, z]
+  - name: CouplingDyn.gmm
+    gmmtype: Coupling
+    input:
+      type: Other
+      dim: ['*', '*']
+    output:
+      type: Other
+      dim: ['*']
 - modeltype: GMR
   modelfile:
-  - name: forceDyn.gmm
-    input: {type: Position, dim: xy}
-    output: {type: Force, dim: z}
+  - name: Force.gmm
+    input:
+      type: Position
+      dim: [x, y]
+    output:
+      type: Force
+      dim: [z]
+  - name: []
+    input: []
+    output: []
 - modeltype: GMR
   modelfile:
-  - name: stiffness.gmm
-    input: {type: Position, dim: xyz}
-    output: {type: Stiffness, dim: xyz}
+  - name: Stiffness.gmm
+    input:
+      type: Position
+      dim: [x, y, z]
+    output:
+      type: Stiffness
+      dim: [x, y, z]
+  - name: []
+    input: []
+    output: []
