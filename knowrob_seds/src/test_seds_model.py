@@ -13,7 +13,7 @@ if __name__ == '__main__':
                             member(Model, Models),
                             motion_properties(Model, Type, GMMs),
                             member(GMM, GMMs),
-                            gmm_properties(GMM, InputType, InputDim, OutputType, OutputDim, Gaussians),
+                            gmm_properties(GMM, GMMType, InputType, InputDim, OutputType, OutputDim, Gaussians),
                             member(Gaussian, Gaussians),
                             gaussian_components(Gaussian, Mean, Cov, Prior),
                             vector_elements(Mean, MeanVec),
