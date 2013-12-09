@@ -24,6 +24,7 @@ import edu.tum.cs.ias.knowrob.owl.OWLThing;
 public class GMM {
 
 	protected String name = "";
+	protected String type = GMMToOWL.SEDS + "GaussianMixtureModel";
 
 	protected  ArrayList<Double> priors;
 	protected List<GVector> means;
@@ -146,7 +147,7 @@ public class GMM {
 	public OWLNamedIndividual writeToOWL(OWLOntologyManager manager, OWLDataFactory factory, DefaultPrefixManager pm, OWLOntology ontology) {
 
 		// create GMM individual
-		OWLClass gmmType = factory.getOWLClass(IRI.create(GMMToOWL.SEDS + "GaussianMixtureModel"));
+		OWLClass gmmType = factory.getOWLClass(IRI.create(this.type));
 		OWLNamedIndividual gmmInd = factory.getOWLNamedIndividual(OWLThing.getUniqueID("seds:"+name), pm);
 		manager.addAxiom(ontology, factory.getOWLClassAssertionAxiom(gmmType, gmmInd));
  
@@ -237,6 +238,14 @@ public class GMM {
 	}
 
 
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 	
 	public String getInputType() {
 		return inputType;

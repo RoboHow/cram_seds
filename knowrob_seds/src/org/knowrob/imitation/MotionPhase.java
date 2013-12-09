@@ -23,7 +23,6 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.util.DefaultPrefixManager;
 import org.yaml.snakeyaml.Yaml;
 
-import edu.tum.cs.ias.knowrob.owl.OWLIndividual;
 import edu.tum.cs.ias.knowrob.owl.OWLThing;
 
 public class MotionPhase {

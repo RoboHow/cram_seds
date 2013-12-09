@@ -1,6 +1,7 @@
 package org.knowrob.imitation;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,8 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.util.DefaultPrefixManager;
+
+import com.google.common.base.Joiner;
 
 import edu.tum.cs.ias.knowrob.owl.OWLThing;
 
@@ -54,23 +57,34 @@ public class MotionModel {
 	 * 
 	 * @param gmmFolder
 	 */
-	@SuppressWarnings({ "rawtypes" })
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void readFromFile(String gmmFolder, List<Map> modelfiles) {
 		
 		for(Map mf : modelfiles) {
+			
+			if(mf.get("name")==null || 
+					((mf.get("name") instanceof ArrayList) && (((ArrayList) mf.get("name")).size()==0)))
+				continue;
 			
 			String file   = (String) mf.get("name");
 			
 			GMM mod = new GMM(file.split("\\.")[0]);
 			mod.readFromFile(gmmFolder + File.separator + file);
 			
+			Joiner joiner = Joiner.on("-").skipNulls();
+			
 			Map input = (Map) mf.get("input");
 			mod.setInputType((String) input.get("type"));
-			mod.setInputDim((String) input.get("dim"));
+			mod.setInputDim(joiner.join((List<String>) input.get("dim")));
 			
 			Map output = (Map) mf.get("output");
 			mod.setOutputType((String) output.get("type"));
-			mod.setOutputDim((String) output.get("dim"));
+			mod.setOutputDim(joiner.join((List<String>) output.get("dim")));
+
+			// set special GMM types (Master, Slave, Coupling)
+			if(mf.get("gmmtype")!=null) {
+				mod.setType(GMMToOWL.SEDS + mf.get("gmmtype") +"GMM");
+			}
 			
 			models.add(mod);
 		}
