@@ -62,7 +62,7 @@
                            (query-motion-model
                             (knowrob-symbol->string |?Model| nil))))
                        model-bindings)))
-    (make-seds-phase :id phase-knowrob-name :models (coerce models 'vector))))
+    (make-seds-phase :id phase-knowrob-name :models models)))
 
 (defun query-motion-model (model-knowrob-name)
   "Reads the content of the motion model with knowrob name `model-knowrob-name' and returns
@@ -89,7 +89,7 @@
 
 (defun query-motion-gmms (model-knowrob-name)
   "Reads the GMMs of motion model with knowrob name `model-knowrob-name' and returns them
- as a vector of instances of type 'seds-gmm'."
+ as a list of instances of type 'seds-gmm'."
   (declare (type string model-knowrob-name))
   (let* ((gmm-bindings (cut:force-ll 
                         (json-prolog:prolog-simple
@@ -103,7 +103,7 @@
                            (query-gmm
                             (knowrob-symbol->string |?GMM| nil))))
                        gmm-bindings)))
-    (coerce gmms 'vector)))
+    gmms))
 
 (defun query-gmm (gmm-knowrob-name)
   "Reads out the gmm with knowrob name `gmm-knowrob-name' and returns the result as an
@@ -139,7 +139,7 @@
 
 (defun query-gmm-gaussians (gmm-knowrob-name)
   "Reads out gaussians of gmm with knowrob name `gmm-knowrob-name', and returns the result
- as a vector of instances of type 'seds-gaussian'."
+ as a list of instances of type 'seds-gaussian'."
   (declare (type string gmm-knowrob-name))
   (let* ((query
            (concatenate 
@@ -153,7 +153,7 @@
                               (cut:with-vars-bound (|?Gaussian|) binding
                                 (query-gaussian (knowrob-symbol->string |?Gaussian| nil))))
                             bindings)))
-    (coerce gaussians 'vector)))
+     gaussians))
 
 (defun query-gaussian (gauss-knowrob-name)
   "Reads out the description of the Gaussian with knowrob name `gauss-knowrob-name' and 

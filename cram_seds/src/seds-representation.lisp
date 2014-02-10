@@ -31,8 +31,8 @@
 (defclass seds-phase ()
   ((id :initarg :id :reader id :type string 
        :documentation "Knowrob identifier of the motion phase.")
-   (models :initarg :models :reader models :type vector
-           :documentation "Vector of motion models describing the motion phase."))
+   (models :initarg :models :reader models :type list
+           :documentation "List of motion models describing the motion phase."))
   (:documentation "Single phase of a SEDS motion description."))
 
 (defclass seds-motion-model () 
@@ -40,8 +40,8 @@
        :documentation "Knowrob identifier of the motion model.")
    (model-type :initarg :model-type :reader model-type :type string
                :documentation "Type of the motion model.")
-   (gmms :initarg :gmms :reader gmms :type vector
-         :documentation "Vector of Gaussian Mixture Models of the motion model."))
+   (gmms :initarg :gmms :reader gmms :type list
+         :documentation "List of Gaussian Mixture Models of the motion model."))
   (:documentation "Single motion model used in SEDS motion descriptions."))
 
 (defclass seds-gmm ()
@@ -50,7 +50,7 @@
    (out-type :initarg :out-type :reader out-type :type string)
    (in-dim :initarg :in-dim :reader in-dim :type vector)
    (out-dim :initarg :out-dim :reader out-dim :type vector)
-   (gaussians :initarg :gaussians :reader gaussians :type vector))
+   (gaussians :initarg :gaussians :reader gaussians :type list))
   (:documentation "GMM representation for SEDS motion descriptions."))
 
 (defclass seds-gaussian ()
