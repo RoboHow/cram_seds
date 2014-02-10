@@ -113,6 +113,7 @@
       (query-gmm-properties gmm-knowrob-name)
     (let ((gaussians (query-gmm-gaussians gmm-knowrob-name)))
       (make-seds-gmm
+       :id gmm-knowrob-name
        :type type
        :in-type in-type
        :out-type out-type

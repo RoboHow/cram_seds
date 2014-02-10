@@ -45,7 +45,8 @@
   (:documentation "Single motion model used in SEDS motion descriptions."))
 
 (defclass seds-gmm ()
-  ((gmm-type :initarg :gmm-type :reader gmm-type :type string)
+  ((id :initarg :id :reader id :type string)
+   (gmm-type :initarg :gmm-type :reader gmm-type :type string)
    (in-type :initarg :in-type :reader in-type :type string)
    (out-type :initarg :out-type :reader out-type :type string)
    (in-dim :initarg :in-dim :reader in-dim :type vector)
@@ -68,9 +69,9 @@
   ;; TODO(Georg): declare type
   (make-instance 'seds-motion-model :id id :model-type type :gmms gmms))
 
-(defun make-seds-gmm (&key type in-type out-type in-dim out-dim gaussians)
+(defun make-seds-gmm (&key id type in-type out-type in-dim out-dim gaussians)
   ;; TODO(Georg): declare type
-  (make-instance 'seds-gmm :gmm-type type :in-type in-type :out-type out-type
+  (make-instance 'seds-gmm :id id :gmm-type type :in-type in-type :out-type out-type
                  :in-dim in-dim :out-dim out-dim :gaussians gaussians))
    
 (defun make-seds-gaussian (&key id prior mean covariance)
