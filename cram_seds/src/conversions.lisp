@@ -27,3 +27,37 @@
 ;;; POSSIBILITY OF SUCH DAMAGE.
 
 (in-package :cram-seds)
+
+(defgeneric to-msg (data))
+
+(defmethod to-msg ((data seds-phase))
+  (roslisp:make-msg
+   "robohow_common_msgs/MotionPhase"
+   :id (id data)
+   :described_by_motion_model (coerce (mapcar #'to-msg (models data)) 'vector)))
+
+(defmethod to-msg ((data seds-motion-model))
+  (roslisp:make-msg
+   "robohow_common_msgs/MotionModel"
+   :id (id data)
+   :type (model-type data)
+   :described_by_gmm (coerce (mapcar #'to-msg (gmms data)) 'vector)))
+
+(defmethod to-msg ((data seds-gmm))
+  (roslisp:make-msg
+   "robohow_common_msgs/GaussianMixtureModel"
+   :id (id data)
+   :type (gmm-type data)
+   :input_type (in-type data)
+   :output_type (out-type data)
+   :input_dim (in-dim data)
+   :output_dim (out-dim data)
+   :gaussian_dist (coerce (mapcar #'to-msg (gaussians data)) 'vector)))
+   
+(defmethod to-msg ((data seds-gaussian))
+  (roslisp:make-msg 
+   "robohow_common_msgs/GaussianDistribution"
+   :id (id data)
+   :prior (prior data)
+   :mean (mean data)
+   :cov (covariance data)))
