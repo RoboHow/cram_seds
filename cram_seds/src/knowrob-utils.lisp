@@ -40,7 +40,7 @@
            (mapcar
             (lambda (seds-binding)
               (cut:with-vars-bound (|?Phase|) seds-binding
-                (query-motion-model
+                (query-phase
                  (knowrob-symbol->string |?Phase| nil))))
             seds-bindings)))
     seds-phases))
