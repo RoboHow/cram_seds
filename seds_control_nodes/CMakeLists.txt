@@ -24,9 +24,9 @@ include_directories(${PROJECT_SOURCE_DIR})
 #rosbuild_gensrv()
 
 #common commands for building c++ executables and libraries
-#rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
+rosbuild_add_library(${PROJECT_NAME} src/arm_kinematics.cpp)
 #target_link_libraries(${PROJECT_NAME} another_library)
 #rosbuild_add_boost_directories()
 #rosbuild_link_boost(${PROJECT_NAME} thread)
-rosbuild_add_executable(seds_wrapper src/seds_wrapper.cpp)
+#rosbuild_add_executable(seds_wrapper src/arm_kinematics.cpp)
 #target_link_libraries(example ${PROJECT_NAME})

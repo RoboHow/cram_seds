@@ -1,4 +1,4 @@
-#include "include/seds_control_nodes/seds_wrapper.hpp"
+#include "include/seds_control_nodes/arm_kinematics.hpp"
 #include <iostream>
 #include <kdl_parser/kdl_parser.hpp>
 #include <kdl/chain.hpp>
