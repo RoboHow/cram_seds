@@ -1,2 +1,0 @@
-include/seds_control_nodes/seds_wrapper.hpp
-src/seds_wrapper.cpp
