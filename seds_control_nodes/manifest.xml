@@ -1,0 +1,16 @@
+<package>
+  <description brief="seds_control_nodes">
+
+     seds_control_nodes
+
+  </description>
+  <author>Alexis Maldonado, Georg Bartels</author>
+  <license>GPLv3+</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ai.uni-bremen.de</url>
+  <depend package="orocos_kdl"/>
+  <depend package="kdl_parser"/>
+  <depend package="realtime_bridge_msgs"/>
+</package>
+
+
