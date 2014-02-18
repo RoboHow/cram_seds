@@ -10,6 +10,7 @@
   <url>http://ai.uni-bremen.de</url>
   <depend package="orocos_kdl"/>
   <depend package="kdl_parser"/>
+  <depend package="urdf"/>
   <depend package="realtime_bridge_msgs"/>
 </package>
 
