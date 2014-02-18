@@ -1,0 +1,18 @@
+<package>
+  <description brief="seds_learning_data">
+
+     seds_learning_data
+
+  </description>
+  <author>Alexis Maldonado</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/seds_learning_data</url>
+  <depend package="rospy"/>
+  <depend package="dlr_msgs"/>
+  <depend package="tf"/>
+  <depend package="python_orocos_kdl"/>
+
+</package>
+
+
