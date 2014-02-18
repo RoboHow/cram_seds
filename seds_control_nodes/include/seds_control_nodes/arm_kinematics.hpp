@@ -4,7 +4,9 @@
 #include <string>
 #include <kdl/chainfksolverpos_recursive.hpp>
 #include <kdl/chainiksolvervel_wdls.hpp>
+#include <kdl/chain.hpp>
 #include <urdf_model/model.h>
+#include <Eigen/Core>
 
 class ArmKinematics {
   private:
@@ -19,6 +21,7 @@ class ArmKinematics {
     KDL::JntArray q_tmp_;
 
     // some internal helper methods
+    void deleteInternals();
     void digestIkErrorCode(int error_code) const;
     KDL::Chain readChainFromUrdf(const urdf::ModelInterface& robot_model,
         const std::string &root_name, const std::string &tip_name);
@@ -27,14 +30,22 @@ class ArmKinematics {
   public:
     ArmKinematics();
     ArmKinematics(const urdf::ModelInterface& robot_model,
-        const std::string &root_name, const std::string &tip_name);
+        const std::string &root_name, const std::string &tip_name, double lambda,
+        const Eigen::MatrixXd& task_weights, const Eigen::MatrixXd& joint_weights);
     
     ~ArmKinematics();
 
     void init(const urdf::ModelInterface& robot_model,
-        const std::string &root_name, const std::string &tip_name);
+        const std::string &root_name, const std::string &tip_name, double lambda,
+        const Eigen::MatrixXd& task_weights, const Eigen::MatrixXd& joint_weights);
 
-    KDL::Frame get_fk(const KDL::JntArray& q);
+    void setLambda(double lambda);
+    void setJointWeights(const Eigen::MatrixXd& joint_weights);
+    void setTaskWeights(const Eigen::MatrixXd& task_weights);
+    void setWeights(double lambda, const Eigen::MatrixXd& task_weights,
+        const Eigen::MatrixXd& joint_weights);
+ 
+    KDL::Frame get_pos_fk(const KDL::JntArray& q);
     KDL::JntArray& get_vel_ik(const KDL::JntArray& q, const KDL::Frame& des_pose,
         double dt);
 };
