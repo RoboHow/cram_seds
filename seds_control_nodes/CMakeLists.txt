@@ -29,5 +29,5 @@ rosbuild_add_library(${PROJECT_NAME} src/arm_kinematics.cpp src/kdl_epfl_convers
 #rosbuild_add_executable(seds_wrapper src/arm_kinematics.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 
-rosbuild_add_gtest(unit-tests test/main.cpp test/arm_kinematics.cpp test/kdl_epfl_conversions.cpp)
+rosbuild_add_gtest(unit-tests test/main.cpp test/arm_kinematics.cpp test/kdl_epfl_conversions.cpp test/cds_wrapper.cpp)
 target_link_libraries(unit-tests ${PROJECT_NAME})
