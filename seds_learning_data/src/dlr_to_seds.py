@@ -22,6 +22,8 @@ from dlr_msgs.msg import rcu2tcu
 import PyKDL as kdl
 
 import numpy
+import time
+
 
 class DLR2SEDS(object):
     '''Takes the status messages from the DLR action interface
@@ -42,8 +44,15 @@ class DLR2SEDS(object):
         self.jac_solver = kdl.ChainJntToJacSolver(self.chain)         
         self._jac = kdl.Jacobian(self.nJoints)
         
+        #The transformation from BaseLink to the Base of the Arm
+        self.BL_T_O = kdl.Frame()
+        self.BL_T_O.p[0] = 0.222
+        self.BL_T_O.p[1] = -0.339
+        self.BL_T_O.p[2] = 0.949
+        quat = [0.428, 0.261, -0.435, 0.748]
+        self.BL_T_O.M = kdl.Rotation.Quaternion(*quat)        
         
-        self.dlr_listener = rospy.Subscriber('/BEASTY/state', rcu2tcu, self.dlr_callback)        
+        self.dlr_listener = rospy.Subscriber('/beasty_state_msgs', rcu2tcu, self.dlr_callback)        
         
     def get_kdl_chain_lwr(self):
         from PyKDL import Frame, Rotation, Vector, Joint, Chain, Segment
@@ -110,17 +119,17 @@ class DLR2SEDS(object):
         self.set_joints(data.robot.q)
         
         #getting the wrench at the EE
-        jacn = self.get_jacobian()
-        torques = numpy.empty([7,1])
-        for i in range(7):
-            torques[i,0] = data.safety.tau_ext[i]
+        #jacn = self.get_jacobian()
+        #torques = numpy.empty([7,1])
+        #for i in range(7):
+        #    torques[i,0] = data.safety.tau_ext[i]
         
-        ee_wrench = -1 * numpy.dot(jacn, torques)
-        print ee_wrench
+        #ee_wrench = -1 * numpy.dot(jacn, torques)
+        #print ee_wrench
         #print jacn
         #print self.get_fk()
         #print self.jnt_pos
-        print "\n"        
+        #print "\n"        
         
         #Read the Transformation from base of the arm to the tip of the arm
         O_T_X = kdl.Frame()
@@ -138,24 +147,18 @@ class DLR2SEDS(object):
         O_T_X.p[1] = robot_pose[10]
         O_T_X.p[2] = robot_pose[11]
         
-        #The transformation from BaseLink to the Base of the Arm
-        BL_T_O = kdl.Frame()
-        BL_T_O.p[0] = 0.222
-        BL_T_O.p[1] = -0.339
-        BL_T_O.p[2] = 0.949
-        quat = [0.428, 0.261, -0.435, 0.748]
-        BL_T_O.M = kdl.Rotation.Quaternion(*quat)        
-        
+
         #Transformation from BaseLink to the Tip of the arm
-        BL_T_X = BL_T_O * O_T_X
+        BL_T_X = self.BL_T_O * O_T_X
         
         j_angles_text = ("%r " * 7) %(data.robot.q)
         ee_cart_pose_text = ("%r " * 12) %(tuple(self.kdlFrame_to_12floats(BL_T_X)))
         joint_torque_text = ("%r " * 7) %(data.robot.tau)
         est_external_torque_text = ("%r " * 7) %(data.safety.tau_ext)
         
-        ee_cart_force_torque_text = ("%r " * 6) %(tuple([float(ee_wrench[i]) for i in range(6)]))
+        ee_cart_force_torque_text = ("%r " * 6) %(data.safety.f_ext_hat) #f_ext_hat is in the reference of the base of the robot
         
+	#print("%06.2f   %06.2f   %06.2f") %( data.safety.f_ext_hat[0], data.safety.f_ext_hat[1], data.safety.f_ext_hat[2] ) 
         index_text = "%r " %(0.0)
 
         delta_timestamp = data.com.timestamp - self.old_timestamp
@@ -169,7 +172,7 @@ class DLR2SEDS(object):
         timestamp_text = "%r " %(data.com.timestamp)
     
         
-        
+        #This is the format according to Lucia. 40 floats + one added at the end for the timestamp
         full_text = j_angles_text + ee_cart_pose_text + joint_torque_text + \
             est_external_torque_text + ee_cart_force_torque_text + index_text + \
             timestamp_text
@@ -182,14 +185,18 @@ class DLR2SEDS(object):
 def main():
     rospy.init_node('dlr_to_seds')
     
-    worker = DLR2SEDS()
+    
+    filename = "data_" + str(time.time()).split('.')[0] + ".txt"
+    worker = DLR2SEDS(filename)
 
     r = rospy.Rate(10)
 
+    print("dlr_to_seds: Saving data to %s") % (filename)
     #All the work is happening on the callback
     while not rospy.is_shutdown():
         r.sleep()
-        
+       
+    print("dlr_to_seds: Exiting") 
         
 if __name__ == '__main__':
     main()
