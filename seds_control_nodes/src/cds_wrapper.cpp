@@ -6,7 +6,7 @@ CdsWrapper::CdsWrapper() :
 {
 }
 
-CdsWrapper::CdsWrapper(const CdsWrapperParams& params) :
+CdsWrapper::CdsWrapper(CdsWrapperParams params) :
     arm_( ArmKinematics() ), cds_controller_( CDSExecution() )
 {
   this->init(params);
@@ -16,13 +16,13 @@ CdsWrapper::~CdsWrapper()
 {
 }
 
-void CdsWrapper::init(const CdsWrapperParams& params)
+void CdsWrapper::init(CdsWrapperParams params)
 {
   arm_.init(params.arm_params_);
 
-  CdsWrapperParams params_copy = params;
-  cds_controller_.init(&params_copy.cds_params_.master_dyn_,
-      &params_copy.cds_params_.slave_dyn_, &params_copy.cds_params_.coupling_);
+  cds_controller_.init(static_cast<GMRDynamics*>(params.cds_params_.master_dyn_),
+      static_cast<GMRDynamics*>(params.cds_params_.slave_dyn_), 
+      static_cast<GMR*>(params.cds_params_.coupling_));
 
   cds_controller_.setMotionParameters(params.cds_params_.alpha_, 
       params.cds_params_.beta_, params.cds_params_.lambda_,

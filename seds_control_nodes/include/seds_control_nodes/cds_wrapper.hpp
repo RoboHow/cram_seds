@@ -7,8 +7,9 @@
 class CDSExecutionParams
 {
   public:
-    GMRDynamics master_dyn_, slave_dyn_;
-    GMR coupling_;
+    GMRDynamics* master_dyn_;
+    GMRDynamics* slave_dyn_;
+    GMR* coupling_;
     double alpha_, beta_, lambda_, reachingThreshold_, dt_;
 };
 
@@ -27,11 +28,11 @@ class CdsWrapper
 
   public:
     CdsWrapper();
-    CdsWrapper(const CdsWrapperParams& params);
+    CdsWrapper(CdsWrapperParams params);
 
     ~CdsWrapper();
 
-    void init(const CdsWrapperParams& params);
+    void init(CdsWrapperParams params);
     const KDL::JntArray& update(const KDL::JntArray& q, double dt);
 };
 #endif  // __CDS_WRAPPER_HPP
