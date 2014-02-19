@@ -99,6 +99,7 @@ class ArmKinematicsTest : public ::testing::Test
     void testCartFK(ArmKinematics& arm, const KDL::JntArray& q, const KDL::Frame& pose)
     {
       ASSERT_NO_THROW(arm.get_pos_fk(q));
+      EXPECT_EQ(arm.get_dof(), 7);
       KDL::Frame pose_calculated = arm.get_pos_fk(q);
       EXPECT_TRUE(KDL::Equal(pose_calculated.p, pose.p, eps_position)); 
       EXPECT_TRUE(KDL::Equal(pose_calculated.M, pose.M, eps_orientation)); 

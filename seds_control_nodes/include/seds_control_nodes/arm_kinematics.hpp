@@ -58,6 +58,7 @@ class ArmKinematics {
     void setWeights(double lambda, const Eigen::MatrixXd& task_weights,
         const Eigen::MatrixXd& joint_weights);
  
+    unsigned int get_dof() const { return dof_; }
     KDL::Frame get_pos_fk(const KDL::JntArray& q);
     KDL::JntArray& get_vel_ik(const KDL::JntArray& q, const KDL::Frame& des_pose,
         double dt);
