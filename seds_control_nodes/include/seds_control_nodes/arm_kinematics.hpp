@@ -11,7 +11,7 @@
 class ArmKinematicsParams
 {
   public:
-    urdf::ModelInterface robot_model_;
+    urdf::Model robot_model_;
     std::string root_name_;
     std::string tip_name_;
     double lambda_;
