@@ -22,7 +22,7 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #rosbuild_gensrv()
 
 #common commands for building c++ executables and libraries
-rosbuild_add_library(${PROJECT_NAME} src/arm_kinematics.cpp src/kdl_epfl_conversions.cpp)
+rosbuild_add_library(${PROJECT_NAME} src/arm_kinematics.cpp src/kdl_epfl_conversions.cpp src/cds_wrapper.cpp)
 #target_link_libraries(${PROJECT_NAME} another_library)
 #rosbuild_add_boost_directories()
 #rosbuild_link_boost(${PROJECT_NAME} thread)

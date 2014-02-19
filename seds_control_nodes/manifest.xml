@@ -14,6 +14,7 @@
   <depend package="realtime_bridge_msgs"/>
   <depend package="MathLib"/>
   <depend package="orocos_kdl"/>
+  <depend package="CDSExecution"/>
 </package>
 
 
