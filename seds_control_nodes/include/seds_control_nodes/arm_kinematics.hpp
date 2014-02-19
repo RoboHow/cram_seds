@@ -8,6 +8,17 @@
 #include <urdf/model.h>
 #include <Eigen/Core>
 
+class ArmKinematicsParams
+{
+  public:
+    urdf::ModelInterface robot_model_;
+    std::string root_name_;
+    std::string tip_name_;
+    double lambda_;
+    Eigen::MatrixXd task_weights_;
+    Eigen::MatrixXd joint_weights_;
+};
+
 class ArmKinematics {
   private:
     // forward kinematics solver
@@ -32,9 +43,11 @@ class ArmKinematics {
     ArmKinematics(const urdf::ModelInterface& robot_model,
         const std::string &root_name, const std::string &tip_name, double lambda,
         const Eigen::MatrixXd& task_weights, const Eigen::MatrixXd& joint_weights);
+    ArmKinematics(const ArmKinematicsParams& params);
     
     ~ArmKinematics();
 
+    void init(const ArmKinematicsParams& params);
     void init(const urdf::ModelInterface& robot_model,
         const std::string &root_name, const std::string &tip_name, double lambda,
         const Eigen::MatrixXd& task_weights, const Eigen::MatrixXd& joint_weights);

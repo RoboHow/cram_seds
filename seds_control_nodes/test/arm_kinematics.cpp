@@ -17,6 +17,13 @@ class ArmKinematicsTest : public ::testing::Test
       joint_weights = Eigen::MatrixXd::Identity(7,7);
       task_weights = Eigen::MatrixXd::Identity(6,6);
 
+      params.robot_model_ = robot_model;
+      params.root_name_ = root_name;
+      params.tip_name_ = tip_name;
+      params.lambda_ = lambda;
+      params.joint_weights_ = joint_weights;
+      params.task_weights_ = task_weights;
+
       // SOME TEST DATA RECORDED ON OUR LWR
       using Eigen::operator<<;
       q0.resize(7);
@@ -45,6 +52,7 @@ class ArmKinematicsTest : public ::testing::Test
     string root_name, tip_name;    
     double lambda;
     Eigen::MatrixXd task_weights, joint_weights;
+    ArmKinematicsParams params;
 
     // some kinematic configurations as recorded on robot
     KDL::JntArray q0, q1, q2, q3;
@@ -113,6 +121,7 @@ TEST_F(ArmKinematicsTest, Init)
   ASSERT_TRUE(loading_success);
   ArmKinematics arm;
   ASSERT_NO_THROW(arm.init(robot_model, root_name, tip_name, lambda, task_weights, joint_weights));
+  ASSERT_NO_THROW(arm.init(params));
 }
 
 TEST_F(ArmKinematicsTest, Position_FK)
@@ -129,7 +138,7 @@ TEST_F(ArmKinematicsTest, Position_FK)
 TEST_F(ArmKinematicsTest, Velocity_IK)
 {
   ASSERT_TRUE(loading_success);
-  ArmKinematics arm(robot_model, root_name, tip_name, lambda, task_weights, joint_weights);
+  ArmKinematics arm(params);
   testCartCtrl(arm, q0, pose0);
   testCartCtrl(arm, q0, pose1);
   testCartCtrl(arm, q0, pose2);

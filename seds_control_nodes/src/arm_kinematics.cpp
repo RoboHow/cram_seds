@@ -14,11 +14,16 @@ ArmKinematics::ArmKinematics(const urdf::ModelInterface& robot_model,
         const std::string &root_name, const std::string &tip_name, double lambda,
         const Eigen::MatrixXd& task_weights, const Eigen::MatrixXd& joint_weights) :
     fk_solver_(NULL), ik_solver_(NULL), dof_(0), q_tmp_(JntArray(dof_))
-
 {
   this->init(robot_model, root_name, tip_name, lambda, task_weights, joint_weights);
 }
 
+ArmKinematics::ArmKinematics(const ArmKinematicsParams& params) :
+    fk_solver_(NULL), ik_solver_(NULL), dof_(0), q_tmp_(JntArray(dof_))
+{
+  this->init(params);
+}
+ 
 ArmKinematics::~ArmKinematics()
 {
   deleteInternals();
@@ -48,6 +53,12 @@ KDL::JntArray& ArmKinematics::get_vel_ik(const KDL::JntArray& q,
   return q_tmp_;
 }
 
+void ArmKinematics::init(const ArmKinematicsParams& params)
+{
+  init(params.robot_model_, params.root_name_, params.tip_name_, params.lambda_,
+      params.task_weights_, params.joint_weights_);
+}
+ 
 void ArmKinematics::init(const urdf::ModelInterface& robot_model,
     const string &root_name, const string &tip_name, double lambda,
     const Eigen::MatrixXd& task_weights, const Eigen::MatrixXd& joint_weights) 
