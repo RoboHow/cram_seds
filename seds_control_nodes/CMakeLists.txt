@@ -28,3 +28,6 @@ rosbuild_add_library(${PROJECT_NAME} src/arm_kinematics.cpp)
 #rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(seds_wrapper src/arm_kinematics.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
+
+rosbuild_add_gtest(unit-tests test/main.cpp test/arm_kinematics.cpp)
+target_link_libraries(unit-tests ${PROJECT_NAME})
