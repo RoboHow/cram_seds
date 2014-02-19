@@ -5,7 +5,7 @@
 #include <kdl/chainfksolverpos_recursive.hpp>
 #include <kdl/chainiksolvervel_wdls.hpp>
 #include <kdl/chain.hpp>
-#include <urdf_model/model.h>
+#include <urdf/model.h>
 #include <Eigen/Core>
 
 class ArmKinematics {
