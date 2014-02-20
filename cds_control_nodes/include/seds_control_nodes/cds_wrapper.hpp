@@ -23,10 +23,6 @@ class CdsWrapperParams
 
 class CdsWrapper
 {
-  private:
-    ArmKinematics arm_;
-    CDSExecution cds_controller_;
-
   public:
     CdsWrapper();
     CdsWrapper(CdsWrapperParams params, const KDL::JntArray& q_init);
@@ -35,5 +31,9 @@ class CdsWrapper
 
     void init(CdsWrapperParams params, const KDL::JntArray& q_init);
     const KDL::JntArray& update(const KDL::JntArray& q, double dt);
+
+//  private:
+    ArmKinematics arm_;
+    CDSExecution cds_controller_;
 };
 #endif  // __CDS_WRAPPER_HPP
