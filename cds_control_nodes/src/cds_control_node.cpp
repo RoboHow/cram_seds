@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <seds_control_nodes/cds_wrapper.hpp>
 #include <dlr_msgs/rcu2tcu.h>
+#include <realtime_bridge_msgs/ImpedanceCommand.h>
 
 class CdsControlNode
 {
@@ -15,6 +16,7 @@ class CdsControlNode
   private:
     ros::NodeHandle nh_;
     ros::Subscriber robot_subscriber_;
+    ros::Publisher robot_publisher_;
 
     CdsWrapper cds_;
     ArmKinematicsParams arm_params_;
@@ -25,6 +27,8 @@ class CdsControlNode
       ArmKinematicsParams arm_params_ = readArmKinematicsParameters();
       robot_subscriber_ = nh_.subscribe("robot_state_topic", 1, 
           &CdsControlNode::robotStateCallback, this);
+      robot_publisher_ = nh_.advertise<realtime_bridge_msgs::ImpedanceCommand>(
+          "robot_command_topic", 1);
     }
 
     ArmKinematicsParams readArmKinematicsParameters() const
