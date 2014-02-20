@@ -9,8 +9,10 @@ class CdsWrapperTest : public ::testing::Test
     {
       initCdsParams();
       q_start.resize(7);
-      q_start.data << 0, DEG2RAD(10), 0, DEG2RAD(-90), 0, DEG2RAD(45), DEG2RAD(45);
+      q_start.data <<  -1.0241795778274536, 0.8732185363769531, 0.2493722140789032, -0.5471154451370239, 0.0947522297501564, 0.7503224015235901, -0.33370718359947205;
       dt = 0.002;
+      object_frame = KDL::Frame(KDL::Rotation::Quaternion(-0.413, -0.692, -0.170, 0.567), KDL::Vector(-0.251, 0.428, 0.846));
+      attractor_frame = KDL::Frame::Identity();
     }
 
     virtual void TearDown()
@@ -20,6 +22,7 @@ class CdsWrapperTest : public ::testing::Test
     CdsWrapperParams params;
     KDL::JntArray q_start;
     double dt;
+    KDL::Frame object_frame, attractor_frame;
 
     void initCdsParams()
     {
@@ -33,10 +36,10 @@ class CdsWrapperTest : public ::testing::Test
       GMMStates* coupling_gmm = readGMMStatesFromFile("test_data/cplGMM.txt", num_states, num_vars);
       params.cds_params_.coupling_ = new GMR(coupling_gmm, num_states, num_vars);
 
-      params.cds_params_.alpha_ = 1;
+      params.cds_params_.alpha_ = 10;
       params.cds_params_.beta_ = 1; 
       params.cds_params_.lambda_ = 1;
-      params.cds_params_.reachingThreshold_ = 1;
+      params.cds_params_.reachingThreshold_ = 0.001;
       params.cds_params_.dt_ = dt;
 
       params.arm_params_.robot_model_.initFile("test_data/boxy_fixed_torso_description.urdf");
@@ -84,8 +87,39 @@ class CdsWrapperTest : public ::testing::Test
 
       return GMMState;
     }
+
+    void printFrame(const KDL::Frame& frame) const
+    {
+      std::cout << "p: " << frame.p.x() << ", " << frame.p.y() << ", " << frame.p.z() << "\n";
+      double x, y, z, w;
+      frame.M.GetQuaternion(x, y, z, w);
+      std::cout << "M: " << x << ", " << y << ", " << z << ", " << w << "\n";
+    }
+
+    void printConfig(const KDL::JntArray& q) const
+    {
+      std::cout << "q: ";
+      for(unsigned int i=0; i<q.rows(); i++)
+        std::cout << q(i) << ", ";
+      std::cout << "\n";
+    }
 };
 
 TEST_F(CdsWrapperTest, Init)
 {
+  CdsWrapper cds_controller(params);
+  cds_controller.setGoal(object_frame, attractor_frame);
+  KDL::JntArray q = q_start;
+  printConfig(q_start);
+
+  for(unsigned int i=0; i<10; i++)
+  {
+    KDL::JntArray q_dot = cds_controller.update(q, dt);
+    KDL::Multiply(q_dot, dt, q_dot);
+    KDL::Add(q, q_dot, q);
+    std::cout << "GOAL:\n";
+    printFrame(object_frame);
+    std::cout << "\n"; 
+    printConfig(q);
+  }
 }
