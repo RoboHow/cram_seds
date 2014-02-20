@@ -11,6 +11,7 @@ class CDSExecutionParams
     GMRDynamics* slave_dyn_;
     GMR* coupling_;
     double alpha_, beta_, lambda_, reachingThreshold_, dt_;
+    KDL::Frame object_frame_, attractor_frame_;
 };
 
 class CdsWrapperParams
@@ -28,12 +29,11 @@ class CdsWrapper
 
   public:
     CdsWrapper();
-    CdsWrapper(CdsWrapperParams params);
+    CdsWrapper(CdsWrapperParams params, const KDL::JntArray& q_init);
 
     ~CdsWrapper();
 
-    void init(CdsWrapperParams params);
-    void setGoal(const KDL::Frame& object_frame, const KDL::Frame& attractor_frame);
+    void init(CdsWrapperParams params, const KDL::JntArray& q_init);
     const KDL::JntArray& update(const KDL::JntArray& q, double dt);
 };
 #endif  // __CDS_WRAPPER_HPP
