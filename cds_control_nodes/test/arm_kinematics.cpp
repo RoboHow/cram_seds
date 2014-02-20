@@ -11,8 +11,8 @@ class ArmKinematicsTest : public ::testing::Test
     {
       loading_success =
           robot_model.initFile("test_data/boxy_fixed_torso_description.urdf");
-      root_name = "calib_left_arm_base_link";
-      tip_name = "left_arm_7_link";
+      root_name = "calib_right_arm_base_link";
+      tip_name = "right_arm_7_link";
       lambda = 0.1;
       joint_weights = Eigen::MatrixXd::Identity(7,7);
       task_weights = Eigen::MatrixXd::Identity(6,6);
