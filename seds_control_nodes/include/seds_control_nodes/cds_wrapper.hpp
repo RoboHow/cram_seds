@@ -33,6 +33,7 @@ class CdsWrapper
     ~CdsWrapper();
 
     void init(CdsWrapperParams params);
+    void setGoal(const KDL::Frame& object_frame, const KDL::Frame& attractor_frame);
     const KDL::JntArray& update(const KDL::JntArray& q, double dt);
 };
 #endif  // __CDS_WRAPPER_HPP
