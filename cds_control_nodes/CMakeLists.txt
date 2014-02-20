@@ -27,7 +27,7 @@ rosbuild_add_library(${PROJECT_NAME} src/arm_kinematics.cpp src/kdl_epfl_convers
 #rosbuild_add_boost_directories()
 #rosbuild_link_boost(${PROJECT_NAME} thread)
 rosbuild_add_executable(cds_control_node src/cds_control_node.cpp)
-#target_link_libraries(example ${PROJECT_NAME})
+target_link_libraries(cds_control_node ${PROJECT_NAME})
 
 rosbuild_add_gtest(unit-tests test/main.cpp test/arm_kinematics.cpp test/kdl_epfl_conversions.cpp test/cds_wrapper.cpp)
 target_link_libraries(unit-tests ${PROJECT_NAME})
