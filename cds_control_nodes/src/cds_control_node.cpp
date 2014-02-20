@@ -2,6 +2,7 @@
 #include <seds_control_nodes/cds_wrapper.hpp>
 #include <dlr_msgs/rcu2tcu.h>
 #include <realtime_bridge_msgs/ImpedanceCommand.h>
+#include <seds_control_nodes/msg_conversions.hpp>
 
 class CdsControlNode
 {
@@ -22,21 +23,22 @@ class CdsControlNode
     CdsWrapper cds_;
     ArmKinematicsParams arm_params_;
     bool controller_running_;
+    KDL::JntArray q_;
 
     void init()
     {
       int dof;
       nh_.param<int>("dof", dof, 7);
 
+      q_.resize(dof);
+
       arm_params_ = readArmKinematicsParameters(dof);
 
       command_msg_ = initCommandMsg(dof);
 
-      robot_subscriber_ = nh_.subscribe("robot_state_topic", 1, 
-          &CdsControlNode::robotStateCallback, this);
-      robot_publisher_ = nh_.advertise<realtime_bridge_msgs::ImpedanceCommand>(
-          "robot_command_topic", 1);
-    }
+      robot_subscriber_ = initSubscriber();
+      robot_publisher_ = initPublisher();
+   }
 
     ArmKinematicsParams readArmKinematicsParameters(unsigned int dof) const
     {
@@ -83,10 +85,24 @@ class CdsControlNode
       return msg;
     }
 
+    ros::Publisher initPublisher()
+    {
+      return nh_.advertise<realtime_bridge_msgs::ImpedanceCommand>("robot_command_topic", 1);
+    }
+    
+    ros::Subscriber initSubscriber()
+    {
+      return nh_.subscribe("robot_state_topic", 1, 
+          &CdsControlNode::robotStateCallback, this);
+    }
+
     void robotStateCallback(const dlr_msgs::rcu2tcu::ConstPtr& msg)
     {
       if(controller_running_)
       {
+        fromMsg(*msg, q_);
+
+
         // TODO(Georg): do control here
         robot_publisher_.publish(command_msg_);
       }
