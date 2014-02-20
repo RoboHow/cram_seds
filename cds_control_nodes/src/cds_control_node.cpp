@@ -17,6 +17,7 @@ class CdsControlNode
     ros::NodeHandle nh_;
     ros::Subscriber robot_subscriber_;
     ros::Publisher robot_publisher_;
+    realtime_bridge_msgs::ImpedanceCommand command_msg_;
 
     CdsWrapper cds_;
     ArmKinematicsParams arm_params_;
@@ -24,14 +25,20 @@ class CdsControlNode
 
     void init()
     {
-      ArmKinematicsParams arm_params_ = readArmKinematicsParameters();
+      int dof;
+      nh_.param<int>("dof", dof, 7);
+
+      arm_params_ = readArmKinematicsParameters(dof);
+
+      command_msg_ = initCommandMsg(dof);
+
       robot_subscriber_ = nh_.subscribe("robot_state_topic", 1, 
           &CdsControlNode::robotStateCallback, this);
       robot_publisher_ = nh_.advertise<realtime_bridge_msgs::ImpedanceCommand>(
           "robot_command_topic", 1);
     }
 
-    ArmKinematicsParams readArmKinematicsParameters() const
+    ArmKinematicsParams readArmKinematicsParameters(unsigned int dof) const
     {
       std::string root_link, tip_link;
       nh_.param<std::string>("root_link", root_link, "calib_right_arm_base_link");
@@ -41,9 +48,6 @@ class CdsControlNode
       nh_.param<double>("lambda", lambda, 0.1);
       nh_.param<double>("control_dt", dt, 0.002);
  
-      int dof;
-      nh_.param<int>("dof", dof, 7);
-
       Eigen::MatrixXd task_weights = Eigen::MatrixXd::Identity(6,6);
       Eigen::MatrixXd joint_weights = Eigen::MatrixXd::Identity(dof, dof);
 
@@ -64,11 +68,27 @@ class CdsControlNode
       return arm_params;
     }
 
+    realtime_bridge_msgs::ImpedanceCommand initCommandMsg(unsigned int dof) const
+    {
+      realtime_bridge_msgs::ImpedanceCommand msg;
+
+      msg.velocity.resize(dof);
+      msg.stiffness.resize(0);
+      msg.damping.resize(0);
+      msg.add_torque.resize(0);
+
+      for(unsigned int i=0; i<dof; i++)
+        msg.velocity[i] = 0.0;
+
+      return msg;
+    }
+
     void robotStateCallback(const dlr_msgs::rcu2tcu::ConstPtr& msg)
     {
       if(controller_running_)
       {
         // TODO(Georg): do control here
+        robot_publisher_.publish(command_msg_);
       }
     }
 
