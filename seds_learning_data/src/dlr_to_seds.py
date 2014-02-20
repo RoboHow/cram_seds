@@ -57,10 +57,11 @@ class DLR2SEDS(object):
     def get_kdl_chain_lwr(self):
         from PyKDL import Frame, Rotation, Vector, Joint, Chain, Segment
         from math import pi
-        # arm configuration
+        # arm segments that behave exactly like the DLR system. (Last pose in the middle of the potato)
+	#Some parts of the DLR system take into account the TCP_T_EE transformation, for example to the Flange
         arm_segments = [
                 Segment(Joint(Joint.None),
-                    Frame(Rotation.RPY(0.695, 0.868, -0.720), Vector(0.222, -0.339, 0.949))),
+                    Frame(Rotation.Quaternion(0.428, 0.261, -0.435, 0.748), Vector(0.222, -0.339, 0.949))),
                 Segment(Joint(Joint.None),
                     Frame(Rotation.Identity(), Vector(0.0, 0.0, 0.11))),
                 Segment(Joint(Joint.RotZ),
@@ -74,10 +75,12 @@ class DLR2SEDS(object):
                 Segment(Joint(Joint.RotZ),
                     Frame(Rotation.RotX(-pi/2), Vector(0, 0, 0.19))),
                 Segment(Joint(Joint.RotZ, -1),
-                    Frame(Rotation.RotX(pi/2), Vector(0, -0.078, 0.0))),
+                    Frame(Rotation.RotX(pi/2), Vector(0, 0, 0.0))),  #-0.078
                 Segment(Joint(Joint.RotZ),
-                    Frame(Rotation.Identity(), Vector(0, 0, 0))),
+                    Frame(Rotation.Identity(), Vector(0, 0, 0.0))),
                     ]
+	
+	
         chain = Chain()
         for segment in arm_segments:
             chain.addSegment(segment)
@@ -118,18 +121,36 @@ class DLR2SEDS(object):
         #Setting the current joint angles
         self.set_joints(data.robot.q)
         
-        #getting the wrench at the EE
-        #jacn = self.get_jacobian()
-        #torques = numpy.empty([7,1])
-        #for i in range(7):
-        #    torques[i,0] = data.safety.tau_ext[i]
         
-        #ee_wrench = -1 * numpy.dot(jacn, torques)
-        #print ee_wrench
+        #fk = self.get_fk()
+	#print "FK:"
+	#print fk
+	#print ""
+	#tested that fk is the same as BL_T_X
+	
+        #getting the wrench at the EE
+        jac = self.get_jacobian()
+	jact = numpy.transpose(jac)
+	
+        torques = numpy.empty([7,1])
+        for i in range(7):
+            torques[i,0] = data.safety.tau_ext[i]
+        
+	#Wrench at the end effector in the coordinate frame of the beginning of the kinematic chain (the arm base or base_link)
+	#From Sami's thesis: Fext = (jac * jac_transp) ^-1 * jac * tau_ext
+	#It is derived from the known: jac_transp * F_end_effector = Tau
+	ee_wrench = numpy.dot( numpy.dot (numpy.linalg.pinv( numpy.dot(jac, jact)  ), jac), torques)
+	print "From Jacobian:"
+        print ee_wrench
         #print jacn
         #print self.get_fk()
         #print self.jnt_pos
-        #print "\n"        
+        
+	print "From RTI: (reference frame of the base of the arm)"
+	print  data.safety.f_ext_hat
+        
+	print "\n"        
+			
         
         #Read the Transformation from base of the arm to the tip of the arm
         O_T_X = kdl.Frame()
@@ -146,7 +167,8 @@ class DLR2SEDS(object):
         O_T_X.p[0] = robot_pose[9]
         O_T_X.p[1] = robot_pose[10]
         O_T_X.p[2] = robot_pose[11]
-        
+
+    
 
         #Transformation from BaseLink to the Tip of the arm
         BL_T_X = self.BL_T_O * O_T_X
