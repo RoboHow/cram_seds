@@ -114,6 +114,8 @@ class CdsControlNode
       }
     }
 
+    // TODO(GEORG): add action client to get in SEDS description from high-level!
+
     void startController()
     {
       controller_running_ = true;
