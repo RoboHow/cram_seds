@@ -1,10 +1,11 @@
 #include <ros/ros.h>
 #include <seds_control_nodes/cds_wrapper.hpp>
+#include <dlr_msgs/rcu2tcu.h>
 
 class CdsControlNode
 {
   public:
-    CdsControlNode(const ros::NodeHandle& nh) : nh_(nh)
+    CdsControlNode(const ros::NodeHandle& nh) : nh_(nh), controller_running_(false)
     {
       this->init();
     }
@@ -13,11 +14,17 @@ class CdsControlNode
 
   private:
     ros::NodeHandle nh_;
+    ros::Subscriber robot_subscriber_;
+
     CdsWrapper cds_;
+    ArmKinematicsParams arm_params_;
+    bool controller_running_;
 
     void init()
     {
-      ArmKinematicsParams arm_params = readArmKinematicsParameters();
+      ArmKinematicsParams arm_params_ = readArmKinematicsParameters();
+      robot_subscriber_ = nh_.subscribe("robot_state_topic", 1, 
+          &CdsControlNode::robotStateCallback, this);
     }
 
     ArmKinematicsParams readArmKinematicsParameters() const
@@ -51,6 +58,24 @@ class CdsControlNode
       arm_params.joint_weights_ = joint_weights; 
  
       return arm_params;
+    }
+
+    void robotStateCallback(const dlr_msgs::rcu2tcu::ConstPtr& msg)
+    {
+      if(controller_running_)
+      {
+        // TODO(Georg): do control here
+      }
+    }
+
+    void startController()
+    {
+      controller_running_ = true;
+    }
+
+    void stopController()
+    {
+      controller_running_ = false;
     }
 };
 

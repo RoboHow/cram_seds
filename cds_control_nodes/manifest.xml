@@ -12,6 +12,7 @@
   <depend package="kdl_parser"/>
   <depend package="urdf"/>
   <depend package="realtime_bridge_msgs"/>
+  <depend package="dlr_msgs"/>
   <depend package="MathLib"/>
   <depend package="orocos_kdl"/>
   <depend package="CDSExecution"/>

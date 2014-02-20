@@ -8,5 +8,7 @@
     <param name="lambda" value="0.1"/>
     <param name="dof" value="7"/>
     <param name="robot_model_param" value="robot_description"/>
+    <!-- TOPICS TALKING TO LOW-LEVEL ARM CONTROLLERS -->
+    <remap from="~robot_state_topic" to="/beasty_state_msgs"/>
   </node>
 </launch>
