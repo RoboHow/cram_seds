@@ -23,14 +23,18 @@ class CdsControlNode
     CdsWrapper cds_;
     ArmKinematicsParams arm_params_;
     bool controller_running_;
-    KDL::JntArray q_;
+    double dt_;
+    KDL::JntArray q_, qdot_des_;
 
     void init()
     {
       int dof;
       nh_.param<int>("dof", dof, 7);
 
+      nh_.param<double>("control_dt", dt_, 0.002);
+
       q_.resize(dof);
+      qdot_des_.resize(dof);
 
       arm_params_ = readArmKinematicsParameters(dof);
 
@@ -38,6 +42,8 @@ class CdsControlNode
 
       robot_subscriber_ = initSubscriber();
       robot_publisher_ = initPublisher();
+
+      stopController();
    }
 
     ArmKinematicsParams readArmKinematicsParameters(unsigned int dof) const
@@ -46,9 +52,8 @@ class CdsControlNode
       nh_.param<std::string>("root_link", root_link, "calib_right_arm_base_link");
       nh_.param<std::string>("tip_link", tip_link, "right_arm_7_link");
 
-      double dt, lambda;
+      double lambda;
       nh_.param<double>("lambda", lambda, 0.1);
-      nh_.param<double>("control_dt", dt, 0.002);
  
       Eigen::MatrixXd task_weights = Eigen::MatrixXd::Identity(6,6);
       Eigen::MatrixXd joint_weights = Eigen::MatrixXd::Identity(dof, dof);
@@ -102,8 +107,9 @@ class CdsControlNode
       {
         fromMsg(*msg, q_);
 
+        qdot_des_ = cds_.update(q_, dt_);
 
-        // TODO(Georg): do control here
+        toMsg(qdot_des_, command_msg_);
         robot_publisher_.publish(command_msg_);
       }
     }

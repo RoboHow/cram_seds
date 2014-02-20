@@ -13,3 +13,11 @@ void fromMsg(const dlr_msgs::rcu2tcu& msg, KDL::JntArray& q)
 {
   fromMsg(msg.robot, q);
 }
+
+void toMsg(const KDL::JntArray& qdot, realtime_bridge_msgs::ImpedanceCommand& msg)
+{
+  assert(qdot.rows() == msg.velocity.size());
+
+  for(unsigned int i=0; i<qdot.rows(); i++)
+    msg.velocity[i] = qdot(i);
+}
