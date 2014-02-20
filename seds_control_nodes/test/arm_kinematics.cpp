@@ -72,10 +72,12 @@ class ArmKinematicsTest : public ::testing::Test
     void testCartCtrl(ArmKinematics& arm, const KDL::JntArray& start_q, const KDL::Frame& goal)
     {
       KDL::JntArray q_state = start_q;
+      double dt = 0.001;
       for(unsigned int i=0; i<10; i++)
       {
-        ASSERT_NO_THROW(arm.get_vel_ik(start_q, goal, 1));
-        KDL::JntArray des_q_vel = arm.get_vel_ik(q_state, goal, 1);
+        ASSERT_NO_THROW(arm.get_vel_ik(start_q, goal, dt));
+        KDL::JntArray des_q_vel = arm.get_vel_ik(q_state, goal, dt);
+        KDL::Multiply(des_q_vel, dt, des_q_vel);
         KDL::Add(q_state, des_q_vel, q_state);
       }
       KDL::Frame new_pose = arm.get_pos_fk(q_state);
