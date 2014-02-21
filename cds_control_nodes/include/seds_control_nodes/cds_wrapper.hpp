@@ -30,7 +30,7 @@ class CdsWrapper
     ~CdsWrapper();
 
     void init(CdsWrapperParams params, const KDL::JntArray& q_init);
-    const KDL::JntArray& update(const KDL::JntArray& q, double dt);
+    const KDL::JntArray& update(const KDL::JntArray& q, double dt, KDL::Frame& des_pose);
 
 //  private:
     ArmKinematics arm_;

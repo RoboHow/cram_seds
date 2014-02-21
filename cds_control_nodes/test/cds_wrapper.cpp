@@ -9,7 +9,9 @@ class CdsWrapperTest : public ::testing::Test
     {
       initParams();
       q_start.resize(7);
-      q_start.data <<  -1.2786, 0.6182, -2.0733, -1.5392, 1.0747, 0.9713, 0.3275;
+      q_start.data <<  -1.33658051490784, 0.406352370977402, -1.83030450344086,
+                       -1.66620182991028, 0.924314498901367, 1.16480243206024,
+                       0.636807262897492;
    }
 
     virtual void TearDown()
@@ -39,11 +41,9 @@ class CdsWrapperTest : public ::testing::Test
       params.cds_params_.reachingThreshold_ = 0.001;
       params.cds_params_.dt_ = dt;
 
-//TODO(Georg): UNDO THIS!!
       params.cds_params_.object_frame_ = KDL::Frame(
-//          KDL::Rotation(-0.6314, 0.3683, 0.0689, 0.1038, 0.0905, 0.0912, 0.9958, 0.1032, 0.9945), 
-          KDL::Rotation::Identity(),
-          KDL::Vector(0.7, -0.8, 0.8));
+          KDL::Rotation(-0.4481, -0.7341, 0.5103, -0.5061, 0.6788, 0.5321, -0.7370, -0.0198, -0.6757),
+          KDL::Vector(0.6755, -0.8704, 0.9681));
       params.cds_params_.attractor_frame_ = KDL::Frame::Identity();
  
       params.arm_params_.robot_model_.initFile("test_data/boxy_fixed_torso_description.urdf");
@@ -94,10 +94,11 @@ class CdsWrapperTest : public ::testing::Test
 
     void printFrame(const KDL::Frame& frame) const
     {
+//      std::cout << "current:\n";
       std::cout << "p: " << frame.p.x() << ", " << frame.p.y() << ", " << frame.p.z() << "\n";
-//      double x, y, z, w;
-//      frame.M.GetQuaternion(x, y, z, w);
-//      std::cout << "M: " << x << ", " << y << ", " << z << ", " << w << "\n";
+ //     double x, y, z, w;
+ //     frame.M.GetQuaternion(x, y, z, w);
+ //     std::cout << "M: " << x << ", " << y << ", " << z << ", " << w << "\n";
     }
 
     void printConfig(const KDL::JntArray& q) const
@@ -116,21 +117,19 @@ TEST_F(CdsWrapperTest, Init)
   std::cout << "GOAL:\n";
   printFrame(params.cds_params_.object_frame_);
   std::cout << "\n"; 
-
-  printFrame(cds_controller.arm_.get_pos_fk(q)); 
-  
+ 
   unsigned int counter = 0;
-  for(unsigned int i=0; i<2000; i++)
+  for(unsigned int i=0; i<20000; i++)
   {
-    KDL::JntArray q_dot = cds_controller.update(q, dt);
+    counter++;
+    if(counter == 1)
+    {
+      printFrame(cds_controller.arm_.get_pos_fk(q));
+      counter=0;
+    }
+
+    KDL::JntArray q_dot = cds_controller.update(q, dt, false);
     KDL::Multiply(q_dot, dt, q_dot);
     KDL::Add(q, q_dot, q);
-
-    counter++;
-    if(counter == 100)
-    {
-      printFrame(cds_controller.arm_.get_pos_fk(q)); 
-      counter = 0;
-    }
   }
 }

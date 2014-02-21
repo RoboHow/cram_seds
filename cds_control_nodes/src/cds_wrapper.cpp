@@ -38,16 +38,18 @@ void CdsWrapper::init(CdsWrapperParams params, const KDL::JntArray& q_init)
       params.cds_params_.reachingThreshold_); 
 }
 
-const KDL::JntArray& CdsWrapper::update(const KDL::JntArray& q, double dt)
+const KDL::JntArray& CdsWrapper::update(const KDL::JntArray& q, double dt,
+    KDL::Frame& des_pose)
 {
   assert(q.rows() == arm_.get_dof());
 
-  cds_controller_.setCurrentEEPose(toMathLib(arm_.get_pos_fk(q)));
+  KDL::Frame pose = arm_.get_pos_fk(q);
 
-  KDL::Frame des_pose = toKDL(cds_controller_.getNextEEPose());
-// TODO(GEORG): REMOVE THIS!!
-des_pose.M = arm_.get_pos_fk(q).M;
+  cds_controller_.setCurrentEEPose(toMathLib(pose));
 
+  des_pose = toKDL(cds_controller_.getNextEEPose());
+
+  des_pose.M = arm_.get_pos_fk(q).M;
 //  return arm_.get_vel_ik(q, toKDL(cds_controller_.getNextEEPose()), dt);
   return arm_.get_vel_ik(q, des_pose, dt);
 }

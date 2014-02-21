@@ -2,9 +2,9 @@
   <node pkg="cds_control_nodes" type="cds_control_node" name="cds_control_node"
         output="screen">
     <!-- PARAMETERS FOR ARM KINEMATICS -->
-    <param name="root_link" value="calib_right_arm_base_link"/>
+    <param name="root_link" value="base_link"/>
     <param name="tip_link" value="right_arm_7_link"/>
-    <param name="control_dt" value="0.002"/>
+    <param name="control_dt" value="0.001"/>
     <param name="lambda" value="0.1"/>
     <param name="dof" value="7"/>
     <param name="robot_model_param" value="robot_description"/>

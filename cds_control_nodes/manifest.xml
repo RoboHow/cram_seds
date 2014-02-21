@@ -13,8 +13,10 @@
   <depend package="urdf"/>
   <depend package="realtime_bridge_msgs"/>
   <depend package="dlr_msgs"/>
+  <depend package="sensor_msgs"/>
   <depend package="MathLib"/>
   <depend package="CDSExecution"/>
+  <depend package="tf"/>
 </package>
 
 

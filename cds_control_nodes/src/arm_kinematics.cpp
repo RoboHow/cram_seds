@@ -32,9 +32,11 @@ ArmKinematics::~ArmKinematics()
 KDL::Frame ArmKinematics::get_pos_fk(const KDL::JntArray& q)
 {
   assert(q.rows() == dof_);
+
   assert(fk_solver_);
 
   KDL::Frame pose;
+
   fk_solver_->JntToCart(q, pose);
 
   return pose;
