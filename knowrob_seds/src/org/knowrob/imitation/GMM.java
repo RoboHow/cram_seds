@@ -152,8 +152,7 @@ public class GMM {
 		manager.addAxiom(ontology, factory.getOWLClassAssertionAxiom(gmmType, gmmInd));
  
 		
-		// TODO: export input/output types
-
+		// export input/output types
 		OWLDataProperty pInType = factory.getOWLDataProperty(IRI.create(GMMToOWL.SEDS + "inputType"));
 		manager.addAxiom(ontology, factory.getOWLDataPropertyAssertionAxiom(pInType, gmmInd, inputType));
 		
@@ -223,8 +222,8 @@ public class GMM {
 			}
 
 			// link to Gaussian instance
-			OWLObjectProperty pMean = factory.getOWLObjectProperty(IRI.create(GMMToOWL.SEDS + "cov"));
-			manager.addAxiom(ontology, factory.getOWLObjectPropertyAssertionAxiom(pMean, gaussians.get(g), mat_inst));
+			OWLObjectProperty pCov = factory.getOWLObjectProperty(IRI.create(GMMToOWL.SEDS + "cov"));
+			manager.addAxiom(ontology, factory.getOWLObjectPropertyAssertionAxiom(pCov, gaussians.get(g), mat_inst));
 		}
 		
 

@@ -16,6 +16,7 @@ import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -130,8 +131,44 @@ public class MotionPhase {
         OWLClass phaseType = factory.getOWLClass(IRI.create(GMMToOWL.SEDS + "SEDSMotion"));
         manager.applyChange(new AddAxiom(ontology, factory.getOWLSubClassOfAxiom(phaseCls, phaseType)));        
 
-        // write models to ontology:
+
+        // export id, object, threshold, attractor
+		OWLDataProperty pID = factory.getOWLDataProperty(IRI.create(GMMToOWL.SEDS + "phaseID"));
+    	manager.applyChange(new AddAxiom(ontology,
+				factory.getOWLSubClassOfAxiom(phaseCls,
+				factory.getOWLDataHasValue(pID, factory.getOWLLiteral(this.id)))));
+    	OWLDataProperty pObj = factory.getOWLDataProperty(IRI.create(GMMToOWL.SEDS + "phaseObject"));
+    	manager.applyChange(new AddAxiom(ontology,
+				factory.getOWLSubClassOfAxiom(phaseCls,
+				factory.getOWLDataHasValue(pObj, factory.getOWLLiteral(this.obj)))));
+    	OWLDataProperty pThreshold = factory.getOWLDataProperty(IRI.create(GMMToOWL.SEDS + "phaseThreshold"));
+    	manager.applyChange(new AddAxiom(ontology,
+				factory.getOWLSubClassOfAxiom(phaseCls,
+				factory.getOWLDataHasValue(pThreshold, factory.getOWLLiteral(this.threshold)))));
+    	
+    	
+		// create matrix instance
+		OWLClass mat_class = factory.getOWLClass("knowrob:Matrix", pm);
+		OWLNamedIndividual mat_inst = factory.getOWLNamedIndividual(OWLThing.getUniqueID("knowrob:Matrix"), pm);
+		manager.addAxiom(ontology, factory.getOWLClassAssertionAxiom(mat_class, mat_inst));
+
+		// set pose properties
+		for(int i=0;i<4;i++) {
+			for(int j=0;j<4;j++) {
+
+				OWLDataProperty prop = factory.getOWLDataProperty("knowrob:m"+i+j, pm);
+				manager.addAxiom(ontology, factory.getOWLDataPropertyAssertionAxiom(prop,  mat_inst, attractor.getElement(i, j)));
+			}
+		}
+
+		// link to phase
+		OWLObjectProperty pAttr = factory.getOWLObjectProperty(IRI.create(GMMToOWL.SEDS + "phaseAttractor"));
+    	manager.applyChange(new AddAxiom(ontology,
+				factory.getOWLSubClassOfAxiom(phaseCls,
+				factory.getOWLObjectHasValue(pAttr, mat_inst))));
+    	
         
+        // write models to ontology:        
         OWLObjectProperty describedByMotionModel = factory.getOWLObjectProperty(IRI.create(GMMToOWL.SEDS + "describedByMotionModel"));
         
         for(MotionModel model : models) {
