@@ -79,6 +79,14 @@
     </owl:ObjectProperty>
 
 
+    <!-- http://ias.cs.tum.edu/kb/knowrob-seds.owl#attractor -->
+
+    <owl:ObjectProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#attractor">
+        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#SEDSMotion"/>
+        <rdfs:range rdf:resource="&knowrob;RotationMatrix3D"/>
+    </owl:ObjectProperty>
+    
+
 
     <!--
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -135,6 +143,18 @@
     </owl:DatatypeProperty>
 
 
+    <owl:DatatypeProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#phaseID">
+        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#SEDSMotion"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#phaseObject">
+        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#SEDSMotion"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://ias.cs.tum.edu/kb/knowrob-seds.owl#phaseThreshold">
+        <rdfs:domain rdf:resource="http://ias.cs.tum.edu/kb/knowrob-seds.owl#SEDSMotion"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
 
     <!--
     ///////////////////////////////////////////////////////////////////////////////////////
