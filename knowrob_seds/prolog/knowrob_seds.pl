@@ -21,7 +21,7 @@
 
 :- module(knowrob_seds,
     [
-      phase_properties/2,
+      phase_properties/6,
       motion_properties/3,
       gmm_properties/7,
       gaussian_components/4,
@@ -36,7 +36,7 @@
 :- use_module(library('jpl')).
 
 :-  rdf_meta
-      phase_properties(r,r),
+      phase_properties(r,r,r,r,r,r),
       motion_properties(r,r,?),
       gmm_properties(r,r,?,?,?,?,?),
       gaussian_components(r,r,r,r),
@@ -60,7 +60,15 @@
 % @param MotionPhase   Instance of a seds:'SEDSMotion'
 % @param MotionModels  List of instances of seds:'MotionModel'
 %
-phase_properties(MotionPhase, MotionModels) :-
+phase_properties(MotionPhase, ID, Object, Threshold, Atractor, MotionModels) :-
+
+  class_properties(MotionPhase, seds:phaseID, ID),
+  class_properties(MotionPhase, seds:phaseObject, Object),
+  class_properties(MotionPhase, seds:phaseThreshold, Threshold),
+
+  class_properties(MotionPhase, seds:phaseAttractor, AttrMat),
+  rotmat_to_list(AttrMat, Atractor),
+
   findall(MotionModel,
       class_properties(MotionPhase, seds:describedByMotionModel, MotionModel),
       MotionModels).

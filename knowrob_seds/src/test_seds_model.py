@@ -22,7 +22,7 @@ if __name__ == '__main__':
     try:
         
         query = prolog.query("""rdfs_subclass_of(Phase, seds:'SEDSMotion'),
-                                phase_properties(Phase, Models),
+                                phase_properties(Phase, ID, Object, Threshold, Atractor, Models),
                                 member(Model, Models),
                                 motion_properties(Model, Type, GMMs),
                                 member(GMM, GMMs),
