@@ -38,6 +38,7 @@ rosbuild_add_gtest(unit-tests
   test/main.cpp 
   test/arm_kinematics.cpp 
   test/kdl_epfl_conversions.cpp 
-  #test/cds_wrapper.cpp
+  test/cds_cartesian_wrapper.cpp
+#  test/cds_wrapper.cpp
 )
 target_link_libraries(unit-tests ${PROJECT_NAME})

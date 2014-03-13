@@ -1,25 +1,24 @@
 #include <gtest/gtest.h>
 
-#include <seds_control_nodes/cds_wrapper.hpp>
+#include <seds_control_nodes/cds_cartesian_wrapper.hpp>
 
-class CdsWrapperTest : public ::testing::Test
+class CdsCartesianWrapperTest : public ::testing::Test
 {
   protected:
     virtual void SetUp()
     {
       initParams();
-      q_start.resize(7);
-      q_start.data <<  -1.33658051490784, 0.406352370977402, -1.83030450344086,
-                       -1.66620182991028, 0.924314498901367, 1.16480243206024,
-                       0.636807262897492;
-   }
-
+      pose_start = KDL::Frame(
+          KDL::Rotation::Quaternion(-0.394948, 0.779915, 0.163176, 0.457299),
+          KDL::Vector(0.526501, -1.0469, 1.07618));
+    }
+ 
     virtual void TearDown()
     {
     }
 
-    CdsWrapperParams params;
-    KDL::JntArray q_start;
+    CDSExecutionParams params;
+    KDL::Frame pose_start;
     double dt;
 
     void initParams()
@@ -27,31 +26,24 @@ class CdsWrapperTest : public ::testing::Test
       dt = 0.01;
       unsigned int num_states, num_vars;
       GMMStates* master_gmm = readGMMStatesFromFile("test_data/masterGMM.txt", num_states, num_vars);
-      params.cds_params_.master_dyn_ = new GMRDynamics(master_gmm, num_states, num_vars);
+      params.master_dyn_ = new GMRDynamics(master_gmm, num_states, num_vars);
 
       GMMStates* slave_gmm = readGMMStatesFromFile("test_data/slaveGMM.txt", num_states, num_vars);
-      params.cds_params_.slave_dyn_ =  new GMRDynamics(slave_gmm, num_states, num_vars);
+      params.slave_dyn_ =  new GMRDynamics(slave_gmm, num_states, num_vars);
 
       GMMStates* coupling_gmm = readGMMStatesFromFile("test_data/cplGMM.txt", num_states, num_vars);
-      params.cds_params_.coupling_ = new GMR(coupling_gmm, num_states, num_vars);
+      params.coupling_ = new GMR(coupling_gmm, num_states, num_vars);
 
-      params.cds_params_.alpha_ = 10;
-      params.cds_params_.beta_ = 1; 
-      params.cds_params_.lambda_ = 1;
-      params.cds_params_.reachingThreshold_ = 0.001;
-      params.cds_params_.dt_ = dt;
+      params.alpha_ = 10;
+      params.beta_ = 1; 
+      params.lambda_ = 1;
+      params.reachingThreshold_ = 0.001;
+      params.dt_ = dt;
 
-      params.cds_params_.object_frame_ = KDL::Frame(
+      params.object_frame_ = KDL::Frame(
           KDL::Rotation(-0.4481, -0.7341, 0.5103, -0.5061, 0.6788, 0.5321, -0.7370, -0.0198, -0.6757),
           KDL::Vector(0.6755, -0.8704, 0.9681));
-      params.cds_params_.attractor_frame_ = KDL::Frame::Identity();
- 
-      params.arm_params_.robot_model_.initFile("test_data/boxy_fixed_torso_description.urdf");
-      params.arm_params_.root_name_ = "base_link";
-      params.arm_params_.tip_name_ = "right_arm_7_link";
-      params.arm_params_.lambda_ = 0.1;
-      params.arm_params_.joint_weights_ = Eigen::MatrixXd::Identity(7,7);
-      params.arm_params_.task_weights_ = Eigen::MatrixXd::Identity(6,6);
+      params.attractor_frame_ = KDL::Frame::Identity();
     }
 
     GMMStates* readGMMStatesFromFile(const char* file, unsigned int& num_states, unsigned int& num_vars)
@@ -94,44 +86,36 @@ class CdsWrapperTest : public ::testing::Test
 
     void printFrame(const KDL::Frame& frame) const
     {
-//      std::cout << "current:\n";
       std::cout << "p: " << frame.p.x() << ", " << frame.p.y() << ", " << frame.p.z() << "\n";
       double x, y, z, w;
       frame.M.GetQuaternion(x, y, z, w);
       std::cout << "M: " << x << ", " << y << ", " << z << ", " << w << "\n";
     }
-
-    void printConfig(const KDL::JntArray& q) const
-    {
-      std::cout << "q: ";
-      for(unsigned int i=0; i<q.rows(); i++)
-        std::cout << q(i) << ", ";
-      std::cout << "\n";
-    }
 };
-
-TEST_F(CdsWrapperTest, Init)
+ 
+TEST_F(CdsCartesianWrapperTest, Looping)
 {
-  CdsWrapper cds_controller(params, q_start);
-  KDL::JntArray q = q_start;
-  std::cout << "GOAL:\n";
-  printFrame(params.cds_params_.object_frame_);
-  std::cout << "\n\n\n"; 
-
-  printFrame(cds_controller.arm_.get_pos_fk(q));
+  CdsCartesianWrapper cds_controller(params, pose_start);
+//  std::cout << "GOAL:\n";
+//  printFrame(params.object_frame_);
+//  std::cout << "\nSTART:\n";
+//  printFrame(pose_start);
+//  std::cout << "\n\n\n";
 
   unsigned int counter = 0;
-  for(unsigned int i=0; i<20000; i++)
+  KDL::Frame simulated_state = pose_start;
+  for(unsigned int i=0; i<200; i++)
   {
+//    if(counter == 0)
+//      printFrame(simulated_state);
+
+    simulated_state = cds_controller.update(simulated_state);
+
     counter++;
-    if(counter == 100)
-    {
-      printFrame(cds_controller.arm_.get_pos_fk(q));
+    if(counter == 10)
       counter=0;
-    }
-KDL::Frame some_frame;
-    KDL::JntArray q_dot = cds_controller.update(q, dt, some_frame);
-    KDL::Multiply(q_dot, dt, q_dot);
-    KDL::Add(q, q_dot, q);
   }
+
+  EXPECT_TRUE(KDL::Equal(params.object_frame_.p, simulated_state.p, 0.01));
+//  EXPECT_TRUE(KDL::Equal(params.object_frame_.M, simulated_state.M, 0.1));
 }
