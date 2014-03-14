@@ -1,0 +1,33 @@
+<launch>
+  <node pkg="cds_control_nodes" type="cds_cartesian_test_node" name="cds_cartesian_test_node" output="screen">
+    <param name="dt" value="0.01"/> <!-- default: 0.01 -->
+    <param name="master_gmm_file" value="$(find cds_control_nodes)/test_data/masterGMM.txt"/> <!-- default: None-->
+    <param name="slave_gmm_file" value="$(find cds_control_nodes)/test_data/slaveGMM.txt"/> <!-- default: None-->
+    <param name="coupling_gmm_file" value="$(find cds_control_nodes)/test_data/cplGMM.txt"/> <!-- default: None-->
+    <!-- object and attractor frame setup -->
+    <param name="object_frame/origin/x" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="object_frame/origin/y" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="object_frame/origin/z" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="object_frame/orientation/x" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="object_frame/orientation/y" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="object_frame/orientation/z" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="object_frame/orientation/w" value="1.0"/> <!-- default: 1.0 --> 
+    <param name="attractor_frame/origin/x" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="attractor_frame/origin/y" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="attractor_frame/origin/z" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="attractor_frame/orientation/x" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="attractor_frame/orientation/y" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="attractor_frame/orientation/z" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="attractor_frame/orientation/w" value="1.0"/> <!-- default: 1.0 --> 
+    <!-- TF FRAME SEMANTICS WE ARE SIMULATING -->
+    <param name="parent_frame" value="pancake_oven"/> <!-- default: None-->
+    <param name="child_frame" value="spatula_blade"/> <!-- default: None-->
+    <param name="start_pose/origin/x" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="start_pose/origin/y" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="start_pose/origin/z" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="start_pose/orientation/x" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="start_pose/orientation/y" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="start_pose/orientation/z" value="0.0"/> <!-- default: 0.0 --> 
+    <param name="start_pose/orientation/w" value="1.0"/> <!-- default: 1.0 --> 
+  </node>
+</launch>

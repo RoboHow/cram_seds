@@ -33,6 +33,8 @@ rosbuild_add_library(${PROJECT_NAME}
 #rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(cds_control_node src/cds_control_node.cpp)
 #target_link_libraries(cds_control_node ${PROJECT_NAME})
+rosbuild_add_executable(cds_cartesian_test_node src/cds_cartesian_test_node.cpp)
+target_link_libraries(cds_cartesian_test_node ${PROJECT_NAME})
 
 rosbuild_add_gtest(unit-tests
   test/main.cpp 
