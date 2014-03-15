@@ -45,6 +45,10 @@ class CdsCartesianTestNode
 
     void simulateOneCycle()
     {
+      KDL::Frame state_copy;
+      tf::transformTFToKDL(state_, state_copy);
+      tf::transformKDLToTF(cds_.update(state_copy), state_);
+
       broadcastTF();
     }
 
