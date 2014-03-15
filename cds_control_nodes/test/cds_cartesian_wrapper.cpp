@@ -9,8 +9,13 @@ class CdsCartesianWrapperTest : public ::testing::Test
     {
       initParams();
       pose_start = KDL::Frame(
-          KDL::Rotation::Quaternion(-0.394948, 0.779915, 0.163176, 0.457299),
-          KDL::Vector(0.526501, -1.0469, 1.07618));
+//          KDL::Rotation::Quaternion(-0.394948, 0.779915, 0.163176, 0.457299),
+//          KDL::Vector(0.526501, -1.0469, 1.07618));
+            KDL::Rotation(-0.1950, -0.4692, 0.8613, -0.4962, 0.8047, 0.3260, -0.8460, -0.3638, -0.3898),
+            KDL::Vector(-0.1862, -0.1699, 0.1124));
+ 
+//            KDL::Rotation(-0.6314, 0.3683, 0.0689, 0.1038, 0.0905, 0.0912, 0.9958, 0.1032, 0.9945),
+//            KDL::Vector(-0.7004, 0.1520, 0.2));
     }
  
     virtual void TearDown()
@@ -23,7 +28,7 @@ class CdsCartesianWrapperTest : public ::testing::Test
 
     void initParams()
     {
-      dt = 0.01;
+      dt = 0.001;
       unsigned int num_states, num_vars;
       GMMStates* master_gmm = readGMMStatesFromFile("test_data/masterGMM.txt", num_states, num_vars);
       params.master_dyn_ = new GMRDynamics(master_gmm, num_states, num_vars);
@@ -34,15 +39,15 @@ class CdsCartesianWrapperTest : public ::testing::Test
       GMMStates* coupling_gmm = readGMMStatesFromFile("test_data/cplGMM.txt", num_states, num_vars);
       params.coupling_ = new GMR(coupling_gmm, num_states, num_vars);
 
-      params.alpha_ = 10;
+      params.alpha_ = 1;
       params.beta_ = 1; 
       params.lambda_ = 1;
       params.reachingThreshold_ = 0.001;
       params.dt_ = dt;
 
       params.object_frame_ = KDL::Frame(
-          KDL::Rotation(-0.4481, -0.7341, 0.5103, -0.5061, 0.6788, 0.5321, -0.7370, -0.0198, -0.6757),
-          KDL::Vector(0.6755, -0.8704, 0.9681));
+          KDL::Rotation(-0.6314, 0.3683, 0.0689, 0.1038, 0.0905, 0.0912, 0.9958, 0.1032, 0.9945),
+          KDL::Vector(-0.7004, 0.1520, 0.2));
       params.attractor_frame_ = KDL::Frame::Identity();
     }
 
@@ -104,7 +109,7 @@ TEST_F(CdsCartesianWrapperTest, Looping)
 
   unsigned int counter = 0;
   KDL::Frame simulated_state = pose_start;
-  for(unsigned int i=0; i<200; i++)
+  for(unsigned int i=0; i<20; i++)
   {
 //    if(counter == 0)
 //      printFrame(simulated_state);
@@ -117,5 +122,5 @@ TEST_F(CdsCartesianWrapperTest, Looping)
   }
 
   EXPECT_TRUE(KDL::Equal(params.object_frame_.p, simulated_state.p, 0.01));
-//  EXPECT_TRUE(KDL::Equal(params.object_frame_.M, simulated_state.M, 0.1));
+  EXPECT_TRUE(KDL::Equal(params.object_frame_.M, simulated_state.M, 0.5));
 }
