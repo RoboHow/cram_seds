@@ -92,10 +92,6 @@ class CdsCartesianTestNode
 
       cds_params.object_frame_ = readFrameFromParameterServer("object_frame");
       cds_params.attractor_frame_ = readFrameFromParameterServer("attractor_frame");
-//      cds_params.object_frame_ = KDL::Frame(
-//          KDL::Rotation(-0.4481, -0.7341, 0.5103, -0.5061, 0.6788, 0.5321, -0.7370, -0.0198, -0.6757),
-//          KDL::Vector(0.6755, -0.8704, 0.9681));
-//      cds_params.attractor_frame_ = KDL::Frame::Identity();
 
       return cds_params;
     }
