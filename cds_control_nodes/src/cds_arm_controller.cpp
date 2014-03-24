@@ -1,13 +1,13 @@
 #include <seds_control_nodes/cds_arm_controller.hpp>
 
 CDSArmController::CDSArmController() : 
-    arm_( ArmKinematics() ), cds_controller_( CDSExecution() ), dt_( 0.0 )
+    arm_( ArmKinematics() ), cds_controller_( CdsCartesianWrapper() ), dt_( 0.0 )
 {
 }
 
 CDSArmController::CDSArmController(CDSArmControllerParams params, 
-    const KDL::JntArray& q_init) :
-        arm_( ArmKinematics() ), cds_controller_( CDSExecution() ), dt_( 0.0 )
+        const KDL::JntArray& q_init) :
+    arm_( ArmKinematics() ), cds_controller_( CdsCartesianWrapper() ), dt_( 0.0 )
 {
   this->init(params, q_init);
 }

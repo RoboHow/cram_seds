@@ -24,7 +24,7 @@ class CDSArmController
 
   private:
     ArmKinematics arm_;
-    CDSExecution cds_controller_;
+    CdsCartesianWrapper cds_controller_;
     double dt_;
 };
 #endif  // __CDS_ARM_CONTROLLER_HPP
