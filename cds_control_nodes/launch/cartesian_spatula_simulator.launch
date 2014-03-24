@@ -1,4 +1,5 @@
 <launch>
+
   <!-- LIGHTWEIGHT CARTESIAN CDS SIMULATOR -->
   <node pkg="cds_control_nodes" type="cds_cartesian_test_node" name="cds_cartesian_test_node" output="screen">
     <param name="dt" value="0.01"/> <!-- default: 0.01 -->
@@ -36,8 +37,22 @@
     <param name="start_pose/orientation/w" value="1.0"/> <!-- default: 1.0 --> 
   </node>
 
-  <!-- VISUALIZATION OF SPATULA AND OVEN -->
+  <!-- VISUALIZATION OF TABLE -->
+  <node name="table_transform" pkg="tf" type="static_transform_publisher"
+      args="0 0 0 0 0 0 /map /table 20"/>
+  <node name="table_viz" pkg="cds_control_nodes" type="table_model.py" args="/table"/>
 
-  <node name="oven" pkg="cds_control_nodes" type="baker_model.py" args="/pancake_oven"/>
-  <node name="spatula" pkg="cds_control_nodes" type="spatula_model_bremen_1.py" args="/spatula_blade"/>
+  <!-- VISUALIZATION OF OVEN -->
+  <node name="oven_transform" pkg="tf" type="static_transform_publisher"
+      args="-0.1 0.0 0.703 0 0 0 /table /pancake_oven 20"/>
+  <node name="oven_viz" pkg="cds_control_nodes" type="oven_model.py" args="/pancake_oven"/>
+
+  <!-- VISUALIZATION OF PANCAKE -->
+  <node name="pancake_transform" pkg="tf" type="static_transform_publisher"
+      args="0 0 0.05 0 0 0 /pancake_oven /pancake 20"/>
+  <node name="pancake_viz" pkg="cds_control_nodes" type="pancake_model.py" args="/pancake"/>
+
+  <!-- VISUALIZATION OF SPATULA -->
+  <node name="spatula_viz" pkg="cds_control_nodes" type="spatula_model_bremen_1.py" args="/spatula_blade"/>
+
 </launch>
