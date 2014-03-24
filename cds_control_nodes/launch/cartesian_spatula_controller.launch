@@ -2,7 +2,7 @@
 
   <!-- LIGHTWEIGHT CARTESIAN CDS SIMULATOR -->
   <node pkg="cds_control_nodes" type="cds_cartesian_test_node" name="cds_cartesian_test_node" output="screen">
-    <param name="dt" value="0.01"/> <!-- default: 0.01 -->
+    <param name="dt" value="0.001"/> <!-- default: 0.01 -->
     <param name="master_gmm_file" value="$(find cds_control_nodes)/test_data/masterGMM.txt"/> <!-- default: None-->
     <param name="slave_gmm_file" value="$(find cds_control_nodes)/test_data/slaveGMM.txt"/> <!-- default: None-->
     <param name="coupling_gmm_file" value="$(find cds_control_nodes)/test_data/cplGMM.txt"/> <!-- default: None-->
