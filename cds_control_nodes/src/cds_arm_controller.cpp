@@ -1,55 +1,42 @@
-#include <seds_control_nodes/cds_wrapper.hpp>
-#include <seds_control_nodes/kdl_epfl_conversions.hpp>
-#include <iostream>
+#include <seds_control_nodes/cds_arm_controller.hpp>
 
-CdsWrapper::CdsWrapper() : 
-    arm_( ArmKinematics() ), cds_controller_( CDSExecution() )
+CDSArmController::CDSArmController() : 
+    arm_( ArmKinematics() ), cds_controller_( CDSExecution() ), dt_( 0.0 )
 {
 }
 
-CdsWrapper::CdsWrapper(CdsWrapperParams params, const KDL::JntArray& q_init) :
-    arm_( ArmKinematics() ), cds_controller_( CDSExecution() )
+CDSArmController::CDSArmController(CDSArmControllerParams params, 
+    const KDL::JntArray& q_init) :
+        arm_( ArmKinematics() ), cds_controller_( CDSExecution() ), dt_( 0.0 )
 {
   this->init(params, q_init);
 }
 
-CdsWrapper::~CdsWrapper()
+CDSArmController::~CDSArmController()
 {
 }
 
-void CdsWrapper::init(CdsWrapperParams params, const KDL::JntArray& q_init)
+void CDSArmController::init(CDSArmControllerParams params, 
+    const KDL::JntArray& q_init)
 {
+  dt_ = params.cds_params_.dt_;
   arm_.init(params.arm_params_);
-
-  cds_controller_.setObjectFrame(toMathLib(params.cds_params_.object_frame_));
-
-  cds_controller_.setAttractorFrame(toMathLib(params.cds_params_.attractor_frame_));
-
-  cds_controller_.setDT(params.cds_params_.dt_);
-
-  cds_controller_.setCurrentEEPose(toMathLib(arm_.get_pos_fk(q_init)));
-
-  cds_controller_.init(static_cast<GMRDynamics*>(params.cds_params_.master_dyn_),
-      static_cast<GMRDynamics*>(params.cds_params_.slave_dyn_), 
-      static_cast<GMR*>(params.cds_params_.coupling_));
-
-  cds_controller_.setMotionParameters(params.cds_params_.alpha_, 
-      params.cds_params_.beta_, params.cds_params_.lambda_,
-      params.cds_params_.reachingThreshold_); 
+  cds_controller_.init(params.cds_params_, arm_.get_pos_fk(q_init));
 }
 
-const KDL::JntArray& CdsWrapper::update(const KDL::JntArray& q, double dt,
-    KDL::Frame& des_pose)
+const KDL::JntArray& CDSArmController::update(const KDL::JntArray& q)
 {
   assert(q.rows() == arm_.get_dof());
+  assert(dt_ > 0.0);
 
-  KDL::Frame pose = arm_.get_pos_fk(q);
-
-  cds_controller_.setCurrentEEPose(toMathLib(pose));
-
-  des_pose = toKDL(cds_controller_.getNextEEPose());
-
-  des_pose.M = arm_.get_pos_fk(q).M;
-//  return arm_.get_vel_ik(q, toKDL(cds_controller_.getNextEEPose()), dt);
-  return arm_.get_vel_ik(q, des_pose, dt);
+  return arm_.get_vel_ik(q, cds_controller_.update(arm_.get_pos_fk(q)), dt_);
+//  KDL::Frame pose = arm_.get_pos_fk(q);
+//
+//  cds_controller_.setCurrentEEPose(toMathLib(pose));
+//
+//  des_pose = toKDL(cds_controller_.getNextEEPose());
+//
+//  des_pose.M = arm_.get_pos_fk(q).M;
+////  return arm_.get_vel_ik(q, toKDL(cds_controller_.getNextEEPose()), dt);
+//  return arm_.get_vel_ik(q, des_pose, dt_);
 }
