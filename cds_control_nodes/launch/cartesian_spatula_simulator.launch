@@ -1,4 +1,5 @@
 <launch>
+  <!-- LIGHTWEIGHT CARTESIAN CDS SIMULATOR -->
   <node pkg="cds_control_nodes" type="cds_cartesian_test_node" name="cds_cartesian_test_node" output="screen">
     <param name="dt" value="0.01"/> <!-- default: 0.01 -->
     <param name="master_gmm_file" value="$(find cds_control_nodes)/test_data/masterGMM.txt"/> <!-- default: None-->
@@ -34,4 +35,9 @@
     <param name="start_pose/orientation/z" value="0.0"/> <!-- default: 0.0 --> 
     <param name="start_pose/orientation/w" value="1.0"/> <!-- default: 1.0 --> 
   </node>
+
+  <!-- VISUALIZATION OF SPATULA AND OVEN -->
+
+  <node name="oven" pkg="cds_control_nodes" type="baker_model.py" args="/pancake_oven"/>
+  <node name="spatula" pkg="cds_control_nodes" type="spatula_model_bremen_1.py" args="/spatula_blade"/>
 </launch>
