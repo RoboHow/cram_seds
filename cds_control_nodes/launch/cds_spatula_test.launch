@@ -4,6 +4,10 @@
     <param name="master_gmm_file" value="$(find cds_control_nodes)/test_data/masterGMM.txt"/> <!-- default: None-->
     <param name="slave_gmm_file" value="$(find cds_control_nodes)/test_data/slaveGMM.txt"/> <!-- default: None-->
     <param name="coupling_gmm_file" value="$(find cds_control_nodes)/test_data/cplGMM.txt"/> <!-- default: None-->
+    <param name="alpha" value="1"/> <!-- default: 1 -->
+    <param name="beta" value="1"/> <!-- default: 1 -->
+    <param name="lambda" value="1"/> <!-- default: 1 -->
+    <param name="reaching_threshold" value="0.001"/> <!-- default: 0.001 -->
     <!-- object and attractor frame setup -->
     <param name="object_frame/origin/x" value="0.0"/> <!-- default: 0.0 --> 
     <param name="object_frame/origin/y" value="0.0"/> <!-- default: 0.0 --> 
