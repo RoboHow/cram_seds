@@ -26,7 +26,7 @@ rosbuild_add_library(${PROJECT_NAME}
   src/arm_kinematics.cpp 
   src/kdl_epfl_conversions.cpp 
   src/cds_cartesian_wrapper.cpp
-  src/cds_arm_controller.cpp
+#  src/cds_arm_controller.cpp
 )
 #target_link_libraries(${PROJECT_NAME} another_library)
 #rosbuild_add_boost_directories()

@@ -3,38 +3,42 @@
   <!-- LIGHTWEIGHT CARTESIAN CDS SIMULATOR -->
   <node pkg="cds_control_nodes" type="cds_cartesian_test_node" name="cds_cartesian_test_node" output="screen">
     <param name="dt" value="0.001"/> <!-- default: 0.01 -->
-    <param name="master_gmm_file" value="$(find cds_control_nodes)/test_data/masterGMM.txt"/> <!-- default: None-->
-    <param name="slave_gmm_file" value="$(find cds_control_nodes)/test_data/slaveGMM.txt"/> <!-- default: None-->
-    <param name="coupling_gmm_file" value="$(find cds_control_nodes)/test_data/cplGMM.txt"/> <!-- default: None-->
+    <param name="master_gmm_file" value="$(find cds_control_nodes)/test_data/s1_masterGMM.txt"/> <!-- default: None-->
+    <param name="slave_gmm_file" value="$(find cds_control_nodes)/test_data/s1_slaveGMM.txt"/> <!-- default: None-->
+    <param name="coupling_gmm_file" value="$(find cds_control_nodes)/test_data/s1_cplGMM.txt"/> <!-- default: None-->
     <param name="alpha" value="1"/> <!-- default: 1 -->
     <param name="beta" value="1"/> <!-- default: 1 -->
     <param name="lambda" value="1"/> <!-- default: 1 -->
     <param name="reaching_threshold" value="0.001"/> <!-- default: 0.001 -->
+    <!-- MODEL_DYNAMICS=1, LINEAR_DYNAMICS=2, NO_DYNAMICS=3 -->
+    <param name="slave_dynamics_id" value="1"/> <!-- default: 1 -->
     <!-- object and attractor frame setup -->
-    <param name="object_frame/origin/x" value="0.0"/> <!-- default: 0.0 --> 
-    <param name="object_frame/origin/y" value="0.0"/> <!-- default: 0.0 --> 
-    <param name="object_frame/origin/z" value="0.0"/> <!-- default: 0.0 --> 
+    <!-- OBJECT FRAME IN WORLD FRAME -->
+    <param name="object_frame/origin/x" value="0.8"/> <!-- default: 0.0 --> 
+    <param name="object_frame/origin/y" value="-0.5"/> <!-- default: 0.0 --> 
+    <param name="object_frame/origin/z" value="0.53"/> <!-- default: 0.0 --> 
     <param name="object_frame/orientation/x" value="0.0"/> <!-- default: 0.0 --> 
     <param name="object_frame/orientation/y" value="0.0"/> <!-- default: 0.0 --> 
     <param name="object_frame/orientation/z" value="0.0"/> <!-- default: 0.0 --> 
     <param name="object_frame/orientation/w" value="1.0"/> <!-- default: 1.0 --> 
-    <param name="attractor_frame/origin/x" value="0.0"/> <!-- default: 0.0 --> 
-    <param name="attractor_frame/origin/y" value="0.0"/> <!-- default: 0.0 --> 
-    <param name="attractor_frame/origin/z" value="0.0"/> <!-- default: 0.0 --> 
-    <param name="attractor_frame/orientation/x" value="0.0"/> <!-- default: 0.0 --> 
-    <param name="attractor_frame/orientation/y" value="0.0"/> <!-- default: 0.0 --> 
-    <param name="attractor_frame/orientation/z" value="0.0"/> <!-- default: 0.0 --> 
-    <param name="attractor_frame/orientation/w" value="1.0"/> <!-- default: 1.0 --> 
+    <!-- ATTRACTOR FRAME IN OBJECT FRAME -->
+    <param name="attractor_frame/origin/x" value="-0.1224"/> <!-- default: 0.0 --> 
+    <param name="attractor_frame/origin/y" value="-0.3497"/> <!-- default: 0.0 --> 
+    <param name="attractor_frame/origin/z" value="0.0934"/> <!-- default: 0.0 --> 
+    <param name="attractor_frame/orientation/x" value="-0.3952"/> <!-- default: 0.0 --> 
+    <param name="attractor_frame/orientation/y" value="0.8256"/> <!-- default: 0.0 --> 
+    <param name="attractor_frame/orientation/z" value="0.1514"/> <!-- default: 0.0 --> 
+    <param name="attractor_frame/orientation/w" value="0.3733"/> <!-- default: 1.0 --> 
     <!-- TF FRAME SEMANTICS WE ARE SIMULATING -->
-    <param name="parent_frame" value="pancake_oven"/> <!-- default: None-->
-    <param name="child_frame" value="spatula_blade"/> <!-- default: None-->
-    <param name="start_pose/origin/x" value="-0.1862"/> <!-- default: 0.0 --> 
-    <param name="start_pose/origin/y" value="-0.1699"/> <!-- default: 0.0 --> 
-    <param name="start_pose/origin/z" value="0.1124"/> <!-- default: 0.0 --> 
-    <param name="start_pose/orientation/x" value="-0.312"/> <!-- default: 0.0 --> 
-    <param name="start_pose/orientation/y" value="0.772"/> <!-- default: 0.0 --> 
-    <param name="start_pose/orientation/z" value="0.0"/> <!-- default: 0.0 --> 
-    <param name="start_pose/orientation/w" value="0.552"/> <!-- default: 1.0 --> 
+    <param name="parent_frame" value="base_link"/> <!-- default: None-->
+    <param name="child_frame" value="right_arm_7_link"/> <!-- default: None-->
+    <param name="start_pose/origin/x" value="0.4832"/> <!-- default: 0.0 --> 
+    <param name="start_pose/origin/y" value="-1.0673"/> <!-- default: 0.0 --> 
+    <param name="start_pose/origin/z" value="1.106"/> <!-- default: 0.0 --> 
+    <param name="start_pose/orientation/x" value="-0.345"/> <!-- default: 0.0 --> 
+    <param name="start_pose/orientation/y" value="0.838"/> <!-- default: 0.0 --> 
+    <param name="start_pose/orientation/z" value="-0.005"/> <!-- default: 0.0 --> 
+    <param name="start_pose/orientation/w" value="0.4228"/> <!-- default: 1.0 --> 
   </node>
 
 </launch>
