@@ -28,7 +28,10 @@ void CdsCartesianWrapper::init(CDSExecutionParams params,
       static_cast<GMR*>(params.coupling_));
 
   cds_controller_.setMotionParameters(params.alpha_, 
-      params.beta_, params.lambda_, params.reachingThreshold_); 
+      params.beta_, params.lambda_, params.reachingThreshold_,
+      params.slave_dynamics_id_); 
+
+  cds_controller_.postInit();
 }
 
 KDL::Frame CdsCartesianWrapper::update(const KDL::Frame& current_pose)

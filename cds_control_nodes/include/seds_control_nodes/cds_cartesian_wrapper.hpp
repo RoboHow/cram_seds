@@ -11,6 +11,7 @@ class CDSExecutionParams
     GMR* coupling_;
     double alpha_, beta_, lambda_, reachingThreshold_, dt_;
     KDL::Frame object_frame_, attractor_frame_;
+    int slave_dynamics_id_;
 };
 
 class CdsCartesianWrapper

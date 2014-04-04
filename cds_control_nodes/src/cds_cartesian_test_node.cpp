@@ -85,6 +85,7 @@ class CdsCartesianTestNode
       nh_.param<double>("beta", cds_params.beta_, 1); 
       nh_.param<double>("lambda", cds_params.lambda_, 1);
       nh_.param<double>("reaching_threshold", cds_params.reachingThreshold_, 0.001);
+      nh_.param<int>("slave_dynamics_id", cds_params.slave_dynamics_id_, 1);
       nh_.param<double>("dt", cds_params.dt_, 0.01);
 
       nh_.getParam("parent_frame", parent_frame_);
