@@ -11,7 +11,7 @@
 
   <!-- VISUALIZATION OF OVEN -->
   <node name="oven_transform" pkg="tf" type="static_transform_publisher"
-      args="0.8 -0.5 0.48 0 0 0 /base_link /pancake_maker 100"/>
+      args="1.025 -0.655 0.642 0 0 0 /base_link /pancake_maker 100"/>
   <node name="oven_viz" pkg="cds_control_nodes" type="oven_model.py" args="/pancake_maker"/>
 
   <!-- VISUALIZATION OF PANCAKE -->
@@ -22,10 +22,10 @@
   <!-- VISUALIZATION OF SPATULA -->
   <!--node name="ee_transform" pkg="tf" type="static_transform_publisher"
       args="0.4832 -1.0673 1.106  -0.3450 0.8380 -0.0050 0.4228 /base_link /right_arm_7_link 100"/-->
+  <node name="ee_flange_transform" pkg="tf" type="static_transform_publisher"
+      args="0 0 0.0708  0.0 0.0 0.0 /right_arm_7_link /right_arm_flange_link 100"/>
   <node name="spatula_handle_transform" pkg="tf" type="static_transform_publisher"
-      args="0 0 0  0.7074 0.006 0.7068 0.006 /right_arm_7_link /spatula_handle 100"/>
-  <node name="spatula_blade_transform" pkg="tf" type="static_transform_publisher"
-      args="0.245 0.0 -0.015 0 2.1 0 /spatula_handle /spatula_blade 100"/>
-  <node name="spatula_viz" pkg="cds_control_nodes" type="spatula_model_bremen_1.py" args="/spatula_blade"/>
+      args="0 0 0  0.0 0.0 0.0 /right_arm_flange_link /spatula_handle 100"/>
+  <node name="spatula_viz" pkg="cds_control_nodes" type="spatula_model_epfl.py" args="/spatula_handle"/>
 
 </launch>
