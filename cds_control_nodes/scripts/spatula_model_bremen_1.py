@@ -42,7 +42,10 @@ def publishCube(pos, ori, scale, id):
 
 rate = rospy.Rate(0.5)
 while not rospy.is_shutdown():
-  publishCube([0.06, 0, -0.14], [0, sin(-0.28), 0, cos(-0.28)], [0.01, 0.01, 0.22], 1)
-  publishCube([0, 0, 0], [0, 0, 0, 1], [0.01, 0.075, 0.095], 2)
+  publishCube([0, 0, 0.13], [0, 0, 0, 1], [0.01, 0.01, 0.26], 1)
+  publishCube([0.01, 0, 0.265], [0, sin(-1.10), 0, cos(-1.10)], [0.01, 0.01, 0.03], 3)
+  publishCube([0, 0, 0.31], [0, sin(-0.28), 0, cos(-0.28)], [0.01, 0.075, 0.10], 2)
+
+
   rate.sleep()
 
