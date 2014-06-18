@@ -40,7 +40,9 @@ class CdsCartesianTestNode
       KDL::Frame start_pose = readStartPose();
       tf::transformKDLToTF(start_pose, state_);
 
-      cds_.init(readCDSParams(), start_pose);
+      int segment_id;
+      nh_.param<int>("segment_id", segment_id, 1);
+      cds_.init(readCDSParams(), start_pose, segment_id);
     } 
 
     void simulateOneCycle()
@@ -66,17 +68,21 @@ class CdsCartesianTestNode
       std::string filename = "";
 
       nh_.getParam("master_gmm_file", filename);
+std::cout << "Reading file:" << filename.c_str() << "\n";
       GMMStates* master_gmm = readGMMStatesFromFile(filename.c_str(),
           num_states, num_vars);
       cds_params.master_dyn_ = new GMRDynamics(master_gmm, num_states, num_vars);
 
       nh_.getParam("slave_gmm_file", filename);
-     
+ std::cout << "Reading file:" << filename.c_str() << "\n";
+    
       GMMStates* slave_gmm = readGMMStatesFromFile(filename.c_str(),
           num_states, num_vars);
       cds_params.slave_dyn_ =  new GMRDynamics(slave_gmm, num_states, num_vars);
 
       nh_.getParam("coupling_gmm_file", filename);
+std::cout << "Reading file:" << filename.c_str() << "\n";
+
       GMMStates* coupling_gmm = readGMMStatesFromFile(filename.c_str(),
           num_states, num_vars);
       cds_params.coupling_ = new GMR(coupling_gmm, num_states, num_vars);

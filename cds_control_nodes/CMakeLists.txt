@@ -26,7 +26,8 @@ rosbuild_add_library(${PROJECT_NAME}
   src/arm_kinematics.cpp 
   src/kdl_epfl_conversions.cpp 
   src/cds_cartesian_wrapper.cpp
-#  src/cds_arm_controller.cpp
+  #src/cds_arm_controller.cpp
+  #src/cds_arm_controller_test_node.cpp
 )
 #target_link_libraries(${PROJECT_NAME} another_library)
 #rosbuild_add_boost_directories()
@@ -35,6 +36,9 @@ rosbuild_add_library(${PROJECT_NAME}
 #target_link_libraries(cds_control_node ${PROJECT_NAME})
 rosbuild_add_executable(cds_cartesian_test_node src/cds_cartesian_test_node.cpp)
 target_link_libraries(cds_cartesian_test_node ${PROJECT_NAME})
+
+#rosbuild_add_executable(cds_arm_controller_test_node src/cds_arm_controller_test_node)
+#target_link_libraries(cds_arm_controller_test_node ${PROJECT_NAME})
 
 rosbuild_add_gtest(unit-tests
   test/main.cpp 

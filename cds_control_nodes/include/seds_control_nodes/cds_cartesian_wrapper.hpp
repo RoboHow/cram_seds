@@ -18,11 +18,12 @@ class CdsCartesianWrapper
 {
   public:
     CdsCartesianWrapper();
-    CdsCartesianWrapper(CDSExecutionParams params, const KDL::Frame& pose_init);
+    CdsCartesianWrapper(CDSExecutionParams params, const KDL::Frame& pose_init,
+        int segment_id);
 
     ~CdsCartesianWrapper();
  
-    void init(CDSExecutionParams params, const KDL::Frame& pose_init);
+    void init(CDSExecutionParams params, const KDL::Frame& pose_init, int segment_id);
     KDL::Frame update(const KDL::Frame& current_pose);
 
   private:

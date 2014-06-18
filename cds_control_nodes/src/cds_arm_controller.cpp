@@ -30,13 +30,4 @@ const KDL::JntArray& CDSArmController::update(const KDL::JntArray& q)
   assert(dt_ > 0.0);
 
   return arm_.get_vel_ik(q, cds_controller_.update(arm_.get_pos_fk(q)), dt_);
-//  KDL::Frame pose = arm_.get_pos_fk(q);
-//
-//  cds_controller_.setCurrentEEPose(toMathLib(pose));
-//
-//  des_pose = toKDL(cds_controller_.getNextEEPose());
-//
-//  des_pose.M = arm_.get_pos_fk(q).M;
-////  return arm_.get_vel_ik(q, toKDL(cds_controller_.getNextEEPose()), dt);
-//  return arm_.get_vel_ik(q, des_pose, dt_);
 }
