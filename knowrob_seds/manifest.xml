@@ -13,7 +13,7 @@
   <url>http://ros.org/wiki/knowrob_seds</url>
 
   <depend package="rosjava_jni"/>
-  <depend package="knowrob_common"/>
+  <depend package="mod_srdl"/>
   <depend package="json_prolog"/>
   <depend package="robohow_common_msgs"/>
 
